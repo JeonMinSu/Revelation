@@ -30,7 +30,7 @@ public class SoundManager : Singleton<SoundManager>
     private List<AudioData> audioList;
 
     private Dictionary<string, AudioClip> audioDictionary = new Dictionary<string, AudioClip>();
-    public List<GameObject> emptyAudioSourceObjects = new List<GameObject>();
+    private List<GameObject> emptyAudioSourceObjects = new List<GameObject>();
 
     //[SerializeField]
     private GameObject audioSoundObject;

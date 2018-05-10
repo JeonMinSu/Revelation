@@ -5,42 +5,48 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 
-public class PlayerPawn : MonoBehaviour {
-
+public class PlayerPawn : MonoBehaviour
+{
     //이동
-    private float turnSpeed = 360.0f;
-    private float accelSpeed = 100.0f;
-    private float breakSpeed = 100.0f;
-    private float maxSpeed = 15.0f;
+    [SerializeField] private float accelSpeed = 100.0f;
+    [SerializeField] private float breakSpeed = 100.0f;
+    [SerializeField] private float maxSpeed = 15.0f;
 
     //대쉬
-    private float flashDistance = 10.0f;
-    private float flashTime = 0.1f;
-    private float flashDelay = 3.0f;
+    [SerializeField] private float flashDistance = 10.0f;
+    [SerializeField] private float flashTime = 0.1f;
+    [SerializeField] private float flashDelay = 3.0f;
 
     //점프
-    private float jumpPower = 20.0f;
+    [SerializeField] private float jumpPower = 20.0f;
+    [SerializeField] private float jumpDelay = 0.2f;
+    [SerializeField] private float airWalkSpeed = 5.0f;
+    [SerializeField] private float gravityWeight = 0.0f;
 
- 
+    //회전
+    [SerializeField] private float bodyTurnSpeed = 360.0f;
+    [SerializeField] private float headTurnSpeed = 180.0f;
+    [SerializeField] private Transform headTransform;
+
+
+    //딜레이
+    private float jumpWaitTime = 0.0f;
+    private float flashWaitTime = 0.0f;
+
     Rigidbody rigid;
     CapsuleCollider col;
     private bool isAir;
-  
-	// Use this for initialization
-	void Start ()
+
+    void Start()
     {
         rigid = this.GetComponent<Rigidbody>();
         col = this.GetComponent<CapsuleCollider>();
         isAir = false;
-
     }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
 
+    /// <summary>
+    /// 공중에 있는지 확인
+    /// </summary>
     void AirCheck()
     {
         Ray _ray = new Ray(transform.position, Vector3.down);
@@ -48,6 +54,22 @@ public class PlayerPawn : MonoBehaviour {
         Debug.Log(isAir);
     }
 
+    /// <summary>
+    /// 쿨타임 확인
+    /// </summary>
+    void DelayCheck()
+    {
+        if (jumpWaitTime > 0.0f)
+            jumpWaitTime -= Time.deltaTime;
+
+        if (flashWaitTime > 0.0f)
+            flashWaitTime -= Time.deltaTime;
+    }
+
+    /// <summary>
+    /// 플레이어 행동에 관련된 것들 (회전 빼고)
+    /// 점프, 움직임 등 
+    /// </summary>
     void Move()
     {
         Vector3 _addDir = Vector3.zero;
@@ -55,26 +77,40 @@ public class PlayerPawn : MonoBehaviour {
         //이동 구문
         if (PlayerController.MoveLeft())
         {
-            _addDir = -transform.right * accelSpeed * Time.fixedDeltaTime;
+            _addDir += -transform.right;
         }
         if (PlayerController.MoveRight())
         {
-            _addDir = transform.right * accelSpeed * Time.fixedDeltaTime;
+            _addDir += transform.right;
         }
         if (PlayerController.MoveForward())
         {
-            _addDir = transform.forward * accelSpeed * Time.fixedDeltaTime;
+            _addDir += transform.forward;
         }
         if (PlayerController.MoveBackward())
         {
-            _addDir = -transform.forward * accelSpeed * Time.fixedDeltaTime;
+            _addDir += -transform.forward;
+        }
+        _addDir = _addDir.normalized * accelSpeed * Time.fixedDeltaTime;
+
+        //점프
+        if (PlayerController.Jump() && !isAir && jumpWaitTime <= 0.0f)
+        {
+            rigid.AddForce(Vector3.up * jumpPower, ForceMode.VelocityChange);
+            jumpWaitTime = jumpDelay;
         }
 
-        //이동값 없고 & 공중 아니고 & 가속도가 있음
+        //저항력
         if (_addDir == Vector3.zero && !isAir && _velocity.magnitude > breakSpeed * Time.fixedDeltaTime)
         {
             _addDir = -_velocity.normalized * breakSpeed * Time.fixedDeltaTime;
+        }
 
+        //공중 이동
+        if (isAir)
+        {
+            _addDir = _addDir / accelSpeed * airWalkSpeed;
+            _addDir += Physics.gravity * gravityWeight * Time.fixedDeltaTime;
         }
 
         //가속도 적용  
@@ -84,6 +120,21 @@ public class PlayerPawn : MonoBehaviour {
             _velocity = _velocity.normalized * maxSpeed;
         }
         rigid.velocity = _velocity;
+    }
+
+    /// <summary>
+    /// 몸 회전 카메라 회전 등
+    /// </summary>
+    void Turn()
+    {
+      this.transform.Rotate(new Vector3(0.0f, PlayerController.TurnY() * bodyTurnSpeed * Time.deltaTime, 0.0f));
+      headTransform.Rotate(new Vector3(PlayerController.TurnX() * headTurnSpeed * Time.deltaTime * -1, 0.0f, 0.0f));
+    }
+
+    void Update()
+    {
+        DelayCheck();
+        Turn();
     }
 
     private void FixedUpdate()

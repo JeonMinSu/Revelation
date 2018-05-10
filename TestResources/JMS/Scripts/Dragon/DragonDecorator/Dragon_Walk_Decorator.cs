@@ -1,5 +1,4 @@
-﻿using DragonController;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,16 +7,15 @@ public class Dragon_Walk_Decorator : DecoratorTask
 
     public override bool Run()
     {
-        float CurTime = BlackBoard.Instance.GetStageTime().CurWalkTime;
-        float MaxTime = BlackBoard.Instance.GetStageTime().WalkChangeTime;
+        bool IsWalk = BlackBoard.Instance.IsWalk;
+        float CurWalkTime = BlackBoard.Instance.GetStageTime().CurWalkTime;
+        float MaxWalkTime = BlackBoard.Instance.GetStageTime().MaxWalkTime;
 
-        bool IsStageAct = BlackBoard.Instance.IsStageAct;
-
-        if (CurTime < MaxTime && !IsStageAct)
+        if (IsWalk && CurWalkTime < MaxWalkTime)
         {
             return ChildNode.Run();
         }
         return true;
     }
-}
 
+}

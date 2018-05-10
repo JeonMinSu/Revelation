@@ -11,35 +11,16 @@ using UnityEngine;
 
 namespace DragonController { 
 
-    public class DragonAniManager : MonoBehaviour {
-
-        private string _currentAniName;
-        public string CurrentAniName { set { _currentAniName = value; } get { return _currentAniName; } }
-
-        bool _isInit;
-
-        private void Awake()
-        {
-        }
-
-        private void Start()
+    public class DragonAniManager : MonoBehaviour
+    {
+        void Start()
         {
             if (Application.isPlaying)
             {
                 //SwicthAnimation("Idle");
-                _isInit = true;
             }
         }
-        /*
-        public void SwicthAnimation(string _newAniName)
-        {
-            if (_isInit)
-                DragonManager.Instance.Ani.ResetTrigger(_currentAniName);
 
-            _currentAniName = _newAniName;
-            DragonManager.Instance.Ani.SetTrigger(_currentAniName);
-        }
-        */
         public void TakeOffReadyOn()
         {
             Debug.Log("TakeOffReady");

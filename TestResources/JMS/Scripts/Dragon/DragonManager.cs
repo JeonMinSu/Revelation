@@ -61,31 +61,6 @@ namespace DragonController
 
         public void FixedUpdate()
         {
-            if (Input.GetKey(KeyCode.F1))
-            {
-                _stat.HP = 95.0f;
-            }
-            if (Input.GetKey(KeyCode.F2))
-            {
-                _stat.HP = 80.0f;
-            }
-            if (Input.GetKey(KeyCode.F3))
-            {
-                BlackBoard.Instance.CurPlayerHP = 70.0f;
-            }
-            if (Input.GetKey(KeyCode.F4))
-            {
-                BlackBoard.Instance.CurPlayerHP = 40.0f;
-            }
-            if (Input.GetKey(KeyCode.F5))
-            {
-                BlackBoard.Instance.CurIceCrystalNum = 40;
-            }
-            if (Input.GetKey(KeyCode.F6))
-            {
-                BlackBoard.Instance.CurIceCrystalNum = 60;
-            }
-
         }
 
         public void FindNode(int nodeIndex, float Speed, float MaxSpeed)

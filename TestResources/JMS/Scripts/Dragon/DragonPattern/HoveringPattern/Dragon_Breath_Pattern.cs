@@ -8,7 +8,7 @@ public class Dragon_Breath_Pattern : ActionTask
 
     public override bool Run()
     {
-        bool HoveringAct = BlackBoard.Instance.HoveringAct;
+        bool HoveringAct = BlackBoard.Instance.IsHoveringPatternAct;
 
         float preTime = BlackBoard.Instance.GetFlyingTime().PreBreathTime;
         float afterTime = BlackBoard.Instance.GetFlyingTime().AfterBreathTime;
@@ -30,7 +30,7 @@ public class Dragon_Breath_Pattern : ActionTask
         Transform Dragon = DragonManager.Instance.transform;
 
         Transform Mouth = BlackBoard.Instance.DragonMouth;
-        BlackBoard.Instance.HoveringAct = true;
+        BlackBoard.Instance.IsHoveringPatternAct = true;
 
         Vector3 forward = (Player.position - Mouth.position).normalized;
 
@@ -52,7 +52,7 @@ public class Dragon_Breath_Pattern : ActionTask
 
         //용 브레스 후딜 애니메이션 넣는 곳
         yield return new WaitForSeconds(afterTime);
-        BlackBoard.Instance.HoveringAct = false;
+        BlackBoard.Instance.IsHoveringPatternAct = false;
         BlackBoard.Instance.IsFlying = true;
         //BlackBoard.Instance.IsHovering = false;
     }

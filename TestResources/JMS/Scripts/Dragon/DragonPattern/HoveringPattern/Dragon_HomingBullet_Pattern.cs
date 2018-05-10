@@ -7,7 +7,7 @@ public class Dragon_HomingBullet_Pattern : ActionTask
 
     public override bool Run()
     {
-        bool IsHoveringAct = BlackBoard.Instance.HoveringAct;
+        bool IsHoveringAct = BlackBoard.Instance.IsHoveringPatternAct;
 
         float preTime = BlackBoard.Instance.GetFlyingTime().PreMissileTime;
         float afterTime = BlackBoard.Instance.GetFlyingTime().AfterMissileTime;
@@ -23,7 +23,7 @@ public class Dragon_HomingBullet_Pattern : ActionTask
     IEnumerator HomingBulletShot(float preTime, float afterTime)
     {
         Transform Mouth = BlackBoard.Instance.DragonMouth;
-        BlackBoard.Instance.HoveringAct = true;
+        BlackBoard.Instance.IsHoveringPatternAct = true;
 
         //용 유도탄 선딜 애니메이션 넣는 곳
         yield return new WaitForSeconds(preTime);
@@ -49,7 +49,7 @@ public class Dragon_HomingBullet_Pattern : ActionTask
 
         //용 유도탄 후딜 애니메이션 넣는 곳
         yield return new WaitForSeconds(afterTime);
-        BlackBoard.Instance.HoveringAct = false;
+        BlackBoard.Instance.IsHoveringPatternAct = false;
         BlackBoard.Instance.IsFlying = true;
         //BlackBoard.Instance.IsHovering = false;
     }

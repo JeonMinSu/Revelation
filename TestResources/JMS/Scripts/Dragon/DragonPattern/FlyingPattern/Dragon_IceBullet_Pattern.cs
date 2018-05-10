@@ -12,7 +12,7 @@ public class Dragon_IceBullet_Pattern : ActionTask {
         Transform Dragon = DragonManager.Instance.transform;
 
         bool IsFlying = BlackBoard.Instance.IsFlying;
-        bool IsFlyingPatternAct = BlackBoard.Instance.FlyingPatternAct;
+        bool IsFlyingPatternAct = BlackBoard.Instance.IsFlyingPatternAct;
 
         int MaxCrystal = BlackBoard.Instance.MaxIceBulletCrystalNum;
         int MinCrystal = BlackBoard.Instance.MinIceBulletCrtystalNum;
@@ -48,7 +48,7 @@ public class Dragon_IceBullet_Pattern : ActionTask {
         Transform Dragon = DragonManager.Instance.transform;
 
         Transform Mouth = BlackBoard.Instance.DragonMouth;
-        BlackBoard.Instance.FlyingPatternAct = true;
+        BlackBoard.Instance.IsFlyingPatternAct = true;
 
         Vector3 firePos = (Player.position - Mouth.position).normalized;
 
@@ -68,7 +68,7 @@ public class Dragon_IceBullet_Pattern : ActionTask {
 
         //얼음 탄환 후딜 애니메이션 넣는 곳
         yield return new WaitForSeconds(AfterTime);
-        BlackBoard.Instance.FlyingPatternAct = true;
+        BlackBoard.Instance.IsFlyingPatternAct = true;
     }
 
 }

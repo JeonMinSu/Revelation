@@ -15,12 +15,12 @@ namespace DragonController {
         public float TurnSpeed { set { _turnSpeed = value; } get { return _turnSpeed; } }
 
         [SerializeField]
-        private float _landMoveSpeed = 10.0f;
-        public float LandMoveSpeed { set { _landMoveSpeed = value; } get { return _landMoveSpeed; } }
+        private float _walkSpeed = 10.0f;
+        public float WalkSpeed { set { _walkSpeed = value; } get { return _walkSpeed; } }
 
-        [SerializeField]
-        private float _landTurnSpeed = 180.0f;
-        public float LandTurnSpeed { set { _landTurnSpeed = value; } get { return _landTurnSpeed; } }
+        //[SerializeField]
+        //private float _turnSpeed = 180.0f;
+        //public float LandTurnSpeed { set { _turnSpeed = value; } get { return _turnSpeed; } }
 
         [SerializeField]
         private float _curRushSpeed;

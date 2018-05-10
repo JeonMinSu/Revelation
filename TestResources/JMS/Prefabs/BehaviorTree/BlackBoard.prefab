@@ -116,15 +116,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc004bfe75cf6384e813726a43877e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletManager: {fileID: 0}
   _dragonMouth: {fileID: 0}
-  _rushLimitDir: 30
-  _takeOffLimitDir: 50
-  _dragonFlyingRadius: 150
   _curIceCrystalNum: 40
   _maxIceBulletCrystalNum: 70
   _minIceBulletCrystalNum: 50
-  _missileCrystalNum: 50
-  _breathCrystalNum: 50
+  _maxHommingBulletCrystalNum: 50
+  _maxBreathCrystalNum: 40
+  _curVulnerablePointCount: 0
+  _maxVulnerablePointCount: 4
   PlayerMaxHP: 100
   CurPlayerHP: 70

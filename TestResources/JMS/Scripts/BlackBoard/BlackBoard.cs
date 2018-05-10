@@ -3,14 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MoveManagers
-{
-    TakeOff = 0,
-    FlyingCircle,
-    Landing
-}
-
-
 /*
     수 정 날 : 2018 - 05 - 05
     작 성 자 : 전민수
@@ -21,17 +13,13 @@ public class BlackBoard : Singleton<BlackBoard>
 {
 
     [SerializeField]
-    private BulletManager _bulletManager;
-    public BulletManager BulletManager { get { return _bulletManager; } }
-
-    [SerializeField]
     private Transform _dragonMouth;
     public Transform DragonMouth { get { return _dragonMouth; } }
 
     private Clock _clocks;
     public Clock Clocks { get { return _clocks; } }
 
-    /* 보스몹 상태 관련 변수 */
+    /* 보스몹 HP 상태 관련 변수 */
     //[SerializeField]
     //private float _maxHpTakeOffPercent;
     //public float MaxHpTakeOffPercent { get { return _maxHpTakeOffPercent; } }
@@ -61,61 +49,40 @@ public class BlackBoard : Singleton<BlackBoard>
     //private float _hpPhaseThird;
     //public float HpPhaseThird { set { _hpPhaseThird = value; } get { return _hpPhaseThird; } }
 
-    /* 보스몹 이동 관련 변수*/
-    private float _radius;
-    public float Radius { set { _radius = value; } get { return _radius; } }
+    /* 보스몹 해야되는 행동 관련 변수 */
+    private bool _isGround;      //땅 상태
+    public bool IsGround { set { _isGround = value; } get { return _isGround; } }
 
-    private float _theta;
-    public float Theta { set { _theta = value; } get { return _theta; } }
-
-    private bool _isRadiusChk;
-    public bool IsRadiusChk { set { _isRadiusChk = value; } get { return _isRadiusChk; } }
-
-    /* 보스몹 패턴 관련 변수 */
-    [SerializeField]
-    private float _rushLimitDir;
-    public float RushLimitDir { set { _rushLimitDir = value; } get { return _rushLimitDir; } }
-
-    private Vector3 _fixTargetPos;
-    public Vector3 FixTargetPos { set { _fixTargetPos = value; } get { return _fixTargetPos; } }
-
-    /* fly 관련 변수 */
-    [SerializeField]
-    private float _takeOffLimitDir;
-    public float TakeOffLimitDir { get { return _takeOffLimitDir; } }
-
-    [SerializeField]
-    private float _dragonFlyingRadius;
-    public float DragonFlyingRadius { get { return _dragonFlyingRadius; } }
-
-    /* 보스몹 행동 관련 변수 */
-    private bool _isStage;      //땅에 있는지
-    public bool IsStage { set { _isStage = value; } get { return _isStage; } }
-
-    private bool _isLanding;    //착륙 중인지
+    private bool _isLanding;    //착륙 상태
     public bool IsLanding { set { _isLanding = value; } get { return _isLanding; } }
 
-    private bool _isIdle;       //아이들 중인지
+    private bool _isIdle;       //아이들 상태
     public bool IsIdle { set { _isIdle = value; } get { return _isIdle; } }
 
-    private bool _isWalk;       //걷는 중인지
+    private bool _isWalk;       //걷기 상태
     public bool IsWalk { set { _isWalk = value; }  get { return _isWalk; } }
 
-    private bool _isTakeOffReady;//이륙 준비가 다 되었는지
+    private bool _isTakeOffReady;//이륙 준비 상태
     public bool IsTakeOffReady { set { _isTakeOffReady = value; } get { return _isTakeOffReady; } }
 
-    private bool _isTakeOff;    //이륙 중인지
+    private bool _isTakeOff;    //이륙 상태
     public bool IsTakeOff { set { _isTakeOff = value; } get { return _isTakeOff; } }
 
-    private bool _isHovering;   //호버링 중인지
+    private bool _isHovering;   //호버링 상태
     public bool IsHovering{ set { _isHovering = value; } get { return _isHovering; } }
 
-    private bool _isFlying;     //날고 있는지
+    private bool _isFlying;     //플라잉 상태
     public bool IsFlying { set { _isFlying = value; } get { return _isFlying; } }
 
-    /* 보스몹 행동 체크 */
-    private bool _isStageAct;   //땅에서 패턴을 사용하고 있는지
-    public bool IsStageAct { set { _isStageAct = value; } get { return _isStageAct; } }
+    private bool _isWeakPoint;  //약점 상태
+    public bool IsWeakPoint { set { _isWeakPoint = value; } get { return _isWeakPoint; } }
+
+    private bool _isAttack;     //공격 상태
+    public bool IsAttack { set { _isAttack = value; } get { return _isAttack; } }
+
+    /* 보스몹 행동 중 관련 변수 */
+    private bool _isStagePatternAct;   //땅에서 패턴을 사용하고 있는지
+    public bool IsStagePatternAct { set { _isStagePatternAct = value; } get { return _isStagePatternAct; } }
 
     private bool _isLandingAct; //착륙 액션을 하고 있는지
     public bool IsLandingAct { set { _isLandingAct = value; } get { return _isLandingAct; } }
@@ -123,14 +90,11 @@ public class BlackBoard : Singleton<BlackBoard>
     private bool _isTakeOffAct; //이륙 액션을 하고 있는지
     public bool IsTakeOffAct { set { _isTakeOffAct = value; } get { return _isTakeOffAct; } }
 
-    private bool _hoveringAct;  //호버링 패턴을 사용하고 있는지
-    public bool HoveringAct { set { _hoveringAct = value; } get { return _hoveringAct; } }
+    private bool _isHoveringPatternAct;  //호버링 패턴을 사용하고 있는지
+    public bool IsHoveringPatternAct { set { _isHoveringPatternAct = value; } get { return _isHoveringPatternAct; } }
 
-    private bool _flyingAct;    //플라잉을 사용하고 있는지
-    public bool FlyingAct { set { _flyingAct = value; } get { return _flyingAct; } }
-
-    private bool _flyingPatternAct;
-    public bool FlyingPatternAct { set { _flyingPatternAct = value; } get { return _flyingPatternAct; } }
+    private bool _isFlyingPatternAct;    //플라잉 패턴을 하고 있는지
+    public bool IsFlyingPatternAct { set { _isFlyingPatternAct = value; } get { return _isFlyingPatternAct; } }
 
     /* 현재 얼음결정 개수 */
     [SerializeField]
@@ -148,12 +112,20 @@ public class BlackBoard : Singleton<BlackBoard>
 
     /* Missile(유도탄) 얼음 결정 개수 */
     [SerializeField]
-    private int _missileCrystalNum;
-    public int MissileCrystalNum { set { _missileCrystalNum = value; } get{ return _missileCrystalNum; } }
+    private int _maxHommingBulletCrystalNum;
+    public int MaxHommingBulletCrystalNum { set { _maxHommingBulletCrystalNum = value; } get{ return _maxHommingBulletCrystalNum; } }
 
     [SerializeField]
-    private int _breathCrystalNum;
-    public int BreathCrystalNum { set { _breathCrystalNum = value; }  get { return _breathCrystalNum; } }
+    private int _maxBreathCrystalNum;
+    public int MaxBreathCrystalNum { set { _maxBreathCrystalNum = value; }  get { return _maxBreathCrystalNum; } }
+
+    [SerializeField]
+    private int _curWeakPointCount;
+    public int CurWeakPointCount { set { _curWeakPointCount = value; } get { return _curWeakPointCount; } }
+
+    [SerializeField]
+    private int _maxWeakPointCount;
+    public int MaxWeakPointCount { set { _maxWeakPointCount = value; } get { return _maxWeakPointCount; } }
 
     /* 나중에 지워야 됨!!! */
     public float PlayerMaxHP;
@@ -162,7 +134,7 @@ public class BlackBoard : Singleton<BlackBoard>
   
     public void InitMember()
     {
-        _isStage = true;
+        _isGround = false;
         _clocks = GetComponentInChildren<Clock>();
     }
 
@@ -206,6 +178,7 @@ public class BlackBoard : Singleton<BlackBoard>
 
     }
 
+    /*
     public void CircleMove(Vector3 Target, float Radian)
     {
         Transform dragon = DragonManager.Instance.transform;
@@ -217,6 +190,7 @@ public class BlackBoard : Singleton<BlackBoard>
         dragon.rotation = Quaternion.LookRotation(forward);
 
     }
+    */
 
     public float Acceleration(float fCurSpeed, float fMaxSpeed, float fAccSpeed)
     {
@@ -231,6 +205,7 @@ public class BlackBoard : Singleton<BlackBoard>
 
     }
 
+    /*
     public Vector3 GetCirclePos(Vector3 Target, float Radian)
     {
         Vector3 retPos;
@@ -244,6 +219,7 @@ public class BlackBoard : Singleton<BlackBoard>
         return retPos;
 
     }
+    */
 
     public bool DistanceCalc(Transform _this, Transform _target, float Range)
     {
@@ -273,6 +249,7 @@ public class BlackBoard : Singleton<BlackBoard>
         DragonManager.DragonMovement.Movement(Index);
     }
 
+    /*
     public void HoveringPatternChk()
     {
         if (CurPlayerHP >= PlayerMaxHP * 0.5f &&
@@ -296,5 +273,6 @@ public class BlackBoard : Singleton<BlackBoard>
         }
 
     }
+    */
 
 }

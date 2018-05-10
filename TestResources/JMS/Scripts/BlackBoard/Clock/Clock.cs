@@ -14,19 +14,12 @@ public class Clock : MonoBehaviour
         private float _idleTime;
         public float IdleTime { set { _idleTime = value; } get { return _idleTime; } }
 
-        [SerializeField]
-        private float _minWalkChangeTime;
-        public float MinWalkChangeTime { get { return _minWalkChangeTime; } }
-
-        [SerializeField]
-        private float _maxWalkChangeTime;
-        public float MaxWalkChangeTime { get { return _maxWalkChangeTime; } }
-
         private float _curWalkTime = 0.0f;
         public float CurWalkTime { set { _curWalkTime = value; } get { return _curWalkTime; } }
 
-        private float _walkChangeTime;
-        public float WalkChangeTime { set { _walkChangeTime = value; } get { return _walkChangeTime; } }
+        [SerializeField]
+        private float _maxWalkTime;
+        public float MaxWalkTime { set { _maxWalkTime = value; } get { return _maxWalkTime; } }
 
         [SerializeField]
         private float _preRushTime;
@@ -147,11 +140,6 @@ public class Clock : MonoBehaviour
     public void InitFlyingTime()
     {
         Flyingtime.InitTime();
-    }
-
-    private void Awake()
-    {
-        _stageTime.WalkChangeTime = Random.Range(_stageTime.MinWalkChangeTime, _stageTime.MaxWalkChangeTime);
     }
 
 }

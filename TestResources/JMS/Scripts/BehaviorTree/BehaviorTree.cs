@@ -62,7 +62,7 @@ public class BehaviorTree : ScriptableObject
     {
         if (_isInit)
         {
-            SerializeNodes(_root);
+            //SerializeNodes(_root);
         }
     }
 

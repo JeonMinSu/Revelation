@@ -14,8 +14,8 @@ public class Dragon_Rush_Pattern : ActionTask {
         float preTime = BlackBoard.Instance.GetStageTime().PreRushTime;
         float afterTime = BlackBoard.Instance.GetStageTime().AfterRushTime;
 
-        bool IsStage = BlackBoard.Instance.IsStage;
-        bool IsStageAct = BlackBoard.Instance.IsStageAct;
+        bool IsGround = BlackBoard.Instance.IsGround;
+        bool IsStageAct = BlackBoard.Instance.IsStagePatternAct;
 
         if (!IsStageAct)
            CoroutineManager.DoCoroutine(DragonRushStart(preTime, afterTime));
@@ -27,7 +27,7 @@ public class Dragon_Rush_Pattern : ActionTask {
         float Curtime = 0;
         float RunTime = BlackBoard.Instance.GetStageTime().RushRunTime;
 
-        BlackBoard.Instance.IsStageAct = true;
+        BlackBoard.Instance.IsStagePatternAct = true;
 
         DragonManager.Instance.SwicthAnimation("Idle");
         yield return new WaitForSeconds(_preTime);
@@ -41,7 +41,7 @@ public class Dragon_Rush_Pattern : ActionTask {
         yield return new WaitForSeconds(_afterTime);
         BlackBoard.Instance.GetStageTime().IdleTime = 0.0f;
         BlackBoard.Instance.GetStageTime().CurWalkTime = 0.0f;
-        BlackBoard.Instance.IsStageAct = false;
+        BlackBoard.Instance.IsStagePatternAct = false;
 
     }
 

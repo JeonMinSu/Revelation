@@ -10,7 +10,7 @@ public class Dragon_OverLap_Pattern : ActionTask {
         float preTime = BlackBoard.Instance.GetStageTime().PreOverLapTime;
         float afterTime = BlackBoard.Instance.GetStageTime().AfterOverLapTime;
 
-        bool IsStageAct = BlackBoard.Instance.IsStageAct;
+        bool IsStageAct = BlackBoard.Instance.IsStagePatternAct;
 
         if (!IsStageAct)
             CoroutineManager.DoCoroutine(OverLapCor(preTime, afterTime));
@@ -23,7 +23,7 @@ public class Dragon_OverLap_Pattern : ActionTask {
         float Curtime = 0;
         float RunTime = BlackBoard.Instance.GetStageTime().OverLapRunTime;
         
-        BlackBoard.Instance.IsStageAct = true;
+        BlackBoard.Instance.IsStagePatternAct = true;
 
         DragonManager.Instance.SwicthAnimation("Idle");
         yield return new WaitForSeconds(preTime);
@@ -37,7 +37,7 @@ public class Dragon_OverLap_Pattern : ActionTask {
 
         yield return new WaitForSeconds(afterTime);
         BlackBoard.Instance.GetStageTime().InitTime();
-        BlackBoard.Instance.IsStageAct = false;
+        BlackBoard.Instance.IsStagePatternAct = false;
 
     }
 

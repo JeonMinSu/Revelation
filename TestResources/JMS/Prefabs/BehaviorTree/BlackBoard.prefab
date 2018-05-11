@@ -82,9 +82,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stageTime:
-    _idleTime: 3
-    _minWalkChangeTime: 3
-    _maxWalkChangeTime: 5
+    _maxIdleTime: 0
+    _maxWalkTime: 2
     _preRushTime: 2
     _rushRunTime: 1
     _afterRushTime: 2
@@ -93,9 +92,7 @@ MonoBehaviour:
     _afterOverLapTime: 2
   _flyingTime:
     _hoveringTime: 3
-    _curHoveringTime: 0
-    _flyTime: 4
-    _curFlyTime: 0
+    _flyTime: 3
     _preMissileTime: 1.5
     _afterMissileTime: 2
     _preBreathTime: 2
@@ -117,12 +114,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dragonMouth: {fileID: 0}
+  _takeOffDistance: 90
+  _isGround: 0
+  _isHovering: 0
+  _isGroundPatternAct: 0
+  _isLandingAct: 0
   _curIceCrystalNum: 40
   _maxIceBulletCrystalNum: 70
   _minIceBulletCrystalNum: 50
   _maxHommingBulletCrystalNum: 50
   _maxBreathCrystalNum: 40
-  _curVulnerablePointCount: 0
-  _maxVulnerablePointCount: 4
+  _curWeakPointCount: 0
+  _maxWeakPointCount: 4
   PlayerMaxHP: 100
   CurPlayerHP: 70

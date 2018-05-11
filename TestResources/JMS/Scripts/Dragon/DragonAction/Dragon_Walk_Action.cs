@@ -33,6 +33,8 @@ public class Dragon_Walk_Action : ActionTask
                 Player.position,
                 WalkSpeed * Time.deltaTime);
 
+        BlackBoard.Instance.GetStageTime().CurWalkTime += Time.deltaTime;
+
         return BlackBoard.Instance.DistanceCalc(Dragon, Player, 30.0f);
     }
 

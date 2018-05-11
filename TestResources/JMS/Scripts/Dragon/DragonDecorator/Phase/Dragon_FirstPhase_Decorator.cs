@@ -16,6 +16,6 @@ public class Dragon_FirstPhase_Decorator : DecoratorTask {
             Debug.Log("FirstPhaseDecorator");
             return ChildNode.Run();
         }
-        return false;
+        return true;
     }
 }

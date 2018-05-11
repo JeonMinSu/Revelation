@@ -49,7 +49,28 @@ public class BlackBoard : Singleton<BlackBoard>
     //private float _hpPhaseThird;
     //public float HpPhaseThird { set { _hpPhaseThird = value; } get { return _hpPhaseThird; } }
 
+    [Space]
+    [Header("Boss Distance")]
+
+    /* 보스몹과 플레이어 거리 변수 */
+    [SerializeField]
+    private float _takeOffDistance;     //이륙거리(보스몹과 플레이어의 거리를 측정하여 이륙)
+    public float TakeOffDistance { set { _takeOffDistance = value; } get { return _takeOffDistance; } }
+
+    private bool _isTakeOffEnd;         //이륙이 끝났는지
+    public bool IsTakeOffEnd { set { _isTakeOffEnd = value; } get { return _isTakeOffEnd; } }
+
+    [SerializeField]
+    private float _rushDistance;
+    public float RushDistance { set { _rushDistance = value; } get { return _rushDistance; } }
+
+    [SerializeField]
+    private float _overLapDistance;
+    public float OverLapDistance { set { _overLapDistance = value; } get { return _overLapDistance; } }
+
+
     /* 보스몹 해야되는 행동 관련 변수 */
+    [SerializeField]
     private bool _isGround;      //땅 상태
     public bool IsGround { set { _isGround = value; } get { return _isGround; } }
 
@@ -68,6 +89,7 @@ public class BlackBoard : Singleton<BlackBoard>
     private bool _isTakeOff;    //이륙 상태
     public bool IsTakeOff { set { _isTakeOff = value; } get { return _isTakeOff; } }
 
+    [SerializeField]
     private bool _isHovering;   //호버링 상태
     public bool IsHovering{ set { _isHovering = value; } get { return _isHovering; } }
 
@@ -80,14 +102,17 @@ public class BlackBoard : Singleton<BlackBoard>
     private bool _isAttack;     //공격 상태
     public bool IsAttack { set { _isAttack = value; } get { return _isAttack; } }
 
+    [Header("Test SerializeField")]
     /* 보스몹 행동 중 관련 변수 */
-    private bool _isStagePatternAct;   //땅에서 패턴을 사용하고 있는지
-    public bool IsStagePatternAct { set { _isStagePatternAct = value; } get { return _isStagePatternAct; } }
+    [SerializeField]
+    private bool _isGroundPatternAct;   //땅에서 패턴을 사용하고 있는지
+    public bool IsGroundPatternAct { set { _isGroundPatternAct = value; } get { return _isGroundPatternAct; } }
 
-    private bool _isLandingAct; //착륙 액션을 하고 있는지
+    [SerializeField]
+    private bool _isLandingAct;         //착륙 액션을 하고 있는지
     public bool IsLandingAct { set { _isLandingAct = value; } get { return _isLandingAct; } }
 
-    private bool _isTakeOffAct; //이륙 액션을 하고 있는지
+    private bool _isTakeOffAct;         //이륙 액션을 하고 있는지
     public bool IsTakeOffAct { set { _isTakeOffAct = value; } get { return _isTakeOffAct; } }
 
     private bool _isHoveringPatternAct;  //호버링 패턴을 사용하고 있는지
@@ -96,6 +121,15 @@ public class BlackBoard : Singleton<BlackBoard>
     private bool _isFlyingPatternAct;    //플라잉 패턴을 하고 있는지
     public bool IsFlyingPatternAct { set { _isFlyingPatternAct = value; } get { return _isFlyingPatternAct; } }
 
+    /* 보스 2차 공격 패턴 */
+    private bool _isSecondaryOverLap;   //덮치기 2차 공격
+    public bool IsSecondaryOverLap { set { _isSecondaryOverLap = value; } get { return _isSecondaryOverLap; } }
+
+    private bool _isSecondaryRush;      //돌격 2차 공격
+    public bool IsSecondaryRush { set { _isSecondaryRush = value; } get { return _isSecondaryRush; } }
+
+
+    [Header("IceCrystal")]
     /* 현재 얼음결정 개수 */
     [SerializeField]
     private int _curIceCrystalNum;
@@ -119,6 +153,9 @@ public class BlackBoard : Singleton<BlackBoard>
     private int _maxBreathCrystalNum;
     public int MaxBreathCrystalNum { set { _maxBreathCrystalNum = value; }  get { return _maxBreathCrystalNum; } }
 
+
+    [Header("WeakPoint")]
+
     [SerializeField]
     private int _curWeakPointCount;
     public int CurWeakPointCount { set { _curWeakPointCount = value; } get { return _curWeakPointCount; } }
@@ -127,6 +164,8 @@ public class BlackBoard : Singleton<BlackBoard>
     private int _maxWeakPointCount;
     public int MaxWeakPointCount { set { _maxWeakPointCount = value; } get { return _maxWeakPointCount; } }
 
+
+    [Header("PlayerHP Dummy")]
     /* 나중에 지워야 됨!!! */
     public float PlayerMaxHP;
     public float CurPlayerHP;
@@ -134,7 +173,7 @@ public class BlackBoard : Singleton<BlackBoard>
   
     public void InitMember()
     {
-        _isGround = false;
+        _isGround = true;
         _clocks = GetComponentInChildren<Clock>();
     }
 

@@ -7,19 +7,20 @@ public class Clock : MonoBehaviour
     [System.Serializable]
     public class StageTimes
     {
+
         private float _curIdleTime;
         public float CurIdleTime { set { _curIdleTime = value; } get { return _curIdleTime; } }
 
         [SerializeField]
-        private float _idleTime;
-        public float IdleTime { set { _idleTime = value; } get { return _idleTime; } }
+        private float _maxIdleTime;
+        public float MaxIdleTime { get { return _maxIdleTime; } }
 
-        private float _curWalkTime = 0.0f;
+        private float _curWalkTime;
         public float CurWalkTime { set { _curWalkTime = value; } get { return _curWalkTime; } }
 
         [SerializeField]
         private float _maxWalkTime;
-        public float MaxWalkTime { set { _maxWalkTime = value; } get { return _maxWalkTime; } }
+        public float MaxWalkTime { get { return _maxWalkTime; } }
 
         [SerializeField]
         private float _preRushTime;
@@ -61,7 +62,6 @@ public class Clock : MonoBehaviour
         private float _hoveringTime;
         public float HoveringTime { set { _hoveringTime = value; } get { return _hoveringTime; } }
 
-        [SerializeField]
         private float _curHoveringTime;
         public float CurHoveringTime { set { _curHoveringTime = value; } get { return _curHoveringTime; } }
 
@@ -70,23 +70,22 @@ public class Clock : MonoBehaviour
         private float _flyTime;
         public float FlyTime { get { return _flyTime; } }
 
-        [SerializeField]
         private float _curFlyTime;
         public float CurFlyTime { set { _curFlyTime = value; } get { return _curFlyTime; } }
 
         /* 유도탄 */
         [SerializeField]
         private float _preMissileTime;
-        public float PreMissileTime { set { _preMissileTime = value; } get { return _preMissileTime; } }
+        public float PreMissileTime { get { return _preMissileTime; } }
 
         [SerializeField]
         private float _afterMissileTime;
-        public float AfterMissileTime { set { _afterMissileTime = value; } get { return _afterMissileTime; } }
+        public float AfterMissileTime { get { return _afterMissileTime; } }
 
         /* 브레스 */
         [SerializeField]
         private float _preBreathTime;
-        public float PreBreathTime { set { _preBreathTime = value; } get { return _preBreathTime; } }
+        public float PreBreathTime { get { return _preBreathTime; } }
 
         [SerializeField]
         private float _runBreathTime;
@@ -94,13 +93,13 @@ public class Clock : MonoBehaviour
 
         [SerializeField]
         private float _afterBreathTime;
-        public float AfterBreathTime { set { _afterBreathTime = value; } get { return _afterBreathTime; } }
+        public float AfterBreathTime { get { return _afterBreathTime; } }
 
 
         /* 얼음탄환  */
         [SerializeField]
         private float _preIceBulletTime;
-        public float PreIceBulletTime { set { _preIceBulletTime = value; } get { return _preIceBulletTime; } }
+        public float PreIceBulletTime { get { return _preIceBulletTime; } }
 
         [SerializeField]
         private float _runIceBulletTime;
@@ -108,7 +107,7 @@ public class Clock : MonoBehaviour
 
         [SerializeField]
         private float _afterIceBulletTime;
-        public float AfterIceBulletIime { set { _afterIceBulletTime = value; } get { return _afterIceBulletTime; } }
+        public float AfterIceBulletIime { get { return _afterIceBulletTime; } }
 
 
 

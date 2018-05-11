@@ -13,10 +13,10 @@ public class Dragon_Third_Decorator : DecoratorTask {
 
         if (CurHP < MaxHP * ThirdPhaseHP)
         {
-            Debug.Log("ThridPhase");
-            return true;
+            Debug.Log("ThridPhaseDecorator");
+            return ChildNode.Run();
         }
-        return false;
+        return true;
     }
 
 }

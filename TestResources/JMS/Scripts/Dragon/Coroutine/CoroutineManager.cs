@@ -34,7 +34,6 @@ public class CoroutineManager : Singleton<CoroutineManager> {
     IEnumerator Preform(IEnumerator coroutine)
     {
         yield return StartCoroutine(coroutine);
-        Debug.Log(coroutine.ToString());
     }
 
     //코루틴 시작

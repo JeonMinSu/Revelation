@@ -27,12 +27,14 @@ public class BehaviorTree : ScriptableObject
 
     public void Awake()
     {
-        if (_root != null)
-        {
-            if (_root.ChildNodes != null)
+        if (_isInit) { 
+            if (_root != null)
             {
-                SerializeNodes(_root);
-                _isInit = true;
+                if (_root.ChildNodes != null)
+                {
+                    SerializeNodes(_root);
+                    _isInit = true;
+                }
             }
         }
     }

@@ -82,6 +82,7 @@ namespace DragonController
         {
             while (!_dragonBehaviroTree.Root.Run())
             {
+                Debug.Log("Running");
                 yield return CoroutineManager.FiexdUpdate;
             }
             Debug.Log("end");

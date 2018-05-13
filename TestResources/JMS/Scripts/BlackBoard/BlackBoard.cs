@@ -50,9 +50,9 @@ public class BlackBoard : Singleton<BlackBoard>
     //public float HpPhaseThird { set { _hpPhaseThird = value; } get { return _hpPhaseThird; } }
 
     [Space]
-    [Header("Boss Distance")]
+    [Header("Boss Action Distance")]
 
-    /* 보스몹과 플레이어 거리 변수 */
+    /* 보스몹 액션 거리 변수 */
     [SerializeField]
     private float _takeOffDistance;     //이륙거리(보스몹과 플레이어의 거리를 측정하여 이륙)
     public float TakeOffDistance { set { _takeOffDistance = value; } get { return _takeOffDistance; } }
@@ -68,7 +68,21 @@ public class BlackBoard : Singleton<BlackBoard>
     private float _overLapDistance;
     public float OverLapDistance { set { _overLapDistance = value; } get { return _overLapDistance; } }
 
+    /* 보스몹 이동 거리*/
+    [Space]
+    [Header("Boss Move Distance ")]
 
+    [SerializeField]
+    private float _overLapMoveDistance;
+    public float OverLapMoveDistance { get { return _overLapMoveDistance; } }
+
+    [SerializeField]
+    private float _rushMoveDistance;
+    public float RushMoveDistance { get { return _rushMoveDistance; } }
+
+
+    [Space]
+    [Header("Boss State")]
     /* 보스몹 해야되는 행동 관련 변수 */
     [SerializeField]
     private bool _isGround;      //땅 상태
@@ -79,7 +93,8 @@ public class BlackBoard : Singleton<BlackBoard>
 
     private bool _isIdle;       //아이들 상태
     public bool IsIdle { set { _isIdle = value; } get { return _isIdle; } }
-
+    
+    [SerializeField]
     private bool _isWalk;       //걷기 상태
     public bool IsWalk { set { _isWalk = value; }  get { return _isWalk; } }
 
@@ -102,7 +117,8 @@ public class BlackBoard : Singleton<BlackBoard>
     private bool _isAttack;     //공격 상태
     public bool IsAttack { set { _isAttack = value; } get { return _isAttack; } }
 
-    [Header("Test SerializeField")]
+    [Space]
+    [Header("Boss Pattern On")]
     /* 보스몹 행동 중 관련 변수 */
     [SerializeField]
     private bool _isGroundPatternAct;   //땅에서 패턴을 사용하고 있는지
@@ -112,19 +128,27 @@ public class BlackBoard : Singleton<BlackBoard>
     private bool _isLandingAct;         //착륙 액션을 하고 있는지
     public bool IsLandingAct { set { _isLandingAct = value; } get { return _isLandingAct; } }
 
+    [SerializeField]
     private bool _isTakeOffAct;         //이륙 액션을 하고 있는지
     public bool IsTakeOffAct { set { _isTakeOffAct = value; } get { return _isTakeOffAct; } }
 
+    [SerializeField]
     private bool _isHoveringPatternAct;  //호버링 패턴을 사용하고 있는지
     public bool IsHoveringPatternAct { set { _isHoveringPatternAct = value; } get { return _isHoveringPatternAct; } }
 
+    [SerializeField]
     private bool _isFlyingPatternAct;    //플라잉 패턴을 하고 있는지
     public bool IsFlyingPatternAct { set { _isFlyingPatternAct = value; } get { return _isFlyingPatternAct; } }
 
+    [Space]
+    [Header("Boss Ensuing On")]
+
     /* 보스 2차 공격 패턴 */
+    [SerializeField]
     private bool _isSecondaryOverLap;   //덮치기 2차 공격
     public bool IsSecondaryOverLap { set { _isSecondaryOverLap = value; } get { return _isSecondaryOverLap; } }
 
+    [SerializeField]
     private bool _isSecondaryRush;      //돌격 2차 공격
     public bool IsSecondaryRush { set { _isSecondaryRush = value; } get { return _isSecondaryRush; } }
 
@@ -177,9 +201,9 @@ public class BlackBoard : Singleton<BlackBoard>
         _clocks = GetComponentInChildren<Clock>();
     }
 
-    public Clock.StageTimes GetStageTime()
+    public Clock.GroundTimes GetGroundTime()
     {
-        return _clocks.StageTime;
+        return _clocks.GroundTime;
     }
 
     public Clock.FlyingTimes GetFlyingTime()
@@ -268,24 +292,24 @@ public class BlackBoard : Singleton<BlackBoard>
         return false;
     }
 
-    public NodeManager GetNodeManager(int Index)
+    public NodeManager GetNodeManager(MOVEMENTTYPE Type)
     {
-        return DragonManager.DragonMovement.NodesManager[Index];
+        return DragonManager.DragonMovement.GetNodeManager(Type);
     }
 
-    public bool IsMoveReady(int Index)
+    public bool IsMoveReady(MOVEMENTTYPE Type)
     {
-        return GetNodeManager(Index).IsMoveReady;
+        return GetNodeManager(Type).IsMoveReady;
     }
 
-    public void MovementReady(int Index)
+    public void MovementReady(MOVEMENTTYPE Type)
     {
-        DragonManager.DragonMovement.MovementReady(Index);
+        DragonManager.DragonMovement.MovementReady(Type);
     }
 
-    public void FlyingMovement(int Index)
+    public void FlyingMovement(MOVEMENTTYPE Type)
     {
-        DragonManager.DragonMovement.Movement(Index);
+        DragonManager.DragonMovement.Movement(Type);
     }
 
     /*

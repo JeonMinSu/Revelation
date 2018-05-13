@@ -10,8 +10,8 @@ public class Dragon_Walk_Decorator : DecoratorTask
         bool IsWalk = BlackBoard.Instance.IsWalk;
         bool IsGround = BlackBoard.Instance.IsGround;
         bool IsGroundPatternAct = BlackBoard.Instance.IsGroundPatternAct;
-        float CurWalkTime = BlackBoard.Instance.GetStageTime().CurWalkTime;
-        float MaxWalkTime = BlackBoard.Instance.GetStageTime().MaxWalkTime;
+        float CurWalkTime = BlackBoard.Instance.GetGroundTime().CurWalkTime;
+        float MaxWalkTime = BlackBoard.Instance.GetGroundTime().MaxWalkTime;
 
         if (IsWalk && IsGround && !IsGroundPatternAct && CurWalkTime < MaxWalkTime)
         {

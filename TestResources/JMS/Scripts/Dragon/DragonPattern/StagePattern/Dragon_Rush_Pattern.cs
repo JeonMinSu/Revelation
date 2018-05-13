@@ -11,8 +11,8 @@ public class Dragon_Rush_Pattern : ActionTask {
         Transform Dragon = DragonManager.Instance.transform;
         Transform Player = DragonManager.Instance.Player;
 
-        float preTime = BlackBoard.Instance.GetStageTime().PreRushTime;
-        float afterTime = BlackBoard.Instance.GetStageTime().AfterRushTime;
+        float preTime = BlackBoard.Instance.GetGroundTime().PreRushTime;
+        float afterTime = BlackBoard.Instance.GetGroundTime().AfterRushTime;
 
         bool IsGround = BlackBoard.Instance.IsGround;
         bool IsStageAct = BlackBoard.Instance.IsGroundPatternAct;
@@ -28,7 +28,7 @@ public class Dragon_Rush_Pattern : ActionTask {
     IEnumerator DragonRushStart(float _preTime, float _afterTime)
     {
         float Curtime = 0;
-        float RunTime = BlackBoard.Instance.GetStageTime().RushRunTime;
+        float RunTime = BlackBoard.Instance.GetGroundTime().RushRunTime;
 
         BlackBoard.Instance.IsGroundPatternAct = true;
 
@@ -42,7 +42,7 @@ public class Dragon_Rush_Pattern : ActionTask {
         }
 
         yield return new WaitForSeconds(_afterTime);
-        BlackBoard.Instance.GetStageTime().InitTime();
+        BlackBoard.Instance.GetGroundTime().InitTime();
         BlackBoard.Instance.IsGroundPatternAct = false;
 
     }

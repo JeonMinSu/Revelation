@@ -9,16 +9,18 @@ public class Dragon_Walk_Action : ActionTask
     public override bool Run()
     {
 
-        Transform Dragon = UtilityManager.Instance.DragonTransform();
-        Transform Player = UtilityManager.Instance.PlayerTransform();
+        Transform Dragon = DragonManager.Instance.transform;
+        Transform Player = DragonManager.Instance.Player;
 
         Vector3 forward = (Player.position - Dragon.position).normalized;
 
         float WalkSpeed = DragonManager.Stat.WalkSpeed;
         float TurnSpeed = DragonManager.Stat.TurnSpeed;
 
-        float CurWalkTime = BlackBoard.Instance.GetStageTime().CurWalkTime;
-        float MaxWalkTime = BlackBoard.Instance.GetStageTime().MaxWalkTime;
+        float CurWalkTime = BlackBoard.Instance.GetGroundTime().CurWalkTime;
+        float MaxWalkTime = BlackBoard.Instance.GetGroundTime().MaxWalkTime;
+
+        DragonManager.Instance.SwicthAnimation("Walk");
 
 
         Dragon.rotation =
@@ -33,7 +35,7 @@ public class Dragon_Walk_Action : ActionTask
                 Player.position,
                 WalkSpeed * Time.deltaTime);
 
-        BlackBoard.Instance.GetStageTime().CurWalkTime += Time.deltaTime;
+        BlackBoard.Instance.GetGroundTime().CurWalkTime += Time.deltaTime;
 
         return BlackBoard.Instance.DistanceCalc(Dragon, Player, 30.0f);
     }

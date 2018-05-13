@@ -130,11 +130,12 @@ public class NodeManager : MonoBehaviour {
         Vector3 to = Nodes[0].transform.position;//다음좌표
         Vector3 from = Nodes[0].transform.position;//이전좌표
 
-        for (int index = 0; index + 1 < Nodes.Count; index++) //초기 노드부터 최종 노드까지 돌아가
+        //초기 노드부터 최종 노드까지 돌아가
+        for (int index = 0; index + 1 < Nodes.Count; index++)
         {
-            for (int segment = 0; segment < Nodes[index].NodeSegment; segment++)        //다음좌표가 다음 노드포지션 값이랑 일치하는지
+            for (int segment = 0; segment < Nodes[index].NodeSegment; segment++)
             {
-                float t = (1.0f / Nodes[index].NodeSegment) * segment;          //
+                float t = (1.0f / Nodes[index].NodeSegment) * segment;
                 float tt = (1.0f - t);
                 
                 from = to;  //전 좌표

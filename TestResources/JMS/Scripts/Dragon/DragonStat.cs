@@ -11,16 +11,12 @@ namespace DragonController {
         public float MoveSpeed { set { _moveSpeed = value; } get { return _moveSpeed; } }
 
         [SerializeField]
-        private float _turnSpeed = 70.0f;
+        private float _turnSpeed = 360.0f;
         public float TurnSpeed { set { _turnSpeed = value; } get { return _turnSpeed; } }
 
         [SerializeField]
         private float _walkSpeed = 10.0f;
         public float WalkSpeed { set { _walkSpeed = value; } get { return _walkSpeed; } }
-
-        //[SerializeField]
-        //private float _turnSpeed = 180.0f;
-        //public float LandTurnSpeed { set { _turnSpeed = value; } get { return _turnSpeed; } }
 
         [SerializeField]
         private float _curRushSpeed;
@@ -62,6 +58,7 @@ namespace DragonController {
         private float _hp;
         public float HP { set { _hp = value; } get { return _hp; } }
 
+        /*
         [SerializeField]
         private float _landHP;
         public float LandHP { set { _landHP = value; } get { return _landHP; } }
@@ -77,6 +74,7 @@ namespace DragonController {
         [SerializeField]
         private float _takeOffHpPercent;
         public float TakeOffHpPercent { set { _takeOffHpPercent = value; } get { return _takeOffHpPercent; } }
+        */
 
         [SerializeField]
         private float _firstPhaseHpPercent;
@@ -90,32 +88,16 @@ namespace DragonController {
         private float _thirdPhaseHpPercent;
         public float ThirdPhaseHpPercent { set { _thirdPhaseHpPercent = value; } get { return _thirdPhaseHpPercent; } }
 
-        [SerializeField]
-        private float _changedHP;
-        public float ChangedHP { set { _changedHP = value; } get { return _changedHP; } }
-
-        [SerializeField]
-        private float _sight = 5.0f;
-        public float Sight { set { _sight = value; }  get { return _sight; } }
-
-        [SerializeField]
-        private float _chaseSight = 10.0f;
-        public float ChaseSight { set { _chaseSight = value; } get { return _chaseSight; } }
-
-        [SerializeField]
-        private float _damege = 10.0f;
-        public float Damege { set { _damege = value; } get { return _damege; } }
-
-        [SerializeField]
-        private float _attackRange = 2.0f;
-        public float AttackRange { set { _attackRange = value; } get { return _attackRange; } }
+        //[SerializeField]
+        //private float _changedHP;
+        //public float ChangedHP { set { _changedHP = value; } get { return _changedHP; } }
 
         public void Awake()
         {
-            _changedHP = _maxHP;
+            //_changedHP = _maxHP;
 
-            _takeOffHP = _maxHP * _takeOffHpPercent;
-            _landHP = _maxHP * _landHpPercent;
+            //_takeOffHP = _maxHP * _takeOffHpPercent;
+            //_landHP = _maxHP * _landHpPercent;
 
         }
 

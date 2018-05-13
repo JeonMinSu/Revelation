@@ -5,7 +5,7 @@ using UnityEngine;
 public class Clock : MonoBehaviour
 {
     [System.Serializable]
-    public class StageTimes
+    public class GroundTimes
     {
 
         private float _curIdleTime;
@@ -120,8 +120,8 @@ public class Clock : MonoBehaviour
     }
 
     [SerializeField]
-    private StageTimes _stageTime;
-    public StageTimes StageTime { get { return _stageTime; } }
+    private GroundTimes _groundTime;
+    public GroundTimes GroundTime { get { return _groundTime; } }
 
     [SerializeField]
     private FlyingTimes _flyingTime;
@@ -133,7 +133,7 @@ public class Clock : MonoBehaviour
 
     public void InitLandTimes()
     {
-        _stageTime.InitTime();
+        _groundTime.InitTime();
     }
 
     public void InitFlyingTime()

@@ -27,7 +27,7 @@ public class BehaviorTree : ScriptableObject
 
     public void Awake()
     {
-        if (_isInit) { 
+        if (!_isInit) { 
             if (_root != null)
             {
                 if (_root.ChildNodes != null)

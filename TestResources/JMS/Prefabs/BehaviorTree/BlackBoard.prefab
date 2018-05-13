@@ -81,15 +81,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62895864d269c6e468b7fe67df664be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stageTime:
-    _maxIdleTime: 0
+  _groundTime:
+    _maxIdleTime: 2
     _maxWalkTime: 2
-    _preRushTime: 2
+    _preRushTime: 0.3
     _rushRunTime: 1
-    _afterRushTime: 2
-    _preOverLapTime: 2
-    _overLapRunTime: 1
-    _afterOverLapTime: 2
+    _afterRushTime: 0.2
+    _preOverLapTime: 0.5
+    _overLapRunTime: 1.2
+    _afterOverLapTime: 0.3
   _flyingTime:
     _hoveringTime: 3
     _flyTime: 3
@@ -115,7 +115,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dragonMouth: {fileID: 0}
   _takeOffDistance: 90
+  _rushDistance: 40
+  _overLapDistance: 60
   _isGround: 0
+  _isWalk: 1
   _isHovering: 0
   _isGroundPatternAct: 0
   _isLandingAct: 0

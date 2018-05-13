@@ -63,10 +63,24 @@ namespace DragonController
         {
         }
 
-        public void FindNode(int nodeIndex, float Speed, float MaxSpeed)
+        public bool IsFindNode(MOVEMENTTYPE Type, float Speed, float MaxSpeed)
         {
-            NodeManager _nodesPath = DragonMovement.NodesManager[nodeIndex];
-                
+            NodeManager NodesPath = DragonMovement.GetNodeManager(Type);
+
+            if (!NodesPath.IsRotation)
+            {
+                if (NodesPath.IsStick)
+                {
+                    Vector3 forward = transform.position - NodesPath.transform.position;
+                    NodesPath.transform.rotation = Quaternion.LookRotation(forward);
+                    NodesPath.transform.position = transform.position;
+                    Debug.Log("NodePath Find");
+                    return true;
+                }
+                Debug.Log("Ded");
+            }
+            Debug.Log("NodePath No Find");
+            return false;
         }
 
         public void SwicthAnimation(string _newAniName)

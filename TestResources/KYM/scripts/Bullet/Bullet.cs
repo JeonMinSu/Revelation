@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SphereCollider))]
 public class Bullet : MonoBehaviour {
 
     [SerializeField]
     protected float moveSpeed;           //이동 속도
     [SerializeField]
     protected float damage;                //데미지
-    [SerializeField]
+
     protected float colliderRadius;        //충돌 반경
 
     protected Vector3 moveDir;           //이동 방향
@@ -20,6 +21,7 @@ public class Bullet : MonoBehaviour {
     {
         Init();
         prevPosition = this.transform.position;
+        colliderRadius = GetComponent<SphereCollider>().radius;
     }
 
     public virtual void Init() { }

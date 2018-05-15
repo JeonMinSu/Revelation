@@ -28,6 +28,8 @@ public class PlayerPawn : MonoBehaviour
     [SerializeField] private float headTurnSpeed = 180.0f;
     [SerializeField] private Transform headTransform;
 
+    [SerializeField] private Gun gunRight;
+    [SerializeField] private Gun gunLeft;
 
     //딜레이
     private float jumpWaitTime = 0.0f;
@@ -93,12 +95,6 @@ public class PlayerPawn : MonoBehaviour
         }
         _addDir = _addDir.normalized * accelSpeed * Time.fixedDeltaTime;
 
-        //점프
-        if (PlayerController.Jump() && !isAir && jumpWaitTime <= 0.0f)
-        {
-            rigid.AddForce(Vector3.up * jumpPower, ForceMode.VelocityChange);
-            jumpWaitTime = jumpDelay;
-        }
 
         //저항력
         if (_addDir == Vector3.zero && !isAir && _velocity.magnitude > breakSpeed * Time.fixedDeltaTime)
@@ -129,6 +125,35 @@ public class PlayerPawn : MonoBehaviour
     {
       this.transform.Rotate(new Vector3(0.0f, PlayerController.TurnY() * bodyTurnSpeed * Time.deltaTime, 0.0f));
       headTransform.Rotate(new Vector3(PlayerController.TurnX() * headTurnSpeed * Time.deltaTime * -1, 0.0f, 0.0f));
+    }
+
+    /// <summary>
+    /// 스킬, 총, 공격등 액션적인 요소들
+    /// </summary>
+    void Action()
+    {
+        //점프
+        if (PlayerController.Jump() && !isAir && jumpWaitTime <= 0.0f)
+        {
+            rigid.AddForce(Vector3.up * jumpPower, ForceMode.VelocityChange);
+            jumpWaitTime = jumpDelay;
+        }
+
+        if(PlayerController.Attack())
+        {
+            if(gunRight != null)
+                gunRight.Fire();
+            if(gunLeft != null)
+                gunLeft.Fire();
+            
+            //gunRight.GetComponent<Gun>().Fire();
+            //gunLeft.GetComponent<Gun>().Fire();
+        }
+
+        if(PlayerController.Flash())
+        {
+
+        }
     }
 
     void Update()

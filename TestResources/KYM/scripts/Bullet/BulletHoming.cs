@@ -31,7 +31,8 @@ public class BulletHoming : Bullet
     protected override void Move()
     {
         Vector3 _targetDir = (targetPosition - this.transform.position).normalized;
-        moveDir = Vector3.Slerp(moveDir, _targetDir, homingPower * Time.fixedDeltaTime);
+        moveDir = Vector3.Lerp(moveDir, _targetDir, homingPower * Time.fixedDeltaTime);
+        transform.position += moveDir * Time.fixedDeltaTime * moveSpeed;
     }
 
     protected override void OnCollisionEvent()

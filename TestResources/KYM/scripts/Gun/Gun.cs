@@ -33,7 +33,7 @@ public class Gun : MonoBehaviour {
 
 	}
 
-    void Fire()
+    public void Fire()
     {
         if (firePos == null)
         {

@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 248d27b79c17a4f47a442df9e5cc8ba8
 folderAsset: yes
 timeCreated: 1525852272
+=======
+guid: 99c269ffe8ac0b64eb66857c4649b71d
+folderAsset: yes
+timeCreated: 1526019521
+>>>>>>> JMS
 licenseType: Free
 DefaultImporter:
   externalObjects: {}

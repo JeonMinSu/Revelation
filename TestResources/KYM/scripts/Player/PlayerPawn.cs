@@ -50,7 +50,7 @@ public class PlayerPawn : MonoBehaviour
     void AirCheck()
     {
         Ray _ray = new Ray(transform.position, Vector3.down);
-        isAir = !Physics.SphereCast(_ray, col.radius, col.height / 2 + 0.01f);
+        isAir = !Physics.SphereCast(_ray, col.radius, col.height / 2 + 0.001f);
         Debug.Log(isAir);
     }
 

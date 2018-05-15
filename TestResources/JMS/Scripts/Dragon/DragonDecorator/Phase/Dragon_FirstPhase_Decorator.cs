@@ -13,7 +13,6 @@ public class Dragon_FirstPhase_Decorator : DecoratorTask {
 
         if (CurHP >= MaxHP * SecondPhaseHP)
         {
-            Debug.Log("FirstPhaseDecorator");
             return ChildNode.Run();
         }
         return true;

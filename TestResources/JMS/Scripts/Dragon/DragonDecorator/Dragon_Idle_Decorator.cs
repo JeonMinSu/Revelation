@@ -11,11 +11,10 @@ public class Dragon_Idle_Decorator : DecoratorTask
 
         if (CurTime < MaxTime)
         {
-            Debug.Log("Idle_Decorator");
             return ChildNode.Run();
         }
 
-        return false;
+        return true;
     }
 
 }

@@ -40,15 +40,26 @@ public class Clock : MonoBehaviour
 
         [SerializeField]
         private float _overLapRunTime;
-        public float OverLapRunTime { set { _overLapRunTime = value; } get{ return _overLapRunTime; } }
+        public float OverLapRunTime { set { _overLapRunTime = value; } get { return _overLapRunTime; } }
 
         [SerializeField]
         private float _afterOverLapTime;
         public float AfterOverLapTime { get { return _afterOverLapTime; } }
 
+        [SerializeField]
+        private float _preEnsuingAttackTime;
+        public float PreEnsuingAttackTime { get { return _preEnsuingAttackTime; } }
+
+        [SerializeField]
+        private float _runEnsuingAttackTime;
+        public float RunEnsuingAttackTime { get { return _runEnsuingAttackTime; } }
+
+        [SerializeField]
+        private float _afterEnsuingAttackTime;
+        public float AfterEnsuingAttackTime { get { return _afterEnsuingAttackTime; } }
+
         public void InitTime()
         {
-            _curIdleTime = 0.0f;
             _curWalkTime = 0.0f;
         }
     }
@@ -116,7 +127,7 @@ public class Clock : MonoBehaviour
             _curHoveringTime = 0.0f;
             _curFlyTime = 0.0f;
         }
-        
+
     }
 
     [SerializeField]

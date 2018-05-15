@@ -7,11 +7,11 @@ public class Dragon_OverLapEnsuing_Decorator : DecoratorTask
 
     public override bool Run()
     {
-        bool IsSecondaryOverLap = BlackBoard.Instance.IsSecondaryOverLap;
+        bool IsEnsuingAttack = BlackBoard.Instance.IsEnsuingAttack;
 
-        if (IsSecondaryOverLap)
+        if (IsEnsuingAttack)
         {
-            Debug.Log("OverLap");
+            Debug.Log("Ensuing_OverLap_Decorator");
             return ChildNode.Run();
         }
         return false;

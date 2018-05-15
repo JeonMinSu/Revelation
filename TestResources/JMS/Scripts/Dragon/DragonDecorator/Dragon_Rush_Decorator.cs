@@ -11,17 +11,21 @@ public class Dragon_Rush_Decorator : DecoratorTask {
         Transform Player = DragonManager.Instance.Player.transform;
 
         float RushDistance = BlackBoard.Instance.RushDistance;
+        bool IsGroundPatternAct = BlackBoard.Instance.IsGroundPatternAct;
 
-        Debug.Log(RushDistance);
+        bool IsOverLapPattern = BlackBoard.Instance.IsOverLapPattern;
+        bool IsRushPattern = BlackBoard.Instance.IsRushPattern;
+        bool IsIceBringUpPattern = BlackBoard.Instance.IsIceBringUpPattern;
+        bool IsBulletBreath = BlackBoard.Instance.IsBulletBreath;
 
-        if(BlackBoard.Instance.DistanceCalc(Dragon, Player, RushDistance))
+
+        if ((BlackBoard.Instance.DistanceCalc(Dragon, Player, RushDistance) &&
+            !IsOverLapPattern && !IsIceBringUpPattern && !IsBulletBreath) ||
+            IsRushPattern)
         {
-            Debug.Log("Rush");
-
             return ChildNode.Run();
         }
-
-        return false;
+        return true;
     }
 
 }

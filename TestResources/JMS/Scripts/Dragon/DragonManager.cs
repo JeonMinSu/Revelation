@@ -7,6 +7,7 @@ namespace DragonController
 {
     [RequireComponent(typeof(DragonStat))]
     [RequireComponent(typeof(ObjectMovement))]
+    [RequireComponent(typeof(Rigidbody))]
     public class DragonManager : Singleton<DragonManager> {
 
         [SerializeField]
@@ -21,6 +22,9 @@ namespace DragonController
 
         private Transform _player;
         public Transform Player { get { return _player; } }
+
+        private Rigidbody _dragonRigidBody;
+        public Rigidbody DragonRigidBody { get { return _dragonRigidBody; } }
 
         private Animator _ani;
         public Animator Ani { get { return _ani; } }
@@ -44,6 +48,8 @@ namespace DragonController
             _dragonMovement = GetComponent<ObjectMovement>();
             _ani = GetComponentInChildren<Animator>();
 
+            _dragonRigidBody = GetComponent<Rigidbody>();
+
             _dragonAiCor = StartDragonAI();
 
         } 
@@ -63,7 +69,7 @@ namespace DragonController
         {
         }
 
-        public bool IsFindNode(MOVEMENTTYPE Type, float Speed, float MaxSpeed)
+        public bool IsFindNode(MOVEMENTTYPE Type)
         {
             NodeManager NodesPath = DragonMovement.GetNodeManager(Type);
 
@@ -71,13 +77,16 @@ namespace DragonController
             {
                 if (NodesPath.IsStick)
                 {
-                    Vector3 forward = transform.position - NodesPath.transform.position;
-                    NodesPath.transform.rotation = Quaternion.LookRotation(forward);
-                    NodesPath.transform.position = transform.position;
+                    Vector3 forward = (transform.position - NodesPath.transform.position).normalized;
+
+                    Vector3 changePos = new Vector3(transform.position.x, NodesPath.transform.position.y, transform.position.z);
+
+                    NodesPath.transform.position = changePos;
+                    NodesPath.transform.rotation = transform.rotation;
+
                     Debug.Log("NodePath Find");
                     return true;
                 }
-                Debug.Log("Ded");
             }
             Debug.Log("NodePath No Find");
             return false;
@@ -96,7 +105,6 @@ namespace DragonController
         {
             while (!_dragonBehaviroTree.Root.Run())
             {
-                Debug.Log("Running");
                 yield return CoroutineManager.FiexdUpdate;
             }
             Debug.Log("end");

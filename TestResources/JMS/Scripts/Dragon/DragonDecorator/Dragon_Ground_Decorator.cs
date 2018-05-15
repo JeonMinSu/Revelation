@@ -11,7 +11,6 @@ public class Dragon_Ground_Decorator : DecoratorTask
 
         if (IsGround)
         {
-            Debug.Log("Ground_Decorator");
             return ChildNode.Run();
         }
         return true;

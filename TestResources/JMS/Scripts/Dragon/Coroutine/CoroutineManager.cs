@@ -34,6 +34,7 @@ public class CoroutineManager : Singleton<CoroutineManager> {
     IEnumerator Preform(IEnumerator coroutine)
     {
         yield return StartCoroutine(coroutine);
+        Instance.StopCoroutine(coroutine);
     }
 
     //코루틴 시작
@@ -52,7 +53,6 @@ public class CoroutineManager : Singleton<CoroutineManager> {
     //종료가 되면 _instance에 Null값
     public void OnApplicationQuit()
     {
-        _instance = null;
         Die();
     }
 

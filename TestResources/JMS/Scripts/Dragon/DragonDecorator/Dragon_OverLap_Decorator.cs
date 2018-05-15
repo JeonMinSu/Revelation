@@ -11,12 +11,20 @@ public class Dragon_OverLap_Decorator : DecoratorTask
         Transform Player = DragonManager.Instance.Player;
 
         float OverLapDistance = BlackBoard.Instance.OverLapDistance;
-        
-        if (BlackBoard.Instance.DistanceCalc(Dragon, Player, OverLapDistance))
+
+        bool IsOverLapPattern = BlackBoard.Instance.IsOverLapPattern;
+        bool IsRushPattern = BlackBoard.Instance.IsRushPattern;
+        bool IsIceBringUpPattern = BlackBoard.Instance.IsIceBringUpPattern;
+        bool IsBulletBreath = BlackBoard.Instance.IsBulletBreath;
+
+        if ((BlackBoard.Instance.DistanceCalc(Dragon, Player, OverLapDistance)
+            && !IsRushPattern && !IsIceBringUpPattern && !IsBulletBreath)
+            || IsOverLapPattern)
         {
+            Debug.Log("OverLap_Decorator");
             return ChildNode.Run();
         }
-        return false;
+        return true;
     }
 
 }

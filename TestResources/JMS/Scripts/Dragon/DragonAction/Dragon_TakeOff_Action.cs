@@ -9,26 +9,24 @@ public class Dragon_TakeOff_Action : ActionTask
     {
 
         bool IsTakeOffAct = BlackBoard.Instance.IsTakeOffAct;
-        float RunTime = 10.0f;
 
         if (!IsTakeOffAct)
         {
+            float RunTime = 10.0f;
             BlackBoard.Instance.IsTakeOffAct = true;
             CoroutineManager.DoCoroutine(TakeOffAction(RunTime));
         }
-
         Debug.Log("TakeOff_Action");
         
         return false;
     }
 
-    IEnumerator TakeOffAction(float Runtime)
+    IEnumerator TakeOffAction(float RunTime)
     {
         float Curtime = 0.0f;
 
-        while (Curtime < Runtime)
+        while (Curtime < RunTime)
         {
-            Debug.Log("Curtime");
             Curtime += Time.deltaTime;
             yield return CoroutineManager.EndOfFrame;
         }

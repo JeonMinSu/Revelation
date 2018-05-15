@@ -17,6 +17,10 @@ using UnityEngine;
     작 성 자 : 전민수
     수정내역 : 기존 List를 Dictionary로 자료구조 바꿈으로써, enum 구조 추가
 
+    수 정 날 : 2018 - 05 - 13
+    작 성 자 : 전민수
+    수정내역 : 노드가 Object에 붙었을 시 y값 회전 보정
+
 */
 
 /*
@@ -32,6 +36,7 @@ public enum MOVEMENTTYPE
 public class ObjectMovement : MonoBehaviour {
 
     Dictionary<MOVEMENTTYPE, NodeManager> _nodesManager = new Dictionary<MOVEMENTTYPE, NodeManager>();
+    
 
     private void Awake()
     {
@@ -126,8 +131,8 @@ public class ObjectMovement : MonoBehaviour {
         {
             if (_nodesManager[TYPE].IsMoveEnd)
             {
-                _nodesManager[TYPE].CurNodesIndex = 0;
                 _nodesManager[TYPE].IsMoveEnd = false;
+                _nodesManager[TYPE].CurNodesIndex = 0;
             }
         }
     }
@@ -146,11 +151,11 @@ public class ObjectMovement : MonoBehaviour {
 
         int NodesCount = _nodesManager[TYPE].NodesSpeed.Count;
 
-        for (int nodeTYPE = 0; nodeTYPE < NodesCount; nodeTYPE++)
+        for (int nodeIndex = 0; nodeIndex < NodesCount; nodeIndex++)
         {
-            _nodesManager[TYPE].Stat.NodeDir.Add(_nodesManager[TYPE].NodesDir[nodeTYPE]);
-            _nodesManager[TYPE].Stat.NodeSpeed.Add(_nodesManager[TYPE].NodesSpeed[nodeTYPE]);
-            _nodesManager[TYPE].Stat.NodeRot.Add(_nodesManager[TYPE].NodesRot[nodeTYPE]);
+            _nodesManager[TYPE].Stat.NodeDir.Add(_nodesManager[TYPE].NodesDir[nodeIndex]);
+            _nodesManager[TYPE].Stat.NodeSpeed.Add(_nodesManager[TYPE].NodesSpeed[nodeIndex]);
+            _nodesManager[TYPE].Stat.NodeRot.Add(_nodesManager[TYPE].NodesRot[nodeIndex]);
         }
         _nodesManager[TYPE].IsMoveReady = true;
 
@@ -160,22 +165,24 @@ public class ObjectMovement : MonoBehaviour {
     public void Movement(MOVEMENTTYPE TYPE)
     {
         int NodesCount = _nodesManager[TYPE].NodesSpeed.Count;
-        int NodesTYPE = _nodesManager[TYPE].CurNodesIndex;
+        int NodesIndex = _nodesManager[TYPE].CurNodesIndex;
 
-        if (NodesTYPE < NodesCount)
+
+        if (NodesIndex < NodesCount)
         {
             _nodesManager[TYPE].IsMoveEnd = false;
 
-            float moveDistance = _nodesManager[TYPE].Stat.NodeSpeed[NodesTYPE] * Time.deltaTime;
-            float nextDistance = Vector3.Distance(_nodesManager[TYPE].Stat.NodeDir[NodesTYPE], transform.position);
+            float moveDistance = _nodesManager[TYPE].Stat.NodeSpeed[NodesIndex] * Time.deltaTime;
+            float nextDistance = Vector3.Distance(_nodesManager[TYPE].Stat.NodeDir[NodesIndex], transform.position);
             
-            Vector3 dir = (_nodesManager[TYPE].Stat.NodeDir[NodesTYPE] - transform.position).normalized;
-            Vector3 eulerAngle = _nodesManager[TYPE].NodesRot[NodesTYPE];
-            bool dragonUp = _nodesManager[TYPE].NodesDragonUp[NodesTYPE];
+            Vector3 dir = (_nodesManager[TYPE].Stat.NodeDir[NodesIndex] - transform.position).normalized;
+            
+            Vector3 eulerAngle = _nodesManager[TYPE].NodesRot[NodesIndex] + new Vector3(0.0f, transform.rotation.eulerAngles.y, 0.0f);
+            bool dragonUp = _nodesManager[TYPE].NodesDragonUp[NodesIndex];
 
-            //if (NodesTYPE + 1 < NodesCount)
+            //if (NodesIndex + 1 < NodesCount)
             //{
-            //    eulerAngle = (_nodesManager[TYPE].NodesRot[NodesTYPE] - _nodesManager[TYPE].Stat.NodeRot[NodesTYPE + 1]);
+            //    eulerAngle = (_nodesManager[TYPE].NodesRot[NodesIndex] - _nodesManager[TYPE].Stat.NodeRot[NodesIndex + 1]);
             //}
             
 
@@ -185,17 +192,17 @@ public class ObjectMovement : MonoBehaviour {
                 moveDistance -= nextDistance;
 
                 _nodesManager[TYPE].CurNodesIndex++;
-                NodesTYPE = _nodesManager[TYPE].CurNodesIndex;
+                NodesIndex = _nodesManager[TYPE].CurNodesIndex;
 
-                if (NodesTYPE >= NodesCount)
+                if (NodesIndex >= NodesCount)
                     return;
-                dir = (_nodesManager[TYPE].Stat.NodeDir[NodesTYPE] - transform.position).normalized;
+                dir = (_nodesManager[TYPE].Stat.NodeDir[NodesIndex] - transform.position).normalized;
 
-                eulerAngle = _nodesManager[TYPE].Stat.NodeRot[NodesTYPE];
-                //(_nodesManager[TYPE].Stat.NodeRot[NodesTYPE - 1] - _nodesManager[TYPE].Stat.NodeRot[NodesTYPE]);
+                eulerAngle = _nodesManager[TYPE].NodesRot[NodesIndex] + new Vector3(0.0f, transform.rotation.eulerAngles.y, 0.0f);
+                //(_nodesManager[TYPE].Stat.NodeRot[NodesIndex - 1] - _nodesManager[TYPE].Stat.NodeRot[NodesIndex]);
 
 
-                nextDistance = Vector3.Distance(_nodesManager[TYPE].Stat.NodeDir[NodesTYPE],
+                nextDistance = Vector3.Distance(_nodesManager[TYPE].Stat.NodeDir[NodesIndex],
                     transform.position);
 
             }
@@ -235,17 +242,18 @@ public class ObjectMovement : MonoBehaviour {
 
             transform.position += dir * moveDistance;
 
-            if (NodesTYPE + 1 >= NodesCount)
+            if (NodesIndex + 1 >= NodesCount)
                 return;
-            dir = (_nodesManager[TYPE].Stat.NodeDir[NodesTYPE] - transform.position).normalized;
+            dir = (_nodesManager[TYPE].Stat.NodeDir[NodesIndex] - transform.position).normalized;
 
         }
         else
         {
             _nodesManager[TYPE].IsMoveEnd = true;
-            MovementLoop(TYPE);
+            //MovementLoop(TYPE);
         }
     }
+
 
 
 }

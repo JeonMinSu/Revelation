@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 4056561215602676}
   - component: {fileID: 95242526632869006}
   m_Layer: 0
-  m_Name: missile_b_0430
+  m_Name: BulletHomingDragon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

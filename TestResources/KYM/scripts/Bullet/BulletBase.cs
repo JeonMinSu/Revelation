@@ -17,6 +17,14 @@ public class BulletBase : Bullet {
 
     protected override void OnCollisionEvent()
     {
-        GameObject.Destroy(this.gameObject);
+        PoolManager.Instance.PushObject(this.gameObject);
+        //GameObject.Destroy(this.gameObject);
     }
+
+    protected override void Reset()
+    {
+        base.Reset();
+        Debug.Log("BulletBase Reset");
+    }
+
 }

@@ -37,7 +37,14 @@ public class BulletHoming : Bullet
 
     protected override void OnCollisionEvent()
     {
-        
+        PoolManager.Instance.PushObject(this.gameObject);
         //얼음기둥 생성
     }
+
+    protected override void Reset()
+    {
+        base.Reset();
+        Debug.Log("homing Bullet Reset");
+    }
+
 }

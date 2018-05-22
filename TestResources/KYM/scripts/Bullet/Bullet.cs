@@ -3,25 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(PoolObject))]
 public class Bullet : MonoBehaviour {
 
     [SerializeField]
-    protected float moveSpeed;           //이동 속도
+    protected float moveSpeed;             //이동 속도
     [SerializeField]
     protected float damage;                //데미지
 
     protected float colliderRadius;        //충돌 반경
 
-    protected Vector3 moveDir;           //이동 방향
-    protected Vector3 prevPosition;      //이전 위치
+    protected Vector3 moveDir;             //이동 방향
+    protected Vector3 prevPosition;        //이전 위치
     protected RaycastHit colInfo;          //충돌 정보              
 
     //초기화
-    private void Start()
+    private void Awake()
     {
         Init();
         prevPosition = this.transform.position;
         colliderRadius = GetComponent<SphereCollider>().radius;
+        GetComponent<PoolObject>().Reset = Reset;
     }
 
     public virtual void Init() { }
@@ -42,6 +44,8 @@ public class Bullet : MonoBehaviour {
 
     //충돌시 이벤트
     protected virtual void OnCollisionEvent() {  }
+
+    protected virtual void Reset(){ }
 
 	// Update is called once per frame
 	void FixedUpdate ()

@@ -21,6 +21,7 @@ public class AudioData
 public enum AudioPlayType
 {
     NONE,
+    SOUND3D,
     LOOP
 }
 
@@ -32,7 +33,7 @@ public class SoundManager : Singleton<SoundManager>
     private Dictionary<string, AudioClip> audioDictionary = new Dictionary<string, AudioClip>();
     private List<GameObject> emptyAudioSourceObjects = new List<GameObject>();
 
-    //[SerializeField]
+    [SerializeField]
     private GameObject audioSoundObject;
 
     private void Start()
@@ -72,6 +73,10 @@ public class SoundManager : Singleton<SoundManager>
 
         if(_playType == AudioPlayType.LOOP)
             _audioSoundObject.GetComponent<AudioSound>().LoopOn();
+
+        if (_playType == AudioPlayType.SOUND3D)
+            _audioSoundObject.GetComponent<AudioSound>().Sound3DOn();
+
 
     }
 

@@ -12,7 +12,7 @@ public class GunReload : MonoBehaviour
         if (currentTime >= 0) currentTime -= Time.deltaTime; 
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (currentTime > 0) return;
         if(other.gameObject.tag == "Gun")

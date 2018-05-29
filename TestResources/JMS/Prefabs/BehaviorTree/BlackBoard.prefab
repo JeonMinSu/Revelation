@@ -132,13 +132,13 @@ MonoBehaviour:
   _dragonMouth: {fileID: 0}
   _takeOffDistance: 0
   _rushDistance: 70
-  _howlingDistance: 90
-  _bulletBreathDistance: 110
+  _howlingDistance: 110
+  _bulletBreathDistance: 150
   _mortarDistance: 0
   _isOverLapAttack: 0
-  _secondAttackDistance: 40
+  _secondAttackDistance: 70
   _overLapMoveDistance: 30
-  _rushMoveDistance: 30
+  _rushMoveDistance: 20
   _isGround: 0
   _isWalk: 0
   _isHovering: 0

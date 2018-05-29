@@ -28,6 +28,11 @@ public class AudioSound : MonoBehaviour {
         audioSource.loop = true;
     }
 
+    public void Sound3DOn()
+    {
+        audioSource.spatialBlend = 1.0f;
+    }
+
     private void Update()
     {
         if(!audioSource.isPlaying && isPlay)
@@ -41,5 +46,6 @@ public class AudioSound : MonoBehaviour {
         isPlay = false;
         audioSource.Stop();
         audioSource.loop = false;
+        audioSource.spatialBlend = 0;
     }
 }

@@ -14,6 +14,14 @@ namespace DragonController
         private BehaviorTree _dragonBehaviroTree;
         public BehaviorTree DragonBehaviroTree { get { return _dragonBehaviroTree; } }
 
+        [SerializeField]
+        private GameObject _howlingEffect;
+        public GameObject HowlingEffect { get{ return _howlingEffect; } }
+
+        [SerializeField]
+        private GameObject _rightPowEffect;
+        public GameObject RightPowEffect { get { return _rightPowEffect; } }
+
         private static ObjectMovement _dragonMovement;
         public static ObjectMovement DragonMovement { get { return _dragonMovement; } }
 

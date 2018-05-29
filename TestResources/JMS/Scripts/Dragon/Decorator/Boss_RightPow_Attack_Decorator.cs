@@ -19,7 +19,10 @@ public class Boss_RightPow_Attack_Decorator : DecoratorTask
         bool IsSecondAttacking = BlackBoard.Instance.IsSecondAttacking;
 
         if (IsRightPowAttacking)
+        {
+            Debug.Log("RightPowAttack");
             return ChildNode.Run();
+        }
 
         if (!IsSecondAttacking)
         {

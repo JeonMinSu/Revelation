@@ -44,7 +44,7 @@ public class Boss_BulletBreath_Attack : ActionTask
         Transform Dragon = UtilityManager.Instance.DragonTransform();
         Transform Player = UtilityManager.Instance.PlayerTransform();
 
-        float RoarDistanceLimit = BlackBoard.Instance.RoarDistance;
+        float RoarDistanceLimit = BlackBoard.Instance.HowlingDistance;
 
         BlackBoard.Instance.IsOverLapAttack =
             (UtilityManager.DistanceCalc(Dragon, Player, RoarDistanceLimit)) ? true : false;

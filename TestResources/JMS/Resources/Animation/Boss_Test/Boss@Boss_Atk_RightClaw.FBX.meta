@@ -167,8 +167,11 @@ ModelImporter:
     400158: Particle View 001 2
     7400000: Boss_Atk_RightPow_PreAnimation
     7400002: Boss_Atk_RightPow_RunAnimation
-    7400004: Boss_Atk_RightPow_AfterAnimation_02
+    7400004: Boss_RightRow_Pre
     7400006: Boss_Atk_RightPow_AfterAnimation_01
+    7400008: Boss_RightRow_Run
+    7400010: Right_RightRow_After_01
+    7400012: Boss_RightRow_After_02
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -198,7 +201,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Boss_Atk_RightPow_PreAnimation
+      name: Boss_RightRow_Pre
       takeName: Take 001
       firstFrame: 0
       lastFrame: 55
@@ -226,7 +229,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Boss_Atk_RightPow_RunAnimation
+      name: Boss_RightRow_Run
       takeName: Take 001
       firstFrame: 55
       lastFrame: 70
@@ -254,7 +257,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Boss_Atk_RightPow_AfterAnimation_01
+      name: Right_RightRow_After_01
       takeName: Take 001
       firstFrame: 70
       lastFrame: 115
@@ -282,7 +285,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Boss_Atk_RightPow_AfterAnimation_02
+      name: Boss_RightRow_After_02
       takeName: Take 001
       firstFrame: 115
       lastFrame: 144

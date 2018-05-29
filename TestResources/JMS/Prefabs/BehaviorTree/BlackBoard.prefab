@@ -90,7 +90,7 @@ MonoBehaviour:
     _runRushTime: 2
     _afterRushTime: 1
     _preRoarTime: 0.5
-    _runRoarTime: 2
+    _runRoarTime: 4
     _afterRoarTime: 0.5
     _preOverLapTime: 0.5
     _runOverLapTime: 2

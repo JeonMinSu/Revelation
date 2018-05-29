@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.Animations;
 
 
 /*
@@ -11,14 +13,39 @@ using UnityEngine;
 
 namespace DragonController { 
 
-    public class DragonAniManager : MonoBehaviour
+    public class DragonAniManager : Singleton<DragonAniManager>
     {
+        
+        private DragonManager _manager;
+        public DragonManager Manager { get { return _manager; } }
+
+        private static Animator _ani;
+        public static Animator Ani { get { return _ani; } }
+        
+        private static string _aniParamName;
+        public static string AniParamName { set { _aniParamName = value; } get { return _aniParamName; } }
+
+        static bool _isInit;
+
+
+        private void Awake()
+        {
+            _ani = GetComponent<Animator>();
+            _manager = DragonManager.Instance;
+            _isInit = true;
+        }
         void Start()
         {
-            if (Application.isPlaying)
-            {
-                //SwicthAnimation("Idle");
-            }
+
+        }
+
+        public static void SwicthAnimation(string _newAniName)
+        {
+            if (_isInit)
+                Ani.ResetTrigger(_aniParamName);
+
+            _aniParamName = _newAniName;
+            Ani.SetTrigger(_aniParamName);
         }
 
         public void TakeOffReadyOn()

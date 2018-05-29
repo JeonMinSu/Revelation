@@ -52,4 +52,10 @@ public class Gun : MonoBehaviour {
         currentBullet -= 1;
         gunAni.MagazieTurn(0.1f,maxBullet);
     }
+
+    public void Reload()
+    {
+        currentBullet = maxBullet;
+    }
+
 }

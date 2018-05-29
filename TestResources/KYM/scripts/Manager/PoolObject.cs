@@ -14,6 +14,8 @@ public class PoolObject : MonoBehaviour
     public delegate void ResetFunction();
     public ResetFunction Reset;
 
-    public string pooltag;
+    public delegate void InitFunction();
+    public InitFunction Init;
 
+    public string pooltag;
 }

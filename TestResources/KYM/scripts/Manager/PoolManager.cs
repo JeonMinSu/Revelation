@@ -28,7 +28,6 @@ public class PoolManager : Singleton<PoolManager>
 
     void ListCreate(GameObject _gameObject,int count)
     {
-
         List<GameObject> list = new List<GameObject>();
         if(_gameObject.GetComponent<PoolObject>() != null)
         {
@@ -38,7 +37,6 @@ public class PoolManager : Singleton<PoolManager>
                 GameObject obj = Instantiate(_gameObject, Vector3.zero, Quaternion.identity);
                 PushObject(obj);
             }
-
         }
         else
         {
@@ -54,6 +52,7 @@ public class PoolManager : Singleton<PoolManager>
 
             if (poolLists[_poolTag] != null)
             {
+                _gameObject.GetComponent<PoolObject>().Reset();
                 _gameObject.SetActive(false);
                 poolLists[_poolTag].Add(_gameObject);
             }
@@ -66,7 +65,6 @@ public class PoolManager : Singleton<PoolManager>
         {
             Debug.LogWarning(_gameObject.name + "PoolObject component is null");
         }
-
     }
 
     public void PopObject(string poolTag,  out GameObject _gameObject)
@@ -78,7 +76,7 @@ public class PoolManager : Singleton<PoolManager>
             {
                 _gameObject = poolLists[poolTag][0];
                 _gameObject.SetActive(true);
-                _gameObject.GetComponent<PoolObject>().Reset();
+                
                 poolLists[poolTag].RemoveAt(0);
 
             }
@@ -94,7 +92,6 @@ public class PoolManager : Singleton<PoolManager>
             Debug.LogWarning("Not Found" + poolTag + " tag");
         }
     }
-
 }
 
 

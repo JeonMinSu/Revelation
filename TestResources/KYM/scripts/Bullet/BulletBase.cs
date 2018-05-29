@@ -17,6 +17,11 @@ public class BulletBase : Bullet {
 
     protected override void OnCollisionEvent()
     {
+        if (hitInfo.collider.tag == "BulletHoming")
+        {
+            //Debug.LogError("Hit ICE");
+            hitInfo.collider.gameObject.GetComponent<BulletHoming>().GetDamage(Damage);
+        }
         PoolManager.Instance.PushObject(this.gameObject);
         //GameObject.Destroy(this.gameObject);
     }

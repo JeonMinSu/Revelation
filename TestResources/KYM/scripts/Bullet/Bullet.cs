@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(PoolObject))]
 public class Bullet : MonoBehaviour {
 
@@ -10,19 +10,23 @@ public class Bullet : MonoBehaviour {
     protected float moveSpeed;             //이동 속도
     [SerializeField]
     protected float damage;                //데미지
+    public float Damage
+    {
+        get { return damage; }
+    }
 
-    protected float colliderRadius;        //충돌 반경
+    protected CapsuleCollider col;         //컬라이더 정보
 
     protected Vector3 moveDir;             //이동 방향
     protected Vector3 prevPosition;        //이전 위치
-    protected RaycastHit colInfo;          //충돌 정보              
+    protected RaycastHit hitInfo;          //충돌 정보              
+
 
     //초기화
     private void Awake()
     {
-        Init();
         prevPosition = this.transform.position;
-        colliderRadius = GetComponent<SphereCollider>().radius;
+        col = GetComponent<CapsuleCollider>();
         GetComponent<PoolObject>().Reset = Reset;
     }
 
@@ -37,15 +41,30 @@ public class Bullet : MonoBehaviour {
     protected virtual bool CollisionCheck()
     {
         Vector3 _dir = transform.position - prevPosition;
+        Vector3 _colDir;
+        Vector3 _p1;
+        Vector3 _p2;
 
-        Ray _ray = new Ray(this.transform.position, _dir.normalized);
-        return Physics.SphereCast(_ray, colliderRadius, out colInfo, _dir.magnitude);
+        if (col.direction == 0) _colDir = transform.right;
+        else if (col.direction == 1) _colDir = transform.up;
+        else _colDir = transform.forward;
+
+        _p1 = transform.position + _colDir * col.height * 0.5f;
+        _p2 = transform.position - _colDir * col.height * 0.5f;
+
+        return Physics.CapsuleCast(_p1, _p2, col.radius, _dir.normalized, out hitInfo, _dir.magnitude);
     }
 
     //충돌시 이벤트
     protected virtual void OnCollisionEvent() {  }
 
     protected virtual void Reset(){ }
+
+    //강제 삭제 
+    public virtual void DestoryObject()
+    {
+        PoolManager.Instance.PushObject(this.gameObject);
+    }
 
 	// Update is called once per frame
 	void FixedUpdate ()

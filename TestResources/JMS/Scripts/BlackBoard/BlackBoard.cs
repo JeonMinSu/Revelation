@@ -11,13 +11,14 @@ using UnityEngine;
 
 public class BlackBoard : Singleton<BlackBoard>
 {
+    [Space]
+    [Header("Boss Body Transform")]
 
     [SerializeField]
     private Transform _dragonMouth;
     public Transform DragonMouth { get { return _dragonMouth; } }
 
     private Clock _clocks;
-    public Clock Clocks { get { return _clocks; } }
 
     /* 보스몹 HP 상태 관련 변수 */
     //[SerializeField]
@@ -50,37 +51,44 @@ public class BlackBoard : Singleton<BlackBoard>
     //public float HpPhaseThird { set { _hpPhaseThird = value; } get { return _hpPhaseThird; } }
 
     [Space]
-    [Header("Boss Action Distance")]
+    [Header("Boss Action Check Distance")]
 
     /* 보스몹 액션 거리 변수 */
     [SerializeField]
     private float _takeOffDistance;     //이륙거리(보스몹과 플레이어의 거리를 측정하여 이륙)
-    public float TakeOffDistance { set { _takeOffDistance = value; } get { return _takeOffDistance; } }
+    public float TakeOffDistance { get { return _takeOffDistance; } }
 
     [SerializeField]
     private float _rushDistance;
     public float RushDistance { get { return _rushDistance; } }
 
     [SerializeField]
-    private float _iceBringUpDistance;
-    public float IceBringUpDistance { get { return _iceBringUpDistance; } }
+    private float _roarDistance;
+    public float RoarDistance { get { return _roarDistance; } }
 
     [SerializeField]
     private float _bulletBreathDistance;
     public float BulletBreathDistance { get { return _bulletBreathDistance; } }
 
     [SerializeField]
-    private float _overLapDistance;
-    public float OverLapDistance { get { return _overLapDistance; } }
+    private float _mortarDistance;
+    public float MortarDistance { get { return _mortarDistance; } }
 
+    [Space]
+    [Header("Boss OverLapAttack Check")]
 
     [SerializeField]
-    private float _ensuingDecisionDistance;
-    public float EnsuingDecisionDistance { get { return _ensuingDecisionDistance; } }
+    private bool _isOverLapAttack;
+    public bool IsOverLapAttack { set { _isOverLapAttack = value; } get { return _isOverLapAttack; } }
+
+    [SerializeField]
+    private float _secondAttackDistance;
+    public float SecondAttackDistance { get { return _secondAttackDistance; } }
+
 
     /* 보스몹 이동 거리*/
     [Space]
-    [Header("Boss Move Distance ")]
+    [Header("Boss Pattern Move Distance ")]
 
     [SerializeField]
     private float _overLapMoveDistance;
@@ -131,8 +139,8 @@ public class BlackBoard : Singleton<BlackBoard>
     [Header("Boss Pattern On")]
     /* 보스몹 행동 중 관련 변수 */
     [SerializeField]
-    private bool _isGroundPatternAct;   //땅에서 패턴을 사용하고 있는지
-    public bool IsGroundPatternAct { set { _isGroundPatternAct = value; } get { return _isGroundPatternAct; } }
+    private bool _isGroundAttacking;   //땅에서 패턴을 사용하고 있는지
+    public bool IsGroundAttacking { set { _isGroundAttacking = value; } get { return _isGroundAttacking; } }
 
     [SerializeField]
     private bool _isLandingAct;         //착륙 액션을 하고 있는지
@@ -157,35 +165,44 @@ public class BlackBoard : Singleton<BlackBoard>
     //[Header("Boss Pattern Attack On")]
 
     /* Boss Ground Pattern Attack */
-    private bool _isRushPattern;
-    public bool IsRushPattern { set { _isRushPattern = value; } get { return _isRushPattern; } }
+    private bool _isRushAttacking;
+    public bool IsRushAttacking { set { _isRushAttacking = value; } get { return _isRushAttacking; } }
 
-    private bool _isOverLapPattern;
-    public bool IsOverLapPattern { set { _isOverLapPattern = value; } get { return _isOverLapPattern; } }
+    private bool _isOverLapAttacking;
+    public bool IsOverLapAttacking { set { _isOverLapAttacking = value; } get { return _isOverLapAttacking; } }
 
-    private bool _isBulletBreathPattern;
-    public bool IsBulletBreath { set { _isBulletBreathPattern = value; } get { return _isBulletBreathPattern; } }
+    private bool _isBulletBreathAttacking;
+    public bool IsBulletBreathAttacking { set { _isBulletBreathAttacking = value; } get { return _isBulletBreathAttacking; } }
 
-    private bool _isIceBringUpPattern;
-    public bool IsIceBringUpPattern { set { _isIceBringUpPattern = value; }  get { return _isIceBringUpPattern; } }
+    private bool _isRoarAttacking;
+    public bool IsRoarAttacking { set { _isRoarAttacking = value; } get { return _isRoarAttacking; } }
+
+    private bool _isMortarAttacking;
+    public bool IsMortarAttacking { set { _isMortarAttacking = value; } get { return _isMortarAttacking; } }
+
+    //private bool _isIceBringUpAttack;
+    //public bool IsIceBringUpAttack { set { _isIceBringUpAttack = value; }  get { return _isIceBringUpAttack; } }
 
 
     [Space]
-    [Header("Boss Ensuing Attack On")]
+    [Header("Boss Second Attack On")]
 
     /* 보스 2차 공격 패턴 */
     [SerializeField]
-    private bool _isEnsuingAttack;   //덮치기 2차 공격을 해야되는지
-    public bool IsEnsuingAttack { set { _isEnsuingAttack = value; } get { return _isEnsuingAttack; } }
+    private bool _isSecondAttack;   //2차 공격을 해야 되는지
+    public bool IsSecondAttack { set { _isSecondAttack = value; } get { return _isSecondAttack; } }
 
-    private bool _isLeftPowAttack;  //2차 공격이 왼발인지
-    public bool IsLeftPowAttack { set { _isLeftPowAttack = value; } get { return _isLeftPowAttack; } }
+    private bool _isSecondAttacking;    //2차 공격 중인지
+    public bool IsSecondAttacking { set { _isSecondAttacking = value; } get { return _isSecondAttacking; } }
 
-    private bool _isRightPowAttack; //2차 공격이 오른발인지
-    public bool IsRightPowAttack { set { _isRightPowAttack = value; } get { return _isRightPowAttack; } }
+    private bool _isLeftPowAttacking;  //2차 공격 중 왼발 공격을 하고 있는지
+    public bool IsLeftPowAttacking { set { _isLeftPowAttacking = value; } get { return _isLeftPowAttacking; } }
 
-    private bool _isTailAttack;     //2차 공격이 꼬리공격인지
-    public bool IsTailAttack { set { _isTailAttack = value; } get { return _isTailAttack; } }
+    private bool _isRightPowAttacking; //2차 공격 중 오른발 공격을 하고 있는지
+    public bool IsRightPowAttacking { set { _isRightPowAttacking = value; } get { return _isRightPowAttacking; } }
+
+    private bool _isTailAttacking;     //2차 공격 중 꼬리 공격을 하고 있는지
+    public bool IsTailAttacking { set { _isTailAttacking = value; } get { return _isTailAttacking; } }
 
     [Space]
     [Header("IceCrystal")]
@@ -318,14 +335,6 @@ public class BlackBoard : Singleton<BlackBoard>
 
     }
     */
-
-    public bool DistanceCalc(Transform _this, Transform _target, float Range)
-    {
-        if (Vector3.Distance(_this.position, _target.position) <= Range)
-            return true;
-
-        return false;
-    }
 
     public NodeManager GetNodeManager(MOVEMENTTYPE Type)
     {

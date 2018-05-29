@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DragonController { 
+namespace DragonController {
 
     public class DragonStat : MonoBehaviour {
-
+        [Space]
+        [Header("Boss Move Speed")]
         [SerializeField]
         private float _moveSpeed = 10.0f;
         public float MoveSpeed { set { _moveSpeed = value; } get { return _moveSpeed; } }
@@ -19,20 +20,27 @@ namespace DragonController {
         public float WalkSpeed { set { _walkSpeed = value; } get { return _walkSpeed; } }
 
         [SerializeField]
-        private float _curRushSpeed;
-        public float CurRushSpeed { set { _curRushSpeed = value; } get { return _curRushSpeed; } }
+        private float _animSpeed = 0.0f;
+        public float AnimSpeed { set { _animSpeed = value; } get { return _animSpeed; } }
 
         [SerializeField]
-        private float _maxRushSpeed;
-        public float MaxRushSpeed { set { _maxRushSpeed = value; } get { return _maxRushSpeed; } }
+        private float _idleAnimSpeed = 1.0f;
+        public float IdleAnimSpeed { set { _idleAnimSpeed = value; } get { return _idleAnimSpeed; } }
 
-        [SerializeField]
-        private float _accRushSpeed;
-        public float AccRushSpeed { set { _accRushSpeed = value; } get { return _accRushSpeed; } }
+        //[SerializeField]
+        //private float _curRushSpeed;
+        //public float CurRushSpeed { set { _curRushSpeed = value; } get { return _curRushSpeed; } }
 
-        [SerializeField]
-        private float _curTakeOffDir;
-        public float CurTakeOffDir { set { _curTakeOffDir = value; } get { return _curTakeOffDir; } }
+        //[SerializeField]
+        //private float _maxRushSpeed;
+        //public float MaxRushSpeed { set { _maxRushSpeed = value; } get { return _maxRushSpeed; } }
+
+        //[SerializeField]
+        //private float _accRushSpeed;
+        //public float AccRushSpeed { set { _accRushSpeed = value; } get { return _accRushSpeed; } }
+
+        [Space]
+        [Header("Boss flying Speed")]
 
         [SerializeField]
         private float _maxTakeOffSpeed;
@@ -44,11 +52,14 @@ namespace DragonController {
 
         [SerializeField]
         private float _curFlySpeed;
-        public float CurFlySpeed{ set { _curFlySpeed = value; } get { return _curFlySpeed; } }
+        public float CurFlySpeed { set { _curFlySpeed = value; } get { return _curFlySpeed; } }
 
         [SerializeField]
         private float _maxFlySpeed;
         public float MaxFlySpeed { set { _maxFlySpeed = value; } get { return _maxFlySpeed; } }
+
+        [Space]
+        [Header("Boss HPBar")]
 
         [SerializeField]
         private float _maxHP;
@@ -76,17 +87,28 @@ namespace DragonController {
         public float TakeOffHpPercent { set { _takeOffHpPercent = value; } get { return _takeOffHpPercent; } }
         */
 
-        [SerializeField]
-        private float _firstPhaseHpPercent;
+        [Space]
+        [Header("Boss Phase HPBar Precent")]
+
+        [Range(0.0f, 1.0f)]
+        [SerializeField] private float _firstPhaseHpPercent;
         public float FirstPhaseHpPercent { set { _firstPhaseHpPercent = value; } get { return _firstPhaseHpPercent; } }
 
-        [SerializeField]
-        private float _secondPhaseHpPercent;
+        [Range(0.0f, 1.0f)]
+        [SerializeField] private float _secondPhaseHpPercent;
         public float SecondPhaseHpPercent { set { _secondPhaseHpPercent = value; } get { return _secondPhaseHpPercent; } }
 
-        [SerializeField]
-        private float _thirdPhaseHpPercent;
+        [Range(0.0f, 1.0f)]
+        [SerializeField] private float _thirdPhaseHpPercent;
         public float ThirdPhaseHpPercent { set { _thirdPhaseHpPercent = value; } get { return _thirdPhaseHpPercent; } }
+
+        [Space]
+        [Header("Boss State HPBar Precent")]
+
+        [Range(0.0f, 1.0f)]
+        [SerializeField] private float _groggyHpPercent;
+        public float GroggyHpPercent { set { _groggyHpPercent = value; } get { return _groggyHpPercent; } }
+
 
         //[SerializeField]
         //private float _changedHP;

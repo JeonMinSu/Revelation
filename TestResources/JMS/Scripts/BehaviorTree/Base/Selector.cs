@@ -10,14 +10,14 @@ public class Selector : CompositeTask {
         {
             if (child.Run())
             {
-                if (NodeState != TASKSTATE.FAULURE)
-                    NodeState = TASKSTATE.FAULURE;
+                if (NodeState != TASKSTATE.SUCCESS)
+                    NodeState = TASKSTATE.SUCCESS;
                 Debug.Log(child.name);
                 return true;
             }
         }
-        if (NodeState != TASKSTATE.RUNNING)
-            NodeState = TASKSTATE.RUNNING;
+        if (NodeState != TASKSTATE.FAULURE)
+            NodeState = TASKSTATE.FAULURE;
         return false; 
     }
 }

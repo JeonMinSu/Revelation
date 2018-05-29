@@ -20,22 +20,10 @@ namespace DragonController
         private static DragonStat _stat;
         public static DragonStat Stat { get { return _stat; } }
 
-        private Transform _player;
-        public Transform Player { get { return _player; } }
-
         private Rigidbody _dragonRigidBody;
         public Rigidbody DragonRigidBody { get { return _dragonRigidBody; } }
 
-        private Animator _ani;
-        public Animator Ani { get { return _ani; } }
-
-        private string _aniParamName;
-        public string AniParamName { set { _aniParamName = value; } get { return _aniParamName; } }
-
         IEnumerator _dragonAiCor;
-
-        //private int _aniParamID;
-        //public int AniParamID { set { _aniParamID = value; } get { return _aniParamID; } }
         
         bool _isInit;
 
@@ -43,30 +31,28 @@ namespace DragonController
         {
             BlackBoard.Instance.InitMember();
 
-            _player = GameObject.FindWithTag("Player").transform;
             _stat = GetComponent<DragonStat>();
             _dragonMovement = GetComponent<ObjectMovement>();
-            _ani = GetComponentInChildren<Animator>();
-
             _dragonRigidBody = GetComponent<Rigidbody>();
 
             _dragonAiCor = StartDragonAI();
-
-        } 
+        }
 
         // Use this for initialization
-        void Start () {
-         
+        void Start ()
+        {
+
             if (Application.isPlaying)
             {
                 CoroutineManager.DoCoroutine(_dragonAiCor);
                 _isInit = true;
             }
 		
-	    }
+	    }        
 
         public void FixedUpdate()
         {
+
         }
 
         public bool IsFindNode(MOVEMENTTYPE Type)
@@ -92,14 +78,12 @@ namespace DragonController
             return false;
         }
 
-        public void SwicthAnimation(string _newAniName)
+        public void Hit(float Damege)
         {
-            if (_isInit)
-                Ani.ResetTrigger(_aniParamName);
-
-            _aniParamName = _newAniName;
-            Ani.SetTrigger(_aniParamName);
+            Stat.HP -= Damege;
+            Debug.Log("OnHit");
         }
+
 
         IEnumerator StartDragonAI()
         {
@@ -108,12 +92,6 @@ namespace DragonController
                 yield return CoroutineManager.FiexdUpdate;
             }
             Debug.Log("end");
-        }
-
-        public void Hit(float Damege)
-        {
-            Stat.HP -= Damege;
-            Debug.Log("OnHit");
         }
 
     }

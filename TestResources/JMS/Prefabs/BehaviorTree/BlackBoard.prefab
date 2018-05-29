@@ -82,22 +82,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _groundTime:
-    _maxIdleTime: 2
-    _maxWalkTime: 2
+    _curIdleTime: 0
+    _maxIdleTime: 4.6
+    _curWalkTime: 0
+    _maxWalkTime: 100
     _preRushTime: 0.3
-    _rushRunTime: 1
+    _runRushTime: 2
     _afterRushTime: 0.2
+    _preRoarTime: 0.5
+    _runRoarTime: 2
+    _afterRoarTime: 0.5
     _preOverLapTime: 0.5
-    _overLapRunTime: 1.2
+    _runOverLapTime: 2
     _afterOverLapTime: 0.3
-    _preEnsuingAttackTime: 0.2
-    _runEnsuingAttackTime: 0.5
-    _afterEnsuingAttackTime: 0.2
+    _curOverLapCheckTime: 0
+    _maxOverLapCheckTime: 5
+    _preBulletBreathTime: 0.4
+    _runBulletBreathTime: 0.2
+    _afterBulletBreathTime: 0.2
+    _preMortarTime: 0.5
+    _runMortarTime: 1
+    _afterMortarTime: 0.5
+    _secondAttackPreTime: 1.83
+    _secondAttackRunTime: 0.5
+    _secondAttackAfterTime: 1.5
   _flyingTime:
     _hoveringTime: 3
     _flyTime: 3
-    _preMissileTime: 1.5
-    _afterMissileTime: 2
+    _preHommingBulletTime: 0
+    _afterHommingBulletTime: 0
     _preBreathTime: 2
     _runBreathTime: 4
     _afterBreathTime: 1.5
@@ -117,23 +130,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dragonMouth: {fileID: 0}
-  _takeOffDistance: 90
-  _rushDistance: 40
-  _iceBringUpDistance: 60
-  _bulletBreathDistance: 90
-  _overLapDistance: 90
-  _ensuingDecisionDistance: 40
+  _takeOffDistance: 0
+  _rushDistance: 70
+  _roarDistance: 90
+  _bulletBreathDistance: 110
+  _mortarDistance: 0
+  _isOverLapAttack: 0
+  _secondAttackDistance: 40
   _overLapMoveDistance: 30
   _rushMoveDistance: 30
-  _isGround: 1
+  _isGround: 0
   _isWalk: 0
   _isHovering: 0
-  _isGroundPatternAct: 0
+  _isGroundAttacking: 0
   _isLandingAct: 0
   _isTakeOffAct: 0
   _isHoveringPatternAct: 0
   _isFlyingPatternAct: 0
-  _isEnsuingAttack: 0
+  _isSecondAttack: 0
   _curIceCrystalNum: 40
   _maxIceBulletCrystalNum: 70
   _minIceBulletCrystalNum: 50

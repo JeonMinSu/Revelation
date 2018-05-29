@@ -13,6 +13,7 @@ public class Boss_LeftPow_Attack : ActionTask
         {
             float preTime = BlackBoard.Instance.GetGroundTime().SecondAttackPreTime;
             float afterTime = BlackBoard.Instance.GetGroundTime().SecondAttackAfterTime;
+
             CoroutineManager.DoCoroutine(LefrPowAttackCor(preTime, afterTime));
         }
 

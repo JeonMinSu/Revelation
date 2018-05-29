@@ -19,7 +19,6 @@ public class Boss_LeftPow_Attack_Decorator : DecoratorTask
         
         if (IsLeftPowAttacking)
         {
-            Debug.Log("tesT");
             return ChildNode.Run();
         }
 

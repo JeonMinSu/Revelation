@@ -10,6 +10,7 @@ public class Boss_SecondAttacks_Decorator : DecoratorTask
 
         if (IsSecondAttack)
         {
+            Debug.Log("test");
             return ChildNode.Run();
         }
 

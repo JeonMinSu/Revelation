@@ -49,7 +49,9 @@ public class Boss_RightPow_Attack : ActionTask
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(afterTime));
 
         BlackBoard.Instance.IsRightPowAttacking = false;
+        BlackBoard.Instance.IsSecondAttack = false;
         BlackBoard.Instance.IsSecondAttacking = false;
+        BlackBoard.Instance.IsGroundAttacking = false;
 
     }
 

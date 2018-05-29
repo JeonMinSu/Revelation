@@ -11,17 +11,17 @@ public class Boss_HowlingAttack_Decorator : DecoratorTask
         Transform Boss = UtilityManager.Instance.DragonTransform();
         Transform Player = UtilityManager.Instance.PlayerTransform();
 
-        float RoarDistanceLimit = BlackBoard.Instance.RoarDistance;
+        float HowlingDistanceLimit = BlackBoard.Instance.HowlingDistance;
 
-        bool IsRoar = UtilityManager.DistanceCalc(Boss, Player, RoarDistanceLimit);
+        bool IsHowling = UtilityManager.DistanceCalc(Boss, Player, HowlingDistanceLimit);
 
-        bool IsRoarAttacking = BlackBoard.Instance.IsRoarAttacking;
+        bool IsHowlingAttacking = BlackBoard.Instance.IsRoarAttacking;
         bool IsGroundAttacking = BlackBoard.Instance.IsGroundAttacking;
-        bool IsRoarAttack = BlackBoard.Instance.IsRoarAttacking;
+        bool IsHowlingAttack = BlackBoard.Instance.IsRoarAttacking;
 
-        if ((IsRoar && !IsGroundAttacking) || IsRoarAttacking)
+        if ((IsHowling && !IsGroundAttacking) || IsHowlingAttacking)
         {
-            Debug.Log("Roar_Attack_Decorator");
+            Debug.Log("Howling_Attack_Decorator");
 
             return ChildNode.Run();
         }

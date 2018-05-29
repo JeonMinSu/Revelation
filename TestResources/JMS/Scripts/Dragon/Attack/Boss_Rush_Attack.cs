@@ -25,8 +25,6 @@ public class Boss_Rush_Attack : ActionTask
 
     IEnumerator RushAttackCor(float preTime, float afterTime)
     {
-
-        Debug.Log("test");
         Transform Boss = UtilityManager.Instance.DragonTransform();
         Transform Player = UtilityManager.Instance.PlayerTransform();
 
@@ -60,6 +58,7 @@ public class Boss_Rush_Attack : ActionTask
         while (curTime < runTime)
         {
             Boss.Translate(Vector3.forward * Distance * Time.deltaTime);
+            Debug.Log("Rush_Attack_Cor");
             curTime += Time.fixedDeltaTime;
             yield return CoroutineManager.FiexdUpdate;
         }
@@ -72,8 +71,8 @@ public class Boss_Rush_Attack : ActionTask
         float SecondAttackDistance = BlackBoard.Instance.SecondAttackDistance;
 
         BlackBoard.Instance.IsSecondAttack = UtilityManager.DistanceCalc(Boss, Player, SecondAttackDistance);
-        BlackBoard.Instance.IsRushAttacking = false;
         BlackBoard.Instance.IsGroundAttacking = (BlackBoard.Instance.IsSecondAttack) ? true : false;
+        BlackBoard.Instance.IsRushAttacking = false;
 
     }
 

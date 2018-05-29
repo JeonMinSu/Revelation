@@ -15,10 +15,8 @@ public class Boss_Tail_Attack : ActionTask
             float afterTime = BlackBoard.Instance.GetGroundTime().SecondAttackAfterTime;
 
             CoroutineManager.DoCoroutine(TailAttackCor(preTime, afterTime));
-
         }
-
-        return true;
+        return false;
     }
 
 
@@ -42,6 +40,7 @@ public class Boss_Tail_Attack : ActionTask
         }
 
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(afterTime));
+
         BlackBoard.Instance.IsTailAttacking = false;
         BlackBoard.Instance.IsSecondAttack = false;
         BlackBoard.Instance.IsSecondAttacking = false;

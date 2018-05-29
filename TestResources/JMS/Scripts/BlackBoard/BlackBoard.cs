@@ -63,8 +63,8 @@ public class BlackBoard : Singleton<BlackBoard>
     public float RushDistance { get { return _rushDistance; } }
 
     [SerializeField]
-    private float _roarDistance;
-    public float RoarDistance { get { return _roarDistance; } }
+    private float _howlingDistance;
+    public float HowlingDistance { get { return _howlingDistance; } }
 
     [SerializeField]
     private float _bulletBreathDistance;

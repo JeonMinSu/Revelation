@@ -6,7 +6,7 @@ public class Boss_Rush_Run_SMB : BaseSMB {
 
     public override void Awake()
     {
-        SMBKeyName = "Rush";
+        SMBKeyName = "Boss_Rush_Run";
         base.Awake();
     }
 

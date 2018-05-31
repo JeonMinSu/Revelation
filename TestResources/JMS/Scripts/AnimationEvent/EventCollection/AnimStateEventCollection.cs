@@ -6,32 +6,20 @@ using DragonController;
 public class AnimStateEventCollection : BaseAnimStateEventsCollection
 {
 
-    private void Awake()
-    { 
+    protected override void Awake()
+    {
         //AddAnimEnterEventFunc(_animEnterEventFunc, RightPow_Atk_Evn, "RightPow");
         //AddAnimEnterEventFunc(_animEnterEventFunc, RightPow_Atk_Evn, "RightPow");
-
-        AddAnimEnterEventFunc(_animEnterEventFunc, Boss_Rush_Attack_Evn, "Rush");
+        //AddAnimEnterEventFunc(_animEnterEventFunc, Boss_Rush_Attack_Run_Evn, "Rush");
+        base.Awake();
+        AddAnimTimeEventFunc(_animTimeEventFunc, Boss_Rush_Attack_Run_Evn, "Boss_Rush_Run");
 
     }
 
-    private void RightPow_Atk_Evn(EvnData evnData)
+    private void Boss_Rush_Attack_Run_Evn(EvnData evnData)
     {
+        //Rigidbody rg = Manager.DragonRigidBody;
+        Debug.Log(Manager.DragonRigidBody);
 
-    }
-
-    private void Boss_Rush_Attack_Evn(EvnData evnData)
-    {
-        Transform Boss = UtilityManager.Instance.DragonTransform();
-        Transform Player = UtilityManager.Instance.PlayerTransform();
-
-        float curTime = BlackBoard.Instance.GetGroundTime().SecondAttackCurTime;
-        float MaxTime = BlackBoard.Instance.GetGroundTime().SecondAttackRunTime;
-
-        Boss.position =
-            Vector3.Lerp(
-                Boss.position,
-                Boss.position + Boss.forward * 3.0f,
-                curTime / MaxTime * 0.1f);
     }
 }

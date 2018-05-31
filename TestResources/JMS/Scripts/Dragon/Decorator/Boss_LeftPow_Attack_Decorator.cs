@@ -38,8 +38,6 @@ public class Boss_LeftPow_Attack_Decorator : DecoratorTask
                 }
             }
         }
-
         return true;
     }
-
 }

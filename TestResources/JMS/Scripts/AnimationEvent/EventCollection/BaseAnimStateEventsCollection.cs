@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using DragonController;
 
 public class BaseAnimStateEventsCollection : MonoBehaviour
 {
@@ -10,13 +11,20 @@ public class BaseAnimStateEventsCollection : MonoBehaviour
 
     protected Dictionary<string, Action<EvnData>> _animExitEventFunc = new Dictionary<string, Action<EvnData>>();
     public Dictionary<string, Action<EvnData>> AnimExitEventFunc { get { return _animExitEventFunc; } }
-    
+
     protected Dictionary<string, List<Action<EvnData>>> _animTimeEventFunc = new Dictionary<string, List<Action<EvnData>>>();
     public Dictionary<string, List<Action<EvnData>>> AnimTimeEventFunc { get { return _animTimeEventFunc; } }
 
     protected Dictionary<string, List<bool>> isAnimTimeEventRun = new Dictionary<string, List<bool>>();
     public Dictionary<string, List<bool>> IsAnimTimeEventRun { get { return isAnimTimeEventRun; } }
 
+    private DragonManager _manager;
+    public DragonManager Manager{ get { return _manager; } }
+
+    protected virtual void Awake()
+    {
+        _manager = GetComponentInParent<DragonManager>();
+    }
 
     protected List<bool> GetIsAnimTimeEventRun(Dictionary<string, List<bool>> Target, string Key)
     {

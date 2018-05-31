@@ -43,9 +43,7 @@ public class Boss_Howling_Attack : ActionTask
                     Quaternion.LookRotation(forward, Vector3.up),
                     180.0f * Time.deltaTime
                     );
-
-            Debug.Log("No rotation");
-
+            
             yield return CoroutineManager.FiexdUpdate;
         }
 

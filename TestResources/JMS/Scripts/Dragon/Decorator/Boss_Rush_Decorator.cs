@@ -23,7 +23,6 @@ public class Boss_Rush_Decorator : DecoratorTask
         if((IsRush && !IsGroundAttacking) || 
             ((IsRushAttacking && !IsOverLapAttacking) || IsSecondAttack))
         {
-            Debug.Log("Rush_Attack_Decorator");
             return ChildNode.Run();
         }
 

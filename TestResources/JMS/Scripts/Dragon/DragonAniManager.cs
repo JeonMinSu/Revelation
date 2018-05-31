@@ -32,10 +32,14 @@ namespace DragonController {
         {
             _ani = GetComponent<Animator>();
             _manager = DragonManager.Instance;
-            _isInit = true;
         }
         void Start()
         {
+            if (Application.isPlaying)
+            {
+                SwicthAnimation("Idle");
+                _isInit = true;
+            }
 
         }
 

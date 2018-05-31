@@ -13,7 +13,6 @@ public class Boss_Idle_Decorator : DecoratorTask
 
         if (CurTime < MaxTime)
         {
-            Debug.Log("Idle");
             return ChildNode.Run();
         }
         return false;

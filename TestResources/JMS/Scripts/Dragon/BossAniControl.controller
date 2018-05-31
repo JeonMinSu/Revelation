@@ -260,7 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SMBKeyName: 
   StateEnterEvnData:
-    StateFuncName: Boss_Rush_Attack_Evn
+    StateFuncName: 
     IntParam: 0
     FloatParam: 0
     StringParam: 
@@ -275,7 +275,14 @@ MonoBehaviour:
     ObjectParam: {fileID: 0}
     RunTime: 0
     IsLoop: 0
-  StateTimeEvent: []
+  StateTimeEvent:
+  - StateFuncName: Boss_Rush_Attack_Run_Evn
+    IntParam: 0
+    FloatParam: 0
+    StringParam: 
+    ObjectParam: {fileID: 0}
+    RunTime: 0.13
+    IsLoop: 0
 --- !u!114 &114606028328864918
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,8 +10,6 @@ public class Boss_Rush_Attack : ActionTask
     {
         bool IsRushAttacking = BlackBoard.Instance.IsRushAttacking;
 
-        Debug.Log(IsRushAttacking);
-
         if (!IsRushAttacking)
         {
             float preTime = BlackBoard.Instance.GetGroundTime().PreRushTime;
@@ -59,11 +57,11 @@ public class Boss_Rush_Attack : ActionTask
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(preTime));
 
         DragonAniManager.SwicthAnimation("Rush_Atk_Run");
+
         while (curTime < runTime)
         {
 
-            Boss.Translate(Vector3.forward * Distance * Time.deltaTime);
-            Debug.Log("Rush_Attack_Cor");
+            //Boss.Translate(Boss.forward * Distance * Time.deltaTime);
             curTime += Time.fixedDeltaTime;
             yield return CoroutineManager.FiexdUpdate;
         }

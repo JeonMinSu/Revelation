@@ -12,7 +12,6 @@ public class Selector : CompositeTask {
             {
                 if (NodeState != TASKSTATE.SUCCESS)
                     NodeState = TASKSTATE.SUCCESS;
-                Debug.Log(child.name);
                 return true;
             }
         }

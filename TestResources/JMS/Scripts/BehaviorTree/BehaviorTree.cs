@@ -52,7 +52,7 @@ public class BehaviorTree : ScriptableObject
             {
                 node.ChildAdd(ChildNodes[n]);
                 PreserveTasks.Add(ChildNodes[n]);
-                Debug.Log("ChildInit : " + ChildNodes[n]);
+                //Debug.Log("ChildInit : " + ChildNodes[n]);
             }
             ChildNodes[n].NodeState = TASKSTATE.FAULURE;
             SerializeNodes(ChildNodes[n]);

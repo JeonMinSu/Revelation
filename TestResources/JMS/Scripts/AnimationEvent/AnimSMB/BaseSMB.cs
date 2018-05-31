@@ -6,7 +6,7 @@ using UnityEngine;
 public class BaseSMB : StateMachineBehaviour
 {
 
-    [HideInInspector] public string SMBKeyName;
+    public string SMBKeyName;
 
     public EvnData StateEnterEvnData;
     public EvnData StateExitEvnData;
@@ -25,6 +25,18 @@ public class BaseSMB : StateMachineBehaviour
 
     public virtual void Awake()
     {
+
+    }
+
+    public void InitRunning(List<bool> Running)
+    {
+
+        for (int index = 0; index < Running.Count; index++)
+        {
+            if (Running[index])
+                Running[index] = false;
+        }
+
     }
 
 
@@ -46,16 +58,18 @@ public class BaseSMB : StateMachineBehaviour
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStateEnter(animator, stateInfo, layerIndex);
         if (animator.IsInTransition(layerIndex))
             waitingToBegin = true;
         else
             waitingToBegin = false;
     }
 
-    //public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    base.OnStateExit(animator, stateInfo, layerIndex);
-    //}
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        base.OnStateExit(animator, stateInfo, layerIndex);
+        InitRunning(isRunning);
+    }
 
     //public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{

@@ -76,7 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SMBKeyName: 
   StateEnterEvnData:
-    StateFuncName: RightPowEnterEvent
+    StateFuncName: 
     IntParam: 0
     FloatParam: 0
     StringParam: 
@@ -92,42 +92,13 @@ MonoBehaviour:
     RunTime: 0
     IsLoop: 0
   StateTimeEvent:
-  - StateFuncName: RightPow_Atk_Evn
+  - StateFuncName: 
     IntParam: 0
     FloatParam: 0
     StringParam: 
     ObjectParam: {fileID: 0}
     RunTime: 0.33
     IsLoop: 1
---- !u!114 &114064008059707640
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36996922dad166b409670170b6f57b54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SMBKeyName: 
-  StateEnterEvnData:
-    StateFuncName: 
-    IntParam: 0
-    FloatParam: 0
-    StringParam: 
-    ObjectParam: {fileID: 0}
-    RunTime: 0
-    IsLoop: 0
-  StateExitEvnData:
-    StateFuncName: 
-    IntParam: 0
-    FloatParam: 0
-    StringParam: 
-    ObjectParam: {fileID: 0}
-    RunTime: 0
-    IsLoop: 0
-  StateTimeEvent: []
 --- !u!114 &114087195618358446
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -157,14 +128,14 @@ MonoBehaviour:
     RunTime: 0
     IsLoop: 0
   StateTimeEvent:
-  - StateFuncName: IdleEventFunc
+  - StateFuncName: 
     IntParam: 0
     FloatParam: 0
     StringParam: 
     ObjectParam: {fileID: 0}
     RunTime: 0.359
     IsLoop: 1
-  - StateFuncName: 33546
+  - StateFuncName: 
     IntParam: 0
     FloatParam: 0
     StringParam: 
@@ -211,42 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f23ea98e2ff4b94696b1d121c9d7753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114569226672707968
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2e2216fcbe73954983eddfa07deb410, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SMBKeyName: 
-  StateEnterEvnData:
-    StateFuncName: Test
-    IntParam: 0
-    FloatParam: 0
-    StringParam: 
-    ObjectParam: {fileID: 0}
-    RunTime: 0
-    IsLoop: 0
-  StateExitEvnData:
-    StateFuncName: 
-    IntParam: 0
-    FloatParam: 0
-    StringParam: 
-    ObjectParam: {fileID: 0}
-    RunTime: 0
-    IsLoop: 0
-  StateTimeEvent:
-  - StateFuncName: Event
-    IntParam: 0
-    FloatParam: 0
-    StringParam: 
-    ObjectParam: {fileID: 0}
-    RunTime: 0.359
-    IsLoop: 1
 --- !u!114 &114602548182054202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b115c23c971694899b77f1e8d1af89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SMBKeyName: 
+  SMBKeyName: Boss_Rush_Run
   StateEnterEvnData:
     StateFuncName: 
     IntParam: 0
@@ -276,12 +211,33 @@ MonoBehaviour:
     RunTime: 0
     IsLoop: 0
   StateTimeEvent:
-  - StateFuncName: Boss_Rush_Attack_Run_Evn
+  - StateFuncName: Boss_Rush_AttackRun_StartMove_Evn
     IntParam: 0
     FloatParam: 0
     StringParam: 
     ObjectParam: {fileID: 0}
-    RunTime: 0.13
+    RunTime: 0.099
+    IsLoop: 0
+  - StateFuncName: Boss_Rush_AttackRun_Jamp_Evn
+    IntParam: 0
+    FloatParam: 0
+    StringParam: 
+    ObjectParam: {fileID: 0}
+    RunTime: 0.452
+    IsLoop: 0
+  - StateFuncName: Boss_RushAttack_Land_Evn
+    IntParam: 0
+    FloatParam: 0
+    StringParam: 
+    ObjectParam: {fileID: 0}
+    RunTime: 0.621
+    IsLoop: 0
+  - StateFuncName: Boss_RushAttack_Sliding_Evn
+    IntParam: 0
+    FloatParam: 0
+    StringParam: 
+    ObjectParam: {fileID: 0}
+    RunTime: 0.729
     IsLoop: 0
 --- !u!114 &114606028328864918
 MonoBehaviour:
@@ -336,7 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SMBKeyName: 
   StateEnterEvnData:
-    StateFuncName: RightPowEnterEvent
+    StateFuncName: 
     IntParam: 0
     FloatParam: 0
     StringParam: 
@@ -352,7 +308,7 @@ MonoBehaviour:
     RunTime: 0
     IsLoop: 0
   StateTimeEvent:
-  - StateFuncName: RightPow_Atk_Evn
+  - StateFuncName: 
     IntParam: 0
     FloatParam: 0
     StringParam: 
@@ -388,14 +344,14 @@ MonoBehaviour:
     RunTime: 0
     IsLoop: 0
   StateTimeEvent:
-  - StateFuncName: IdleEventFunc
+  - StateFuncName: 
     IntParam: 0
     FloatParam: 0
     StringParam: 
     ObjectParam: {fileID: 0}
     RunTime: 0.359
     IsLoop: 1
-  - StateFuncName: 33546
+  - StateFuncName: 
     IntParam: 0
     FloatParam: 0
     StringParam: 
@@ -1792,8 +1748,7 @@ AnimatorState:
   - {fileID: 1101173800727531606}
   - {fileID: 1101466849106615056}
   - {fileID: 1101278897970418144}
-  m_StateMachineBehaviours:
-  - {fileID: 114064008059707640}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -2005,8 +1960,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101900566150000830}
-  m_StateMachineBehaviours:
-  - {fileID: 114569226672707968}
+  m_StateMachineBehaviours: []
   m_Position: {x: 20, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -2037,7 +1991,7 @@ AnimatorStateMachine:
     m_Position: {x: 348, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102429433388286590}
-    m_Position: {x: 612, y: 240, z: 0}
+    m_Position: {x: 624, y: 240, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

@@ -23,19 +23,23 @@ public class Boss_Rush_Attack : ActionTask
 
     IEnumerator RushAttackCor(float preTime, float afterTime)
     {
-        Transform Boss = UtilityManager.Instance.DragonTransform();
-        Transform Player = UtilityManager.Instance.PlayerTransform();
-
+        
         BlackBoard.Instance.IsGroundAttacking = true;
         BlackBoard.Instance.IsRushAttacking = true;
 
         float curTime  = 0.0f;
         float runTime = BlackBoard.Instance.GetGroundTime().RunRushTime;
 
-        Vector3 forward = (Player.position - Boss.position).normalized;
+        Transform Boss = UtilityManager.Instance.DragonTransform();
+        Transform Player = UtilityManager.Instance.PlayerTransform();
+
+        Vector3 PlayerPos = UtilityManager.Instance.PlayerPosition();
+
+        PlayerPos.y = 0.0f;
+
+        Vector3 forward = (PlayerPos - Boss.position).normalized;
 
         float Distance = BlackBoard.Instance.RushMoveDistance;
-
 
         //while (!Quaternion.Equals(Boss.rotation, Quaternion.LookRotation(forward , Vector3.up)))
         while(Vector3.Dot(Boss.forward, forward) < 0.99f)
@@ -48,7 +52,6 @@ public class Boss_Rush_Attack : ActionTask
                     );
 
             Debug.Log("No rotation");
-
             yield return CoroutineManager.FiexdUpdate;
         }
 

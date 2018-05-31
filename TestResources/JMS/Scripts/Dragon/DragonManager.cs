@@ -101,7 +101,5 @@ namespace DragonController
             }
             Debug.Log("end");
         }
-
     }
-
 }

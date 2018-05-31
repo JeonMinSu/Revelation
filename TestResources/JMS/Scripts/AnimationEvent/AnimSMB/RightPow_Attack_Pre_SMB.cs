@@ -8,7 +8,6 @@ public class RightPow_Attack_Pre_SMB :  BaseSMB
 
     public override void Awake()
     {
-        SMBKeyName = "RightPow";
         base.Awake();
     }
 
@@ -48,7 +47,7 @@ public class RightPow_Attack_Pre_SMB :  BaseSMB
             for ( int i= 0; i<StateTimeEvent.Count; i++)
             {
                 float aniTime = Mathf.Round(stateInfo.normalizedTime * 1000.0f) / 1000f;
-                if (aniTime == StateTimeEvent[i].RunTime)
+                if (aniTime >= StateTimeEvent[i].RunTime)
                 {
                     bool isRun = isRunning[i];
 

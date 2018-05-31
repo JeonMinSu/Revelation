@@ -18,12 +18,8 @@ public class BaseAnimStateEventsCollection : MonoBehaviour
     protected Dictionary<string, List<bool>> isAnimTimeEventRun = new Dictionary<string, List<bool>>();
     public Dictionary<string, List<bool>> IsAnimTimeEventRun { get { return isAnimTimeEventRun; } }
 
-    private DragonManager _manager;
-    public DragonManager Manager{ get { return _manager; } }
-
     protected virtual void Awake()
     {
-        _manager = GetComponentInParent<DragonManager>();
     }
 
     protected List<bool> GetIsAnimTimeEventRun(Dictionary<string, List<bool>> Target, string Key)

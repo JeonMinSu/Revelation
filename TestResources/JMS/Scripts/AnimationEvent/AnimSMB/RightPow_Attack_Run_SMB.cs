@@ -6,7 +6,7 @@ public class RightPow_Attack_Run_SMB : BaseSMB {
 
     public override void Awake()
     {
-        SMBKeyName = "RightPow";
+        base.Awake();
     }
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state

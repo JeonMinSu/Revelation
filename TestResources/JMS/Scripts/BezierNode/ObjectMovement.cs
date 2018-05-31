@@ -49,7 +49,7 @@ public class ObjectMovement : MonoBehaviour {
 
             if (gameObj == null)
             {
-                Debug.LogError("ErrorLog - Is not NodeManager GameObject ");
+                Debug.LogWarning("ErrorLog - Is not NodeManager GameObject ");
                 continue;
             }
 
@@ -57,7 +57,7 @@ public class ObjectMovement : MonoBehaviour {
             
             if (Movement == null)
             {
-                Debug.LogError("ErrorLog - Is not NodeManager ");
+                Debug.LogWarning("ErrorLog - Is not NodeManager ");
                 continue;
             }
             _nodesManager.Add(t, Movement);

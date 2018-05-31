@@ -58,6 +58,12 @@ public class Bullet : MonoBehaviour {
     //충돌시 이벤트
     protected virtual void OnCollisionEvent() {  }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        DestoryObject();
+    }
+
+
     protected virtual void Reset(){ }
 
     //강제 삭제 

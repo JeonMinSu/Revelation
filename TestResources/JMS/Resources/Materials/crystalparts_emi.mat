@@ -8,8 +8,8 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: crystalparts_emi
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _NORMALMAP _PARALLAXMAP
-  m_LightmapFlags: 4
+  m_ShaderKeywords: _EMISSION _NORMALMAP _PARALLAXMAP
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -73,4 +73,4 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.4393441, g: 0.3975454, b: 0.9485294, a: 1}
-    - _EmissionColor: {r: 1.2010919, g: 1.271413, b: 1.7377499, a: 1}
+    - _EmissionColor: {r: 2.3430884, g: 2.4802704, b: 3.39, a: 1}

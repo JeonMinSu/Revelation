@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour {
 
     protected Vector3 moveDir;             //이동 방향
     protected Vector3 prevPosition;        //이전 위치
-    protected RaycastHit hitInfo;          //충돌 정보              
+    protected RaycastHit[] hitInfo;          //충돌 정보              
 
 
     //초기화
@@ -32,18 +32,20 @@ public class Bullet : MonoBehaviour {
 
     public virtual void Init() { }
     //초기화
-    public  virtual void Init(Vector3 _moveDir){ moveDir = _moveDir; }
+    //public  virtual void Init(Vector3 _moveDir){ moveDir = _moveDir; }
 
     //이동
     protected virtual void Move(){ }
 
+    Vector3 _p1;
+    Vector3 _p2;
     //충돌 체크
     protected virtual bool CollisionCheck()
     {
         Vector3 _dir = transform.position - prevPosition;
         Vector3 _colDir;
-        Vector3 _p1;
-        Vector3 _p2;
+        //Vector3 _p1;
+        //Vector3 _p2;
 
         if (col.direction == 0) _colDir = transform.right;
         else if (col.direction == 1) _colDir = transform.up;
@@ -52,16 +54,17 @@ public class Bullet : MonoBehaviour {
         _p1 = transform.position + _colDir * col.height * 0.5f;
         _p2 = transform.position - _colDir * col.height * 0.5f;
 
-        return Physics.CapsuleCast(_p1, _p2, col.radius, _dir.normalized, out hitInfo, _dir.magnitude);
+        hitInfo = Physics.CapsuleCastAll(_p1, _p2,col.radius, _dir.normalized,_dir.magnitude);
+        return hitInfo.Length > 0 ? true : false;
     }
 
     //충돌시 이벤트
     protected virtual void OnCollisionEvent() {  }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        DestoryObject();
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    DestoryObject();
+    //}
 
 
     protected virtual void Reset(){ }
@@ -80,4 +83,12 @@ public class Bullet : MonoBehaviour {
         bool _isCollision = CollisionCheck();
         if (_isCollision) OnCollisionEvent();
 	}
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(_p1, 0.2f);
+        Gizmos.DrawSphere(_p2, 0.2f);
+    }
+
 }

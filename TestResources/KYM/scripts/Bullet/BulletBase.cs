@@ -17,13 +17,17 @@ public class BulletBase : Bullet {
 
     protected override void OnCollisionEvent()
     {
-        if (hitInfo.collider.tag == "BulletHoming")
+        for (int i = 0; i < hitInfo.Length; i++)
         {
-            //Debug.LogError("Hit ICE");
-            hitInfo.collider.gameObject.GetComponent<BulletHoming>().GetDamage(Damage);
+            Collider _col = hitInfo[i].collider;
+            if (col.tag == "BulletHoming")
+            {
+                col.gameObject.GetComponent<BulletHoming>().GetDamage(Damage);
+                break;
+            }
         }
+       
         PoolManager.Instance.PushObject(this.gameObject);
-        //GameObject.Destroy(this.gameObject);
     }
 
     protected override void Reset()

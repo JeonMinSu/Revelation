@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654132613732424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.068356, y: 32.36189, z: 33.73756}
+  m_LocalPosition: {x: 246.123, y: 120.161896, z: 229.0271}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,9 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6990ed0262a564c823f22a03b37152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialVelocity: {x: 0, y: 0, z: 6.78}
+  initialVelocity: {x: 0, y: 0, z: 10}
   acceleration: {x: -0, y: -4.9, z: -0}
-  pointcount: 25
+  pointcount: 50
   pointSpacing: 0.5
   graphicThickness: 0.05
   graphicMaterial: {fileID: 2100000, guid: 21a645b07758b4b478bff4374fdb9a43, type: 2}

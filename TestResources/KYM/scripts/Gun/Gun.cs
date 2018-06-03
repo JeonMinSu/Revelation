@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour {
     [SerializeField] private float fireDelay;
     [SerializeField] private string fireSound;
     [SerializeField] private Transform firePos;
+    [SerializeField] TextMesh bulletUI;
 
     private int currentBullet;
     private float fireCoolTime;
@@ -19,6 +20,7 @@ public class Gun : MonoBehaviour {
     void Start ()
     {
         currentBullet = maxBullet;
+        bulletUI.text = currentBullet.ToString();
         fireCoolTime = 0.0f;
         gunAni = GetComponent<GunAnimation>();
 	}
@@ -50,12 +52,16 @@ public class Gun : MonoBehaviour {
         BulletManager.Instance.CreatePlayerBaseBullet(firePos);
         fireCoolTime = fireDelay;
         currentBullet -= 1;
+        bulletUI.text = currentBullet.ToString();
         gunAni.MagazieTurn(0.1f,maxBullet);
+        gunAni.ShakeGun(0.2f, 40.0f, 0.05f);
+        gunAni.FireParticle(firePos.position + firePos.forward * 0.1f);
     }
 
     public void Reload()
     {
         currentBullet = maxBullet;
+        bulletUI.text = currentBullet.ToString();
     }
 
 }

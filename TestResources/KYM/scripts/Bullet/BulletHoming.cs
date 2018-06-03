@@ -19,13 +19,26 @@ public class BulletHoming : Bullet
     private float maxHP;
 
     private float currentHP;
+    //ParticleSystem[] particles;
+    List<ParticleSystem> particles = new List<ParticleSystem>();
 
     private Vector3 targetPosition;   //유도 타겟
 
     public override void Init()
-    {
+    {        
         moveDir = this.transform.forward;
         currentHP = maxHP;
+        if (particles.Count <= 0)
+        {
+            ParticleSystem[] p = GetComponentsInChildren<ParticleSystem>();
+            for (int i = 0; i < p.Length; i++)
+                particles.Add(p[i]);
+        }
+        for (int i = 0; i < particles.Count; i++)
+        {
+            particles[i].Stop();
+            particles[i].Play();
+        }
     }
 
     private void Update()
@@ -39,8 +52,6 @@ public class BulletHoming : Bullet
 
         if (currentHP <= 0.0f)
             DestoryObject();
-
-
     }
 
     protected override void Move()
@@ -53,19 +64,34 @@ public class BulletHoming : Bullet
 
     protected override void OnCollisionEvent()
     {
-        if(hitInfo.collider.tag == "PlayerBullet")
+        bool _isHit = false;
+        for(int i = 0; i<hitInfo.Length; i++)
         {
-            GetDamage(hitInfo.collider.gameObject.GetComponent<BulletBase>().Damage);
-            hitInfo.collider.gameObject.GetComponent<BulletBase>().DestoryObject();
-            return;
+            Collider _col = hitInfo[i].collider;
+            if(_col.CompareTag("BulletHoming"))
+                continue;
+            if (_col.CompareTag("Boss"))
+                continue;
+            
+            if (_col.CompareTag("PlayerBullet"))
+            {
+                GetDamage(hitInfo[i].collider.gameObject.GetComponent<BulletBase>().Damage);
+                hitInfo[i].collider.gameObject.GetComponent<BulletBase>().DestoryObject();
+                continue;
+            }
+
+            _isHit = true;
+            break;
         }
-        PoolManager.Instance.PushObject(this.gameObject);
+
+        if(_isHit)
+            PoolManager.Instance.PushObject(this.gameObject);
         //얼음기둥 생성
     }
 
     protected override void Reset()
     {
-        base.Reset();
+        base.Reset(); 
         Debug.Log("homing Bullet Reset");
     }
 

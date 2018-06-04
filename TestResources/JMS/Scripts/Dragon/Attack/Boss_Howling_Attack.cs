@@ -74,8 +74,5 @@ public class Boss_Howling_Attack : ActionTask
         BlackBoard.Instance.GetGroundTime().CurWalkTime = 0.0f;
         BlackBoard.Instance.IsWalk = !UtilityManager.DistanceCalc(Dragon, Player, WalkDistance);
 
-        if (BlackBoard.Instance.IsWalk)
-            DragonAniManager.SwicthAnimation("Walk");
-
     }
 }

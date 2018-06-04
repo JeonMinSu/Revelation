@@ -8,14 +8,16 @@ public class Boss_BulletBreath_Attack : ActionTask
     {
         bool IsBulletBreathAttacking = BlackBoard.Instance.IsBulletBreathAttacking;
 
-        if (!IsBulletBreathAttacking)
-        {
-            float preTime = BlackBoard.Instance.GetGroundTime().PreBulletBreathTime;
-            float afterTime = BlackBoard.Instance.GetGroundTime().AfterBulletBreathTime;
+        BlackBoard.Instance.IsWalk = true;
 
-            CoroutineManager.DoCoroutine(BulletBreathCor(preTime, afterTime));
+        //if (!IsBulletBreathAttacking)
+        //{
+        //    float preTime = BlackBoard.Instance.GetGroundTime().PreBulletBreathTime;
+        //    float afterTime = BlackBoard.Instance.GetGroundTime().AfterBulletBreathTime;
 
-        }
+        //    CoroutineManager.DoCoroutine(BulletBreathCor(preTime, afterTime));
+
+        //}
 
         return false;
     }

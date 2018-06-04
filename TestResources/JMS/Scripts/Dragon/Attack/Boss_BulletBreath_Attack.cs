@@ -8,6 +8,13 @@ public class Boss_BulletBreath_Attack : ActionTask
     {
         bool IsBulletBreathAttacking = BlackBoard.Instance.IsBulletBreathAttacking;
 
+        float curTime = BlackBoard.Instance.GetGroundTime().CurWalkTime;
+        float runTime = BlackBoard.Instance.GetGroundTime().MaxWalkTime;
+
+        if (curTime >= runTime)
+            BlackBoard.Instance.GetGroundTime().CurWalkTime = 0.0f;
+
+
         BlackBoard.Instance.IsWalk = true;
 
         //if (!IsBulletBreathAttacking)

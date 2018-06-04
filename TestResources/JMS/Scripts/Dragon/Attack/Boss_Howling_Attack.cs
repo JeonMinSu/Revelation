@@ -60,6 +60,16 @@ public class Boss_Howling_Attack : ActionTask
 
         //런 타임
         DragonAniManager.SwicthAnimation("Howling_Atk_Run");
+
+        BulletManager.Instance.CreateDragonHomingBullet(mouth.position, (mouth.forward + Vector3.up * 3).normalized);
+        BulletManager.Instance.CreateDragonHomingBullet(mouth.position, (mouth.forward + mouth.right * 10.0f + Vector3.up * 3).normalized);
+        BulletManager.Instance.CreateDragonHomingBullet(mouth.position, (mouth.forward + mouth.right * 5.0f + Vector3.up * 4).normalized);
+
+        BulletManager.Instance.CreateDragonHomingBullet(mouth.position, (mouth.forward - mouth.right * 10.0f + Vector3.up * 3).normalized);
+        BulletManager.Instance.CreateDragonHomingBullet(mouth.position, (mouth.forward - mouth.right * 5.0f + Vector3.up * 4).normalized);
+
+
+
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(runTime));
 
         //후딜 
@@ -72,7 +82,8 @@ public class Boss_Howling_Attack : ActionTask
 
         float WalkDistance = BlackBoard.Instance.RushDistance;
         BlackBoard.Instance.GetGroundTime().CurWalkTime = 0.0f;
-        BlackBoard.Instance.IsWalk = !UtilityManager.DistanceCalc(Dragon, Player, WalkDistance);
+        BlackBoard.Instance.IsWalk = 
+            !UtilityManager.DistanceCalc(Dragon, Player, WalkDistance);
 
     }
 }

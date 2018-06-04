@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DragonController;
 
 public class Boss_Walk_Action : ActionTask
 {
@@ -15,6 +16,8 @@ public class Boss_Walk_Action : ActionTask
 
         DragonPos.y = 0.0f;
         PlayerPos.y = 0.0f;
+
+        DragonAniManager.SwicthAnimation("Walk");
 
         Vector3 forward = (PlayerPos - DragonPos).normalized;
 

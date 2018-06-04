@@ -10,14 +10,22 @@ public class Boss_Mortar_Attack : ActionTask
 
         bool IsMortarAttacking = BlackBoard.Instance.IsMortarAttacking;
 
-        if (!IsMortarAttacking)
-        {
-            float preTime = BlackBoard.Instance.GetGroundTime().PreMortarTime;
-            float afterTime = BlackBoard.Instance.GetGroundTime().AfterMortarTime;
+        float curTime = BlackBoard.Instance.GetGroundTime().CurWalkTime;
+        float runTime = BlackBoard.Instance.GetGroundTime().MaxWalkTime;
 
-            CoroutineManager.DoCoroutine(MortarAttackCor(preTime, afterTime));
+        if (curTime >= runTime)
+            BlackBoard.Instance.GetGroundTime().CurWalkTime = 0.0f;
 
-        }
+        BlackBoard.Instance.IsWalk = true;
+
+        //if (!IsMortarAttacking)
+        //{
+        //    float preTime = BlackBoard.Instance.GetGroundTime().PreMortarTime;
+        //    float afterTime = BlackBoard.Instance.GetGroundTime().AfterMortarTime;
+
+        //    CoroutineManager.DoCoroutine(MortarAttackCor(preTime, afterTime));
+
+        //}
 
         return false;
     }

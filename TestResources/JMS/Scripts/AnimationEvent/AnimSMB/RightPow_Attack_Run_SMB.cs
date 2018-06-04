@@ -28,7 +28,11 @@ public class RightPow_Attack_Run_SMB : BaseSMB {
             if (animator.IsInTransition(layerIndex))
             {
                 if (!waitingToBegin)
-                {
+                {    
+                    /*
+                     * This is the first frame that current state is transitioning Away
+                     */
+
                     beginExit = true;
                 }
             }
@@ -37,6 +41,26 @@ public class RightPow_Attack_Run_SMB : BaseSMB {
                 waitingToBegin = false;
             }
         }
+
+        if (onStateTimeEventListener != null)
+        {
+            for (int i = 0; i < onStateTimeEventListener.Count; i++)
+            {
+                float aniTime = Mathf.Round((stateInfo.normalizedTime) * 1000.0f) / 1000f;
+
+                if (aniTime >= StateTimeEvent[i].RunTime)
+                {
+                    bool isRun = isRunning[i];
+
+                    if (!isRun)
+                    {
+                        onStateTimeEventListener[i](StateTimeEvent[i]);
+                        isRunning[i] = true;
+                    }
+                }
+            }
+        }
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

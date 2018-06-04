@@ -24,7 +24,6 @@ public class Boss_Sight_Action : ActionTask
 
             float x = Mathf.Acos(dot) * Mathf.Rad2Deg;
 
-            
             //Vector3 cross = Vector3.Cross(DragonHead.forward, toTarget);
             //float Result = Vector3.Dot(cross, Vector3.up);
             //if (Result >= 0)

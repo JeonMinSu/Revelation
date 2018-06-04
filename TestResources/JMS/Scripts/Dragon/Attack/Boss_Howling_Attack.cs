@@ -54,10 +54,11 @@ public class Boss_Howling_Attack : ActionTask
         }
 
         //선딜
+        DragonManager.Instance.HowlingEffect.SetActive(true);
         DragonAniManager.SwicthAnimation("Howling_Atk_Pre");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(preTime));
 
-        DragonManager.Instance.HowlingEffect.SetActive(true);
+        //런 타임
         DragonAniManager.SwicthAnimation("Howling_Atk_Run");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(runTime));
 

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RightPow_Attack_Pre_SMB :  BaseSMB 
-{
+public class LeftPow_Attack_Run_SMB : BaseSMB {
 
     public override void Awake()
     {
@@ -15,6 +13,7 @@ public class RightPow_Attack_Pre_SMB :  BaseSMB
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
+
         if (onStateEnterEventListener != null)
         {
             onStateEnterEventListener(StateEnterEvnData);
@@ -33,10 +32,11 @@ public class RightPow_Attack_Pre_SMB :  BaseSMB
                     /*
                      * This is the first frame that current state is transitioning Away
                      */
+
                     beginExit = true;
                 }
             }
-            else if(waitingToBegin)
+            else if (waitingToBegin)
             {
                 waitingToBegin = false;
             }
@@ -44,9 +44,10 @@ public class RightPow_Attack_Pre_SMB :  BaseSMB
 
         if (onStateTimeEventListener != null)
         {
-            for ( int i= 0; i<StateTimeEvent.Count; i++)
+            for (int i = 0; i < onStateTimeEventListener.Count; i++)
             {
-                float aniTime = Mathf.Round(stateInfo.normalizedTime * 1000.0f) / 1000f;
+                float aniTime = Mathf.Round((stateInfo.normalizedTime) * 1000.0f) / 1000f;
+
                 if (aniTime >= StateTimeEvent[i].RunTime)
                 {
                     bool isRun = isRunning[i];
@@ -59,12 +60,12 @@ public class RightPow_Attack_Pre_SMB :  BaseSMB
                 }
             }
         }
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+    //
     //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

@@ -30,11 +30,11 @@ public class Boss_Walk_Action : ActionTask
         }
 
 
-        //Dragon.position = Vector3.MoveTowards(
-        //    Dragon.position,
-        //    Player.position,
-        //    10.0f * Time.deltaTime
-        //    );
+        Dragon.position = Vector3.MoveTowards(
+            Dragon.position,
+            Player.position,
+            15.0f * Time.deltaTime
+            );
 
         float RushDistance = BlackBoard.Instance.RushDistance;
 

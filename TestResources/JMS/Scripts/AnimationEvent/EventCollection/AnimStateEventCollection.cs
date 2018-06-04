@@ -9,41 +9,48 @@ public class AnimStateEventCollection : BaseAnimStateEventsCollection
     protected override void Awake()
     {
         base.Awake();
+
         AddAnimTimeEventFunc(_animTimeEventFunc, Dragon_Rush_AttackRun_StartJump_Evn, "Dragon_Rush_Run");
+        AddAnimTimeEventFunc(_animTimeEventFunc, Dragon_Rush_AttackRun_Jamping_Evn, "Dragon_Rush_Run");
         AddAnimTimeEventFunc(_animTimeEventFunc, Dragon_Rush_AttackRun_Jamp_Evn, "Dragon_Rush_Run");
-        AddAnimTimeEventFunc(_animTimeEventFunc, Dragon_RushAttack_Land_Evn, "Dragon_Rush_Run");
         AddAnimTimeEventFunc(_animTimeEventFunc, Dragon_RushAttack_Sliding_Evn, "Dragon_Rush_Run");
 
-    }
+        AddAnimTimeEventFunc(_animTimeEventFunc, Dragon_RightPow_AttackRun_Evn, "RightPow_Attack_Run");
+        AddAnimTimeEventFunc(_animTimeEventFunc, Dragon_RightPow_AttackRun_Evn, "LeftPow_Attack_Run");
 
+    }
 
     private void Dragon_Rush_AttackRun_StartJump_Evn(EvnData evnData)
     {
         Rigidbody r = DragonManager.Instance.DragonRigidBody;
         Transform Dragon = UtilityManager.Instance.DragonTransform();
-        Vector3 MoveDir = (Dragon.forward + Vector3.up).normalized;
+        Vector3 MoveDir = (Dragon.forward + Vector3.up * 3.5f).normalized;
 
         float RushMoveSpeed = evnData.FloatParam;
 
         r.AddForce(Dragon.forward * RushMoveSpeed, ForceMode.Impulse);
+
+        Debug.Log("Start_Jump");
+    }
+
+    private void Dragon_Rush_AttackRun_Jamping_Evn(EvnData evnData)
+    {
+        Rigidbody r = DragonManager.Instance.DragonRigidBody;
+        Transform Dragon = UtilityManager.Instance.DragonTransform();
+        Vector3 MoveDir = (Dragon.forward).normalized;
+
+
+        float RushMoveSpeed = evnData.FloatParam;
+        r.AddForce(MoveDir * RushMoveSpeed, ForceMode.Impulse);
+
+        Debug.Log("Run_Jamp");
     }
 
     private void Dragon_Rush_AttackRun_Jamp_Evn(EvnData evnData)
     {
         Rigidbody r = DragonManager.Instance.DragonRigidBody;
         Transform Dragon = UtilityManager.Instance.DragonTransform();
-        Vector3 MoveDir = (Dragon.forward + Vector3.up * 0.5f).normalized;
-
-
-        float RushMoveSpeed = evnData.FloatParam;
-        r.AddForce(MoveDir * RushMoveSpeed, ForceMode.Impulse);
-    }
-
-    private void Dragon_RushAttack_Land_Evn(EvnData evnData)
-    {
-        Rigidbody r = DragonManager.Instance.DragonRigidBody;
-        Transform Dragon = UtilityManager.Instance.DragonTransform();
-        Vector3 MoveDir = (Dragon.forward + Vector3.down * 3.0f).normalized;
+        Vector3 MoveDir = (Dragon.forward + Vector3.down * 3.5f).normalized;
 
         float RushMoveSpeed = evnData.FloatParam;
 
@@ -60,6 +67,32 @@ public class AnimStateEventCollection : BaseAnimStateEventsCollection
 
         r.AddForce(MoveDir * RushMoveSpeed, ForceMode.Impulse);
     }
+
+    private void Dragon_RightPow_AttackRun_Evn(EvnData evnData)
+    {
+        Rigidbody r = DragonManager.Instance.DragonRigidBody;
+        Transform Dragon = UtilityManager.Instance.DragonTransform();
+        Vector3 MoveDir = (Dragon.forward).normalized;
+
+        float RightPowMoveSpeed = evnData.FloatParam;
+
+        r.AddForce(MoveDir * RightPowMoveSpeed, ForceMode.Impulse);
+
+    }
+
+    private void Dragon_LeftPow_AttackRun_Evn(EvnData evnData)
+    {
+        Rigidbody r = DragonManager.Instance.DragonRigidBody;
+        Transform Dragon = UtilityManager.Instance.DragonTransform();
+        Vector3 MoveDir = (Dragon.forward).normalized;
+
+        float RightPowMoveSpeed = evnData.FloatParam;
+
+        r.AddForce(MoveDir * RightPowMoveSpeed, ForceMode.Impulse);
+
+    }
+
+
 
 
 

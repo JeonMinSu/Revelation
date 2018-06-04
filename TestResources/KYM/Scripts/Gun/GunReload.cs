@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GunReload : MonoBehaviour
 {
+
     private float coolTime = 2.0f;
     private float currentTime = 0.0f;
 
@@ -18,7 +19,8 @@ public class GunReload : MonoBehaviour
         if(other.gameObject.tag == "Gun")
         {
             other.gameObject.GetComponent<Gun>().Reload();
-            SoundManager.Instance.PlayAudio("Reload", transform.position, AudioPlayType.SOUND3D);
+            //SoundManager.Instance.PlayAudio("Reload", transform.position, AudioPlayType.SOUND3D);
+            FMODSoundManager.Instance.PlayReloadSound(this.transform.position);
             currentTime = coolTime;
         }
     }

@@ -87,6 +87,7 @@ public class PlayerVRController : MonoBehaviour
                 if (pointer.CanTeleport)
                 {
                     playerState = PlayerVRState.Teleporting;
+                    FMODSoundManager.Instance.PlayTeleportsound(this.transform.position);
                     StartCoroutine("CorTeleport", pointer.SelectedPoint);
                 }
                 else

@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 4004830151930808}
   - component: {fileID: 33015335154886712}
   - component: {fileID: 23598495181643790}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: slash02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 4830627838018806}
   - component: {fileID: 33676009401077418}
   - component: {fileID: 23943951458983014}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: line01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 4740220294572884}
   - component: {fileID: 198852046392514634}
   - component: {fileID: 199373152416029640}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 4729117247170806}
   - component: {fileID: 198306593179797466}
   - component: {fileID: 199527473278892184}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: main_impact_mesh_particle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4330673903732852}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: DragonHeadIK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4501978541676398}
   - component: {fileID: 136501686423258838}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 L Thigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 4424048232620224}
   - component: {fileID: 135324595335906894}
   - component: {fileID: 136087997382945812}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 R Calf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4500433536528310}
   - component: {fileID: 95150552099295440}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FX_Howling_Atk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 4585843936073566}
   - component: {fileID: 136942948252128574}
   - component: {fileID: 135409646149680020}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: R_Wing_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 4197295650122106}
   - component: {fileID: 136428784761777472}
   - component: {fileID: 135149084996472858}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: R_Wing_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4728941978817738}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 4399517003384590}
   - component: {fileID: 135794899253656568}
   - component: {fileID: 136068120833473294}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 R Forearm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4384369022804914}
   - component: {fileID: 95992272546473160}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FX_slash_right_0603 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4418272610592950}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: crush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 4483166421431456}
   - component: {fileID: 65553153405373770}
   - component: {fileID: 135371572510843992}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 R Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 4968412270136804}
   - component: {fileID: 135216282576175566}
   - component: {fileID: 136452760895039688}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 L Calf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 4674394408015126}
   - component: {fileID: 136742409495508056}
   - component: {fileID: 135099634419791988}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: R_Wing_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4767821079805202}
   - component: {fileID: 136009066783044298}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 4913528339218440}
   - component: {fileID: 136257835055737680}
   - component: {fileID: 135936429340234772}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: R_Wing_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 4408763108696744}
   - component: {fileID: 33029831714590700}
   - component: {fileID: 23166558500583548}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wind_afterimage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4213255845046818}
   - component: {fileID: 136867243120431286}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: L_wing_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 4974996792610866}
   - component: {fileID: 136941799314269828}
   - component: {fileID: 135865180447997282}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: L_wing_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 114349187694238624}
   - component: {fileID: 114878879909883810}
   - component: {fileID: 65793324829924470}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Boss_Dragon
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 4055073657853562}
   - component: {fileID: 198534522861165754}
   - component: {fileID: 199025975365462930}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 4092703117581552}
   - component: {fileID: 135581033783718038}
   - component: {fileID: 136767762982123826}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: L_wing_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 4659423772434164}
   - component: {fileID: 198375901413082608}
   - component: {fileID: 199030598711525116}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: crack_backgraound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 4858106664071440}
   - component: {fileID: 33233442207400860}
   - component: {fileID: 23870586268591850}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: line02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +658,7 @@ GameObject:
   - component: {fileID: 4311260352402848}
   - component: {fileID: 33961717283919210}
   - component: {fileID: 23718731329503568}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: line02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 4946322736142370}
   - component: {fileID: 135428360380392828}
   - component: {fileID: 136348710850741904}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: R_Wing_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,7 +692,7 @@ GameObject:
   - component: {fileID: 4347772803888400}
   - component: {fileID: 198076438163750232}
   - component: {fileID: 199958065559457136}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dust (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -708,7 +708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4665849716045560}
   - component: {fileID: 108785258877038644}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Point light (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 4130549167859280}
   - component: {fileID: 198394280583262348}
   - component: {fileID: 199329832462925026}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: smoke_mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4177932687184166}
   - component: {fileID: 136308191981246454}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: R_Wing_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -788,7 +788,7 @@ GameObject:
   - component: {fileID: 4197702089698262}
   - component: {fileID: 198239160304647986}
   - component: {fileID: 199648653936827286}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dust (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 4753249998212932}
   - component: {fileID: 136139670705639890}
   - component: {fileID: 135333640165353294}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: L_Wing_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -822,7 +822,7 @@ GameObject:
   - component: {fileID: 4775251635608568}
   - component: {fileID: 198795593035719138}
   - component: {fileID: 199807268697327302}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: main_impact_mesh_particle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 4694512509992832}
   - component: {fileID: 136800046848946922}
   - component: {fileID: 135835087225167858}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: R_Wing_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -871,7 +871,7 @@ GameObject:
   - component: {fileID: 4891157569876234}
   - component: {fileID: 33249340367016714}
   - component: {fileID: 23954879556595780}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -902,7 +902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4840912391961538}
   - component: {fileID: 95171844655608164}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FX_Dragon_RightPow_Atk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -918,7 +918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4908968576858456}
   - component: {fileID: 108892333884323836}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Point light (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -935,7 +935,7 @@ GameObject:
   - component: {fileID: 4200640047313650}
   - component: {fileID: 135935118357335162}
   - component: {fileID: 136402766412029070}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 L Forearm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -952,7 +952,7 @@ GameObject:
   - component: {fileID: 4128500369430958}
   - component: {fileID: 135938839989859916}
   - component: {fileID: 136869582524625980}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: R_Wing_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -969,7 +969,7 @@ GameObject:
   - component: {fileID: 4070290340297918}
   - component: {fileID: 198571619727895198}
   - component: {fileID: 199316769246309914}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: impact_floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -985,7 +985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4709630010370876}
   - component: {fileID: 136066740711665306}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1001,7 +1001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4775704742427204}
   - component: {fileID: 136351411306479724}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 L UpperArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1016,7 +1016,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4199398995318694}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: DragonHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1032,7 +1032,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4351567023061110}
   - component: {fileID: 108021711560568382}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Point light (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1049,7 +1049,7 @@ GameObject:
   - component: {fileID: 4738781481144790}
   - component: {fileID: 198043216900428966}
   - component: {fileID: 199960647120810242}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: main_impact_mesh_particle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1066,7 +1066,7 @@ GameObject:
   - component: {fileID: 4418523183359546}
   - component: {fileID: 33177112155591626}
   - component: {fileID: 23919179434527154}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: slash01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1098,7 +1098,7 @@ GameObject:
   - component: {fileID: 4308789981640740}
   - component: {fileID: 65103513716601680}
   - component: {fileID: 135696161008105868}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 R Toe0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1115,7 +1115,7 @@ GameObject:
   - component: {fileID: 4678160563551632}
   - component: {fileID: 136809813569304896}
   - component: {fileID: 135299241970740352}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: L_wing_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1132,7 +1132,7 @@ GameObject:
   - component: {fileID: 4803555657530048}
   - component: {fileID: 198325279036497768}
   - component: {fileID: 199312230235461648}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: spark_main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1149,7 +1149,7 @@ GameObject:
   - component: {fileID: 4294824478473922}
   - component: {fileID: 198662709825886420}
   - component: {fileID: 199218267643678980}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1166,7 +1166,7 @@ GameObject:
   - component: {fileID: 4979504901813902}
   - component: {fileID: 33783588372923614}
   - component: {fileID: 23430472160669374}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: line01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1201,7 +1201,7 @@ GameObject:
   - component: {fileID: 4873715293653942}
   - component: {fileID: 33822431184589344}
   - component: {fileID: 23584120627831286}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wind_afterimage01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1217,7 +1217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4286584255714120}
   - component: {fileID: 108670461540222632}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Point light (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1249,7 +1249,7 @@ GameObject:
   - component: {fileID: 4352856128766702}
   - component: {fileID: 198776393578145572}
   - component: {fileID: 199820296741437634}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: impact_mesh_near
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1283,7 +1283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4709415316968498}
   - component: {fileID: 135505729519658324}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 Spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1300,7 +1300,7 @@ GameObject:
   - component: {fileID: 4394307608585078}
   - component: {fileID: 198592436958955806}
   - component: {fileID: 199940855329563712}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sparkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1317,7 +1317,7 @@ GameObject:
   - component: {fileID: 4479816914625410}
   - component: {fileID: 135137322075389322}
   - component: {fileID: 136731592167449782}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: L_wing_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1333,7 +1333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4361894169102732}
   - component: {fileID: 136588402154271464}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: L_wing_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1350,7 +1350,7 @@ GameObject:
   - component: {fileID: 4591290088144842}
   - component: {fileID: 198388476009788904}
   - component: {fileID: 199701550280250678}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1367,7 +1367,7 @@ GameObject:
   - component: {fileID: 4059832604526940}
   - component: {fileID: 136982625743095054}
   - component: {fileID: 135047668303298706}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: L_wing_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1384,7 +1384,7 @@ GameObject:
   - component: {fileID: 4671798224019936}
   - component: {fileID: 33653236452755618}
   - component: {fileID: 23136474570641716}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1416,7 +1416,7 @@ GameObject:
   - component: {fileID: 4597238049835094}
   - component: {fileID: 198820216650883136}
   - component: {fileID: 199902976550680652}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1433,7 +1433,7 @@ GameObject:
   - component: {fileID: 4340890165605892}
   - component: {fileID: 65437889403752454}
   - component: {fileID: 135086999575789542}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 L Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1448,7 +1448,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4458707178189036}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: DragonMouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1465,7 +1465,7 @@ GameObject:
   - component: {fileID: 4380785993145930}
   - component: {fileID: 198470538834035338}
   - component: {fileID: 199330769968202690}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dust (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1482,7 +1482,7 @@ GameObject:
   - component: {fileID: 4099121866827876}
   - component: {fileID: 135925450599845464}
   - component: {fileID: 136293720229559516}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: L_wing_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1499,7 +1499,7 @@ GameObject:
   - component: {fileID: 4851144465586248}
   - component: {fileID: 198725909095240530}
   - component: {fileID: 199541587221302244}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1531,7 +1531,7 @@ GameObject:
   - component: {fileID: 4780883250814892}
   - component: {fileID: 135172051713423860}
   - component: {fileID: 136544924786443688}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 L Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1548,7 +1548,7 @@ GameObject:
   - component: {fileID: 4718638983574154}
   - component: {fileID: 135496470091170110}
   - component: {fileID: 136441988489169358}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: R_Wing_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1594,7 +1594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4448590015451272}
   - component: {fileID: 136660381908212604}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 R UpperArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1611,7 +1611,7 @@ GameObject:
   - component: {fileID: 4943912906903694}
   - component: {fileID: 198168933849073538}
   - component: {fileID: 199580486000975596}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: spark_main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1628,7 +1628,7 @@ GameObject:
   - component: {fileID: 4210847280218958}
   - component: {fileID: 135103020700819584}
   - component: {fileID: 136020982459289574}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: R_Wing_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1674,7 +1674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4055315380976480}
   - component: {fileID: 135912988329600032}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1691,7 +1691,7 @@ GameObject:
   - component: {fileID: 4288632419454190}
   - component: {fileID: 135727257640412070}
   - component: {fileID: 136138978142412678}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: L_wing_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1723,7 +1723,7 @@ GameObject:
   - component: {fileID: 4880220572060438}
   - component: {fileID: 198393350886600056}
   - component: {fileID: 199883120408832194}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: impact_floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1740,7 +1740,7 @@ GameObject:
   - component: {fileID: 4559336957432834}
   - component: {fileID: 198084792910404598}
   - component: {fileID: 199373240403225776}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: crack_backgraound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1757,7 +1757,7 @@ GameObject:
   - component: {fileID: 4927716129363100}
   - component: {fileID: 33272716909489994}
   - component: {fileID: 23474376833024716}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1773,7 +1773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4090760251796528}
   - component: {fileID: 136724405333581148}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: R_Wing_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1789,7 +1789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4377951458197340}
   - component: {fileID: 136934318460151100}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: R_Wing_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1806,7 +1806,7 @@ GameObject:
   - component: {fileID: 4373593618444868}
   - component: {fileID: 198927481741775786}
   - component: {fileID: 199224884634946532}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dust_further
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1840,7 +1840,7 @@ GameObject:
   - component: {fileID: 4478470819272738}
   - component: {fileID: 198183197703159416}
   - component: {fileID: 199619181838961594}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: crack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1857,7 +1857,7 @@ GameObject:
   - component: {fileID: 4557706454351840}
   - component: {fileID: 198726720413914836}
   - component: {fileID: 199416640807883876}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dust (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1889,7 +1889,7 @@ GameObject:
   - component: {fileID: 4198948524770764}
   - component: {fileID: 136248405702382768}
   - component: {fileID: 135932813202705238}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: L_wing_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1904,7 +1904,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4219303913129170}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FX_dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1921,7 +1921,7 @@ GameObject:
   - component: {fileID: 4397837573883474}
   - component: {fileID: 33677930349091276}
   - component: {fileID: 23580793759549658}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wind_afterimage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1954,7 +1954,7 @@ GameObject:
   - component: {fileID: 4928920139618492}
   - component: {fileID: 33503684082109408}
   - component: {fileID: 23787946371704352}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: slash01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1970,7 +1970,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4886120863076666}
   - component: {fileID: 136776701024092916}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: L_wing_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1987,7 +1987,7 @@ GameObject:
   - component: {fileID: 4353979553318594}
   - component: {fileID: 198089140520735456}
   - component: {fileID: 199614349977214734}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: crack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2004,7 +2004,7 @@ GameObject:
   - component: {fileID: 4100093306011596}
   - component: {fileID: 65294288684724584}
   - component: {fileID: 135142030699616884}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 L Toe0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2038,7 +2038,7 @@ GameObject:
   - component: {fileID: 4496878062123722}
   - component: {fileID: 198009395273745272}
   - component: {fileID: 199979528503843018}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: main_impact_mesh_particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2055,7 +2055,7 @@ GameObject:
   - component: {fileID: 4235300221352366}
   - component: {fileID: 198558762925665776}
   - component: {fileID: 199462459290041802}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2072,7 +2072,7 @@ GameObject:
   - component: {fileID: 4891370427752770}
   - component: {fileID: 135798603571653826}
   - component: {fileID: 136965857269176426}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: L_wing_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2087,7 +2087,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4547628665777468}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: crush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2104,7 +2104,7 @@ GameObject:
   - component: {fileID: 4852556960830484}
   - component: {fileID: 33257314978465668}
   - component: {fileID: 23545041237921176}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wind_afterimage01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2121,7 +2121,7 @@ GameObject:
   - component: {fileID: 4504560912348008}
   - component: {fileID: 33509781570313384}
   - component: {fileID: 23412147954255482}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2138,7 +2138,7 @@ GameObject:
   - component: {fileID: 4796552552727726}
   - component: {fileID: 135193603715681124}
   - component: {fileID: 136473492057168682}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: R_Wing_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2155,7 +2155,7 @@ GameObject:
   - component: {fileID: 4626041388584828}
   - component: {fileID: 135793676068326670}
   - component: {fileID: 136420636224932908}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 R Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2170,7 +2170,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4013949303566332}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2187,7 +2187,7 @@ GameObject:
   - component: {fileID: 4042994492767178}
   - component: {fileID: 198722968061667584}
   - component: {fileID: 199658178945903832}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2203,7 +2203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4923630821659272}
   - component: {fileID: 136365331325509868}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bip001 R Thigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2250,7 +2250,7 @@ GameObject:
   - component: {fileID: 4640880732602666}
   - component: {fileID: 33252117505848028}
   - component: {fileID: 23204889081903918}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: slash02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2265,7 +2265,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4055351815429538}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FX_Dragon_LeftPow_Atk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2806,8 +2806,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1233687557819950}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 253.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4351567023061110}
@@ -2822,7 +2822,7 @@ Transform:
   - {fileID: 4696148616328928}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4330673903732852
 Transform:
   m_ObjectHideFlags: 1
@@ -5184,7 +5184,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1536
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -5220,7 +5220,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1536
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -5256,7 +5256,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1536
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -5292,7 +5292,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1536
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1

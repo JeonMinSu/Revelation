@@ -373,9 +373,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 50
   damage: 10
-  noHitLayer:
+  hitLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 3328
   homingPower: 1.5
   target: 1
   maxHP: 20

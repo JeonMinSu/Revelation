@@ -15,6 +15,9 @@ public class Bullet : MonoBehaviour {
         get { return damage; }
     }
 
+    [SerializeField]
+    LayerMask hitLayer;
+
     protected CapsuleCollider col;         //컬라이더 정보
 
     protected Vector3 moveDir;             //이동 방향
@@ -51,10 +54,10 @@ public class Bullet : MonoBehaviour {
         else if (col.direction == 1) _colDir = transform.up;
         else _colDir = transform.forward;
 
-        _p1 = transform.position + _colDir * col.height * 0.5f;
-        _p2 = transform.position - _colDir * col.height * 0.5f;
+        _p1 = prevPosition + Matrix4x4.Scale(transform.localScale).MultiplyPoint3x4(_colDir * col.height * 0.5f); 
+        _p2 = prevPosition - Matrix4x4.Scale(transform.localScale).MultiplyPoint3x4( _colDir * col.height * 0.5f);
 
-        hitInfo = Physics.CapsuleCastAll(_p1, _p2,col.radius, _dir.normalized,_dir.magnitude);
+        hitInfo = Physics.CapsuleCastAll(_p1, _p2,col.radius * transform.localScale.y, _dir.normalized,_dir.magnitude, hitLayer);
         return hitInfo.Length > 0 ? true : false;
     }
 
@@ -82,7 +85,8 @@ public class Bullet : MonoBehaviour {
         Move();
         bool _isCollision = CollisionCheck();
         if (_isCollision) OnCollisionEvent();
-	}
+
+    }
 
     private void OnDrawGizmos()
     {

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114913866461403696}
   - component: {fileID: 114463585593250748}
   - component: {fileID: 136064534917911140}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: BulletBasePlayer
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4567806755112072}
   - component: {fileID: 96133337976532274}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,8 +231,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01cbf21f89f68a24aaf527dc4f8e4619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 100
+  moveSpeed: 300
   damage: 10
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 2304
 --- !u!136 &136064534917911140
 CapsuleCollider:
   m_ObjectHideFlags: 1

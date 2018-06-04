@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunReload : MonoBehaviour
 {
-    private float coolTime = 5.0f;
+    private float coolTime = 2.0f;
     private float currentTime = 0.0f;
 
     private void Update()

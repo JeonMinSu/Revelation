@@ -14,6 +14,9 @@ public class PoolManager : Singleton<PoolManager>
 {
     [SerializeField]
     private PoolObjectData[] poolObjects;
+
+    [SerializeField]
+    private Vector3 InitializePos;
     Dictionary<string, List<GameObject>> poolLists;
 
     private void Start()
@@ -34,7 +37,7 @@ public class PoolManager : Singleton<PoolManager>
             poolLists.Add(_gameObject.GetComponent<PoolObject>().pooltag, list);
             for (int i = 0; i < count; i++)
             {
-                GameObject obj = Instantiate(_gameObject, Vector3.zero, Quaternion.identity);
+                GameObject obj = Instantiate(_gameObject, InitializePos, Quaternion.identity);
                 PushObject(obj);
             }
         }

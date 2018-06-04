@@ -17,19 +17,26 @@ public class TestShakePlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-	    if(Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine("CorShakeCamera");
-        }
+	    //if(Input.GetKeyDown(KeyCode.Space))
+     //   {
+     //       //0.3 0.5 0.02
+     //       StartCoroutine(CorShakeCamera(0.3f,0.5f,0.02f));
+     //   }
         this.transform.localPosition = cameraShakePos;
 	}
 
-    IEnumerator CorShakeCamera()
+
+    public void PlayerShake(float _playTime = 0.3f, float _radius = 0.5f, float _waitTime= 0.02f)
+    {
+        StartCoroutine(CorShakeCamera(_playTime, _radius, _waitTime));
+    }
+
+    IEnumerator CorShakeCamera(float _playTime, float _radius, float _waitTime)
     {
 
-        float _shakingPlayTime = 0.3f;
-        float _shakingRadius = 1.0f;
-        float _shkaingWaitTime = 0.02f;
+        float _shakingPlayTime = _playTime;
+        float _shakingRadius = _radius;
+        float _shkaingWaitTime = _waitTime;
         float _time = _shakingPlayTime;
         while (_time > 0)
         {
@@ -43,6 +50,4 @@ public class TestShakePlayer : MonoBehaviour {
         cameraShakePos = Vector3.zero;
         yield return null;
     }
-
-
 }

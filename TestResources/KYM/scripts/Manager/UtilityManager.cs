@@ -15,12 +15,22 @@ public class UtilityManager :  Singleton<UtilityManager>
     [SerializeField] private GameObject Player;
     [SerializeField] private GameObject Dragon;
 
+    [SerializeField] private TestShakePlayer Shake;
+
     public Vector3 PlayerPosition() { return Player.transform.position; }
     public Vector3 DragonPosition() { return Dragon.transform.position; }
 
     public Transform PlayerTransform() { return Player.transform; }
     public Transform DragonTransform() { return Dragon.transform; }
 
+    public void ShakePlayer()
+    {
+        Shake.PlayerShake();
+    }
+    public void ShakePlayer(float _playTime, float _radius, float _waitTime)
+    {
+        Shake.PlayerShake(_playTime, _radius, _waitTime);
+    }
 
     public static bool DistanceCalc(Transform This, Transform Target, float Range)
     {

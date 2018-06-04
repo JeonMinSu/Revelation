@@ -17,5 +17,5 @@ public class PoolObject : MonoBehaviour
     public delegate void InitFunction();
     public InitFunction Init;
 
-    public string pooltag;
+    public string pooltag; 
 }

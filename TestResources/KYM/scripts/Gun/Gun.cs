@@ -54,7 +54,7 @@ public class Gun : MonoBehaviour {
         currentBullet -= 1;
         bulletUI.text = currentBullet.ToString();
         gunAni.MagazieTurn(0.1f,maxBullet);
-        gunAni.ShakeGun(0.2f, 40.0f, 0.05f);
+        gunAni.ShakeGun(0.2f, 30.0f, 0.05f);
         gunAni.FireParticle(firePos.position + firePos.forward * 0.1f);
     }
 
@@ -63,5 +63,4 @@ public class Gun : MonoBehaviour {
         currentBullet = maxBullet;
         bulletUI.text = currentBullet.ToString();
     }
-
 }

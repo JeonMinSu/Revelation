@@ -8,6 +8,7 @@ public class BulletBase : Bullet {
     public override void Init()
     {
         moveDir = this.transform.forward;
+        prevPosition = this.transform.position;
     }
 
     protected override void Move()
@@ -26,7 +27,9 @@ public class BulletBase : Bullet {
                 break;
             }
         }
-       
+        if(hitInfo.Length > 0)
+        EventManager.Instance.EventBulletExplosion(hitInfo[0].point);
+
         PoolManager.Instance.PushObject(this.gameObject);
     }
 

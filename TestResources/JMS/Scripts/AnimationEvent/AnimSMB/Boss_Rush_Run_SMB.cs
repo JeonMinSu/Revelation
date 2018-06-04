@@ -6,7 +6,6 @@ public class Boss_Rush_Run_SMB : BaseSMB {
 
     public override void Awake()
     {
-        SMBKeyName = "Boss_Rush_Run";
         base.Awake();
     }
 
@@ -45,10 +44,11 @@ public class Boss_Rush_Run_SMB : BaseSMB {
 
         if (onStateTimeEventListener != null)
         {
-            for (int i = 0; i < StateTimeEvent.Count; i++)
+            for (int i = 0; i < onStateTimeEventListener.Count; i++)
             {
-                float aniTime = Mathf.Round(stateInfo.normalizedTime * 1000.0f) / 1000f;
-                if (aniTime == StateTimeEvent[i].RunTime)
+                float aniTime = Mathf.Round((stateInfo.normalizedTime) * 1000.0f) / 1000f;
+
+                if (aniTime >= StateTimeEvent[i].RunTime)
                 {
                     bool isRun = isRunning[i];
 
@@ -63,9 +63,10 @@ public class Boss_Rush_Run_SMB : BaseSMB {
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        base.OnStateExit(animator, stateInfo, layerIndex);
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

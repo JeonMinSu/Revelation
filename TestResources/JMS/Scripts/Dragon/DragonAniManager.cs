@@ -26,7 +26,7 @@ namespace DragonController {
         public static string AniParamName { set { _aniParamName = value; } get { return _aniParamName; } }
 
         static bool _isInit;
-
+        float LookWeight = 10.0f;
 
         private void Awake()
         {

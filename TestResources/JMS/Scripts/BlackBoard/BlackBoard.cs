@@ -18,6 +18,15 @@ public class BlackBoard : Singleton<BlackBoard>
     private Transform _dragonMouth;
     public Transform DragonMouth { get { return _dragonMouth; } }
 
+    [SerializeField]
+    private Transform _dragonHead;
+    public Transform DragonHead { get { return _dragonHead; } }
+
+    [SerializeField]
+    private Transform _dragonHeadIK;
+    public Transform DragonHeadIK { get{ return _dragonHeadIK; } }
+
+
     private Clock _clocks;
 
     /* 보스몹 HP 상태 관련 변수 */
@@ -74,6 +83,7 @@ public class BlackBoard : Singleton<BlackBoard>
     private float _mortarDistance;
     public float MortarDistance { get { return _mortarDistance; } }
 
+    /* 보스몹 덮치기 */
     [Space]
     [Header("Boss OverLapAttack Check")]
 
@@ -134,6 +144,7 @@ public class BlackBoard : Singleton<BlackBoard>
 
     private bool _isAttack;     //공격 상태
     public bool IsAttack { set { _isAttack = value; } get { return _isAttack; } }
+
 
     [Space]
     [Header("Boss Pattern On")]
@@ -231,7 +242,7 @@ public class BlackBoard : Singleton<BlackBoard>
 
 
     [Header("WeakPoint")]
-
+    //보스몹 약점 공략
     [SerializeField]
     private int _curWeakPointCount;
     public int CurWeakPointCount { set { _curWeakPointCount = value; } get { return _curWeakPointCount; } }
@@ -246,8 +257,7 @@ public class BlackBoard : Singleton<BlackBoard>
     public float PlayerMaxHP;
     public float CurPlayerHP;
 
-  
-    public void InitMember()
+    public void Awake()
     {
         _isGround = true;
         _clocks = GetComponentInChildren<Clock>();

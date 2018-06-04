@@ -83,7 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundTime:
     _curIdleTime: 0
-    _maxIdleTime: 4.6
+    _maxIdleTime: 2
     _curWalkTime: 0
     _maxWalkTime: 100
     _preRushTime: 1
@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dragonMouth: {fileID: 0}
+  _dragonHead: {fileID: 0}
+  _dragonHeadIK: {fileID: 0}
   _takeOffDistance: 0
   _rushDistance: 70
   _howlingDistance: 110

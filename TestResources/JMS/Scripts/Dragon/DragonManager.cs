@@ -22,6 +22,19 @@ namespace DragonController
         private GameObject _rightPowEffect;
         public GameObject RightPowEffect { get { return _rightPowEffect; } }
 
+        [SerializeField]
+        private GameObject _rightClaw;
+        public GameObject RightClaw { get { return _rightClaw; } }
+
+        [SerializeField]
+        private GameObject _leftPowEffect;
+        public GameObject LeftPowEffect { get { return _leftPowEffect; } }
+
+        [SerializeField]
+        private GameObject _leftClaw;
+        public GameObject LeftClaw { get { return _leftClaw; } }
+
+
         private static ObjectMovement _dragonMovement;
         public static ObjectMovement DragonMovement { get { return _dragonMovement; } }
 
@@ -37,8 +50,6 @@ namespace DragonController
 
         private void Awake()
         {
-            BlackBoard.Instance.InitMember();
-
             _stat = GetComponent<DragonStat>();
             _dragonMovement = GetComponent<ObjectMovement>();
             _dragonRigidBody = GetComponent<Rigidbody>();
@@ -56,12 +67,7 @@ namespace DragonController
                 _isInit = true;
             }
 		
-	    }        
-
-        public void FixedUpdate()
-        {
-
-        }
+	    }
 
         public bool IsFindNode(MOVEMENTTYPE Type)
         {
@@ -91,8 +97,7 @@ namespace DragonController
             Stat.HP -= Damege;
             Debug.Log("OnHit");
         }
-
-
+        
         IEnumerator StartDragonAI()
         {
             while (!_dragonBehaviroTree.Root.Run())
@@ -101,7 +106,6 @@ namespace DragonController
             }
             Debug.Log("end");
         }
-
     }
 
 }

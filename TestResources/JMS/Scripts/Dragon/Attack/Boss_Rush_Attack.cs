@@ -27,28 +27,29 @@ public class Boss_Rush_Attack : ActionTask
         BlackBoard.Instance.IsGroundAttacking = true;
         BlackBoard.Instance.IsRushAttacking = true;
 
-        float curTime  = 0.0f;
         float runTime = BlackBoard.Instance.GetGroundTime().RunRushTime;
 
-        Transform Boss = UtilityManager.Instance.DragonTransform();
+        Transform Dragon = UtilityManager.Instance.DragonTransform();
         Transform Player = UtilityManager.Instance.PlayerTransform();
 
+        Vector3 DragonPos = UtilityManager.Instance.DragonPosition();
         Vector3 PlayerPos = UtilityManager.Instance.PlayerPosition();
 
+        DragonPos.y = 0.0f;
         PlayerPos.y = 0.0f;
 
-        Vector3 forward = (PlayerPos - Boss.position).normalized;
+        Vector3 forward = (PlayerPos - DragonPos).normalized;
 
         float Distance = BlackBoard.Instance.RushMoveDistance;
 
         //while (!Quaternion.Equals(Boss.rotation, Quaternion.LookRotation(forward , Vector3.up)))
-        while(Vector3.Dot(Boss.forward, forward) < 0.99f)
+        while(Vector3.Dot(Dragon.forward, forward) < 0.99f)
         {
-            Boss.rotation =
-                Quaternion.RotateTowards(
-                    Boss.rotation,
-                    Quaternion.LookRotation(forward, Vector3.up),
-                    360.0f * Time.deltaTime
+            Dragon.rotation =
+                Quaternion.Slerp(
+                    Dragon.rotation,
+                    Quaternion.LookRotation(forward),
+                    0.1f
                     );
 
             Debug.Log("No rotation");
@@ -59,15 +60,9 @@ public class Boss_Rush_Attack : ActionTask
         DragonAniManager.SwicthAnimation("Rush_Atk_Pre");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(preTime));
 
+        //실행 애니메이션
         DragonAniManager.SwicthAnimation("Rush_Atk_Run");
-
-        while (curTime < runTime)
-        {
-
-            //Boss.Translate(Boss.forward * Distance * Time.deltaTime);
-            curTime += Time.fixedDeltaTime;
-            yield return CoroutineManager.FiexdUpdate;
-        }
+        yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(runTime));
 
 
         //후딜 애니메이션
@@ -76,7 +71,7 @@ public class Boss_Rush_Attack : ActionTask
 
         float SecondAttackDistance = BlackBoard.Instance.SecondAttackDistance;
 
-        BlackBoard.Instance.IsSecondAttack = UtilityManager.DistanceCalc(Boss, Player, SecondAttackDistance);
+        BlackBoard.Instance.IsSecondAttack = UtilityManager.DistanceCalc(Dragon, Player, SecondAttackDistance);
         BlackBoard.Instance.IsGroundAttacking = (BlackBoard.Instance.IsSecondAttack) ? true : false;
         BlackBoard.Instance.IsRushAttacking = false;
 

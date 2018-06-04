@@ -31,12 +31,15 @@ public class BaseSMB : StateMachineBehaviour
     public void InitRunning(List<bool> Running)
     {
 
-        for (int index = 0; index < Running.Count; index++)
+        if (onStateTimeEventListener != null)
         {
-            if (Running[index])
-                Running[index] = false;
-        }
+            for (int index = 0; index < Running.Count; index++)
+            {
+                if (Running[index])
+                    Running[index] = false;
+            }
 
+        }
     }
 
 

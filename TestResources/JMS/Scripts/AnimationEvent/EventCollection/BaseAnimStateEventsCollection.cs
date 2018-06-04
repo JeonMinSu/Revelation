@@ -20,6 +20,7 @@ public class BaseAnimStateEventsCollection : MonoBehaviour
 
     protected virtual void Awake()
     {
+
     }
 
     protected List<bool> GetIsAnimTimeEventRun(Dictionary<string, List<bool>> Target, string Key)

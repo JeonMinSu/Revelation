@@ -204,6 +204,7 @@ MonoBehaviour:
   audioList:
   - name: Reload
     sound: {fileID: 8300000, guid: 6651f07e5a1a83b4fad318a1b1c23c2b, type: 3}
+  audioSoundObject: {fileID: 0}
 --- !u!114 &114750629052914752
 MonoBehaviour:
   m_ObjectHideFlags: 1

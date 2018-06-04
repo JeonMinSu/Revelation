@@ -85,13 +85,13 @@ MonoBehaviour:
     _curIdleTime: 0
     _maxIdleTime: 2
     _curWalkTime: 0
-    _maxWalkTime: 100
+    _maxWalkTime: 5
     _preRushTime: 1
     _runRushTime: 2
     _afterRushTime: 1
-    _preRoarTime: 0.5
-    _runRoarTime: 4
-    _afterRoarTime: 0.5
+    _preRoarTime: 1.1
+    _runRoarTime: 1.75
+    _afterRoarTime: 0.85
     _preOverLapTime: 0.5
     _runOverLapTime: 2
     _afterOverLapTime: 0.3

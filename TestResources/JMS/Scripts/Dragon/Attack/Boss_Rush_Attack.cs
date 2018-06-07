@@ -42,17 +42,18 @@ public class Boss_Rush_Attack : ActionTask
 
         float Distance = BlackBoard.Instance.RushMoveDistance;
 
+        DragonAniManager.SwicthAnimation("Walk");
         //while (!Quaternion.Equals(Boss.rotation, Quaternion.LookRotation(forward , Vector3.up)))
-        while(Vector3.Dot(Dragon.forward, forward) < 0.99f)
+        while (Vector3.Dot(Dragon.forward, forward) < 0.99f)
         {
             Dragon.rotation =
                 Quaternion.Slerp(
                     Dragon.rotation,
                     Quaternion.LookRotation(forward),
-                    0.1f
+                    0.05f
                     );
 
-            Debug.Log("No rotation");
+            //Debug.Log("No rotation");
             yield return CoroutineManager.FiexdUpdate;
         }
 

@@ -18,6 +18,9 @@ public class AnimStateEventCollection : BaseAnimStateEventsCollection
         AddAnimTimeEventFunc(_animTimeEventFunc, Dragon_RightPow_AttackRun_Evn, "RightPow_Attack_Run");
         AddAnimTimeEventFunc(_animTimeEventFunc, Dragon_RightPow_AttackRun_Evn, "LeftPow_Attack_Run");
 
+        AddAnimTimeEventFunc(_animTimeEventFunc, Dragon_RightPow_Attack_Shake_Evn, "RightPow_Attack_Run");
+        AddAnimTimeEventFunc(_animTimeEventFunc, Dragon_LeftPow_Attack_Shake_Evn, "LeftPow_Attack_Run");
+
     }
 
     private void Dragon_Rush_AttackRun_StartJump_Evn(EvnData evnData)
@@ -43,7 +46,7 @@ public class AnimStateEventCollection : BaseAnimStateEventsCollection
         float RushMoveSpeed = evnData.FloatParam;
         r.AddForce(MoveDir * RushMoveSpeed, ForceMode.Impulse);
 
-        Debug.Log("Run_Jamp");
+        //Debug.Log("Run_Jamp");
     }
 
     private void Dragon_Rush_AttackRun_Jamp_Evn(EvnData evnData)
@@ -90,6 +93,18 @@ public class AnimStateEventCollection : BaseAnimStateEventsCollection
 
         r.AddForce(MoveDir * RightPowMoveSpeed, ForceMode.Impulse);
 
+    }
+
+    private void Dragon_RightPow_Attack_Shake_Evn(EvnData evnData)
+    {
+        UtilityManager.Instance.ShakePlayerDistance();
+        Debug.Log("RightRow_Attack_Exit_Evn");
+    }
+    
+    private void Dragon_LeftPow_Attack_Shake_Evn(EvnData evnData)
+    {
+        UtilityManager.Instance.ShakePlayerDistance();
+        Debug.Log("LeftRow_Attack_Exit_Evn");
     }
 
 

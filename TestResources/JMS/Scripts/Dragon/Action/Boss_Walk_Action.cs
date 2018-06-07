@@ -39,10 +39,10 @@ public class Boss_Walk_Action : ActionTask
             15.0f * Time.deltaTime
             );
 
-        float RushDistance = BlackBoard.Instance.RushDistance;
+        float WalkDistance = BlackBoard.Instance.WalkDistance;
 
         BlackBoard.Instance.IsWalk =
-            !UtilityManager.DistanceCalc(Dragon, Player, RushDistance);
+            !UtilityManager.DistanceCalc(Dragon, Player, WalkDistance);
 
         BlackBoard.Instance.GetGroundTime().CurWalkTime += Time.deltaTime;
 

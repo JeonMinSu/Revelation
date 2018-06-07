@@ -92,7 +92,7 @@ public class BulletHoming : Bullet
     protected override void Reset()
     {
         base.Reset(); 
-        Debug.Log("homing Bullet Reset");
+        //Debug.Log("homing Bullet Reset");
     }
 
     public void GetDamage(float damage) { currentHP -= damage; }

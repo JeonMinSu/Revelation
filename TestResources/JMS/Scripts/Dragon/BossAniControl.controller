@@ -223,6 +223,13 @@ MonoBehaviour:
     ObjectParam: {fileID: 0}
     RunTime: 0.125
     IsLoop: 0
+  - StateFuncName: Dragon_LeftPow_Attack_Shake_Evn
+    IntParam: 0
+    FloatParam: 0
+    StringParam: 
+    ObjectParam: {fileID: 0}
+    RunTime: 0.452
+    IsLoop: 0
 --- !u!114 &114137166627798206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,6 +305,13 @@ MonoBehaviour:
     StringParam: 
     ObjectParam: {fileID: 0}
     RunTime: 0.125
+    IsLoop: 0
+  - StateFuncName: Dragon_RightPow_AttackRun_Evn
+    IntParam: 0
+    FloatParam: 0
+    StringParam: 
+    ObjectParam: {fileID: 0}
+    RunTime: 0.452
     IsLoop: 0
 --- !u!114 &114602548182054202
 MonoBehaviour:
@@ -3149,7 +3163,7 @@ AnimatorStateMachine:
     m_Position: {x: -192, y: 132, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 1107329216774004670}
-    m_Position: {x: 108, y: 528, z: 0}
+    m_Position: {x: 36, y: 492, z: 0}
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:

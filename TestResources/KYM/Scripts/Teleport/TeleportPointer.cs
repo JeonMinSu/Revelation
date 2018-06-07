@@ -13,11 +13,14 @@ public class TeleportPointer : MonoBehaviour
     public Material graphicMaterial;
  
     public LayerMask teleportLayer = ~0;
+    public LayerMask parabolHitLayer = ~0;
 
     [SerializeField]
     private GameObject selectionPadPrefab;
     [SerializeField]
     private GameObject invalidPadPrefab;
+
+
 
 
     public Vector3 SelectedPoint { get; private set; }
@@ -228,7 +231,7 @@ public class TeleportPointer : MonoBehaviour
         return ret;
     }
 
-    private static bool CalculateParabolicCurve(Vector3 p0, Vector3 v0, Vector3 a, float dist, int points,int teleportLayer, List<Vector3> outPts, out Vector3 normal)
+    private bool CalculateParabolicCurve(Vector3 p0, Vector3 v0, Vector3 a, float dist, int points,int teleportLayer, List<Vector3> outPts, out Vector3 normal)
     {
         outPts.Clear();
         outPts.Add(p0);
@@ -246,12 +249,12 @@ public class TeleportPointer : MonoBehaviour
             
             RaycastHit hitInfo;
             Ray ray = new Ray(last, dir.normalized);
-            if(Physics.Raycast(ray, out hitInfo, distance))
+            if(Physics.Raycast(ray, out hitInfo, distance, parabolHitLayer))
             {
                 outPts.Add(hitInfo.point);
                 normal = hitInfo.normal;
                 int layer = hitInfo.collider.gameObject.layer;
-                Debug.Log(layer);
+                //Debug.Log(layer);
                 if(teleportLayer == (teleportLayer |(1 << layer)))
                 {
                     return true;

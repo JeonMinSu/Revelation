@@ -21,9 +21,10 @@ public class BulletBase : Bullet {
         for (int i = 0; i < hitInfo.Length; i++)
         {
             Collider _col = hitInfo[i].collider;
-            if (col.tag == "BulletHoming")
+            if (_col.tag == "BulletHoming")
             {
-                col.gameObject.GetComponent<BulletHoming>().GetDamage(Damage);
+                _col.gameObject.GetComponent<BulletHoming>().GetDamage(Damage);
+                Debug.Log("HitIce");
                 break;
             }
         }
@@ -36,7 +37,7 @@ public class BulletBase : Bullet {
     protected override void Reset()
     {
         base.Reset();
-        Debug.Log("BulletBase Reset");
+        //Debug.Log("BulletBase Reset");
     }
 
 }

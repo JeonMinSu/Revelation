@@ -20,7 +20,7 @@ public class Boss_RightPow_Attack_Decorator : DecoratorTask
 
         if (IsRightPowAttacking)
         {
-            Debug.Log("RightPowAttack");
+            //Debug.Log("RightPowAttack");
             return ChildNode.Run();
         }
 

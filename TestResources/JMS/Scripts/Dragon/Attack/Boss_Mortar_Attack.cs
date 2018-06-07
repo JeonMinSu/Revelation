@@ -7,16 +7,21 @@ public class Boss_Mortar_Attack : ActionTask
 
     public override bool Run()
     {
-
         bool IsMortarAttacking = BlackBoard.Instance.IsMortarAttacking;
 
         float curTime = BlackBoard.Instance.GetGroundTime().CurWalkTime;
         float runTime = BlackBoard.Instance.GetGroundTime().MaxWalkTime;
 
+        Transform Dragon = UtilityManager.Instance.DragonTransform();
+        Transform Player = UtilityManager.Instance.PlayerTransform();
+
+        float Distance = BlackBoard.Instance.HowlingDistance;
+
+
         if (curTime >= runTime)
             BlackBoard.Instance.GetGroundTime().CurWalkTime = 0.0f;
 
-        BlackBoard.Instance.IsWalk = true;
+        BlackBoard.Instance.IsWalk = !UtilityManager.DistanceCalc(Dragon, Player, Distance);
 
         //if (!IsMortarAttacking)
         //{

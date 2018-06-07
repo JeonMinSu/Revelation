@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4552195389335558}
   - component: {fileID: 198670048689015196}
   - component: {fileID: 199637783263416468}
-  m_Layer: 8
+  m_Layer: 19
   m_Name: aura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4910702032118248}
   - component: {fileID: 96512381367703606}
-  m_Layer: 8
+  m_Layer: 19
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4011497861450008}
   - component: {fileID: 198806357647102114}
   - component: {fileID: 199822027711813156}
-  m_Layer: 8
+  m_Layer: 19
   m_Name: froast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 114945803161500104}
   - component: {fileID: 114975695287330290}
   - component: {fileID: 136819963054030160}
-  m_Layer: 8
+  m_Layer: 19
   m_Name: HomingMissileDragon
   m_TagString: BulletHoming
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4956070317799112}
   - component: {fileID: 198387154193328296}
   - component: {fileID: 199415974334185360}
-  m_Layer: 8
+  m_Layer: 19
   m_Name: debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4092127364430384}
   - component: {fileID: 33230090351408326}
   - component: {fileID: 23663086286010346}
-  m_Layer: 8
+  m_Layer: 19
   m_Name: ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,12 +371,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457372cfa887ddb44b6790b693d5f15b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 50
+  moveSpeed: 20
   damage: 10
   hitLayer:
     serializedVersion: 2
-    m_Bits: 3328
-  homingPower: 1.5
+    m_Bits: 265472
+  homingPower: 1.2
   target: 1
   maxHP: 20
 --- !u!136 &136819963054030160

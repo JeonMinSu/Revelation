@@ -257,6 +257,8 @@ public class BlackBoard : Singleton<BlackBoard>
     public float PlayerMaxHP;
     public float CurPlayerHP;
 
+    public float WalkDistance;
+
     public void Awake()
     {
         _isGround = true;

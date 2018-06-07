@@ -21,7 +21,7 @@ public class Boss_HowlingAttack_Decorator : DecoratorTask
 
         if ((IsHowling && !IsGroundAttacking) || IsHowlingAttacking)
         {
-            Debug.Log("Howling_Attack_Decorator");
+            //Debug.Log("Howling_Attack_Decorator");
 
             return ChildNode.Run();
         }

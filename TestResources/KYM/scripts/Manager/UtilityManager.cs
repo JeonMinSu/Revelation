@@ -32,6 +32,35 @@ public class UtilityManager :  Singleton<UtilityManager>
         Shake.PlayerShake(_playTime, _radius, _waitTime);
     }
 
+    public void ShakePlayerDistance()
+    {
+        //70
+        Vector3 dir = PlayerPosition() - DragonPosition();
+        float distane = Mathf.Abs(dir.magnitude);
+        float _radius = 0.5f;
+        if (distane > 70)
+            return;
+        else
+        {
+            _radius = _radius - (distane / 70.0f * 0.3f);
+            Shake.PlayerShake(0.3f, _radius + 0.1f, 0.02f);
+        }
+    }
+
+    public void ShakePlayerHowling()
+    {
+        Vector3 dir = PlayerPosition() - DragonPosition();
+        float distane = Mathf.Abs(dir.magnitude);
+        float _radius = 0.7f;
+        if (distane > 100)
+            return;
+        else
+        {
+            _radius = _radius - (distane / 100.0f * 0.5f);
+            Shake.PlayerShake(0.5f, _radius + 0.1f, 0.02f);
+        }
+    }
+
     public static bool DistanceCalc(Transform This, Transform Target, float Range)
     {
         if (Vector3.Distance(This.position, Target.position) <= Range)

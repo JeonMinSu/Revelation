@@ -173,7 +173,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4478333491980404}
   - component: {fileID: 95791955034913302}
-  - component: {fileID: 114100617064253958}
   - component: {fileID: 114767447879344734}
   m_Layer: 0
   m_Name: FX_Howling_Atk
@@ -338,18 +337,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114100617064253958
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1846929648790642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5e97adaef60f0438af96b30d4caa08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooltag: Howling
 --- !u!114 &114767447879344734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -361,8 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b090788762e5d41b0c46cfa92ae076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offset: {x: 0, y: 0, z: 12}
-  effTag: 0
+  pooltag: Howling
 --- !u!198 &198110845915582896
 ParticleSystem:
   m_ObjectHideFlags: 1

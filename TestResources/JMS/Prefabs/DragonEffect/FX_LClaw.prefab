@@ -37,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4259536151102918}
   - component: {fileID: 95563767427119596}
-  - component: {fileID: 114682269654239294}
   - component: {fileID: 114108746611689690}
   m_Layer: 0
   m_Name: FX_LClaw
@@ -191,20 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b090788762e5d41b0c46cfa92ae076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offset: {x: 0, y: 0, z: 0}
-  effTag: 4
---- !u!114 &114682269654239294
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1079389888084736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5e97adaef60f0438af96b30d4caa08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooltag: DragonLClaw
+  pooltag: LClaw
 --- !u!198 &198033442592267696
 ParticleSystem:
   m_ObjectHideFlags: 1

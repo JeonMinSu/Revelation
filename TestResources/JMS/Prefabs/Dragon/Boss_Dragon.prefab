@@ -715,7 +715,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4643591917322504}
   - component: {fileID: 95260086860389258}
-  - component: {fileID: 114538540588884634}
   - component: {fileID: 114853389275379342}
   m_Layer: 0
   m_Name: FX_LClaw
@@ -947,7 +946,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4215631143872306}
-  - component: {fileID: 114619579326797800}
   - component: {fileID: 114731929628085292}
   m_Layer: 0
   m_Name: FX_dust
@@ -1114,7 +1112,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4595826125005042}
   - component: {fileID: 95393747288331152}
-  - component: {fileID: 114633969945839650}
   - component: {fileID: 114768518625011100}
   m_Layer: 0
   m_Name: FX_Howling_Atk
@@ -1197,7 +1194,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4134173085984140}
   - component: {fileID: 95327256973216220}
-  - component: {fileID: 114211515041808850}
   - component: {fileID: 114939481788327262}
   m_Layer: 0
   m_Name: FX_RClaw
@@ -1505,7 +1501,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4968179955147506}
-  - component: {fileID: 114028872791611790}
   - component: {fileID: 114995107643349146}
   m_Layer: 0
   m_Name: FX_Dragon_LeftPow_Atk
@@ -1657,7 +1652,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4767230230732210}
   - component: {fileID: 95673702703006992}
-  - component: {fileID: 114183337713349656}
   - component: {fileID: 114179251375112642}
   m_Layer: 0
   m_Name: FX_Dragon_RightPow_Atk
@@ -5313,18 +5307,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114028872791611790
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651572008710604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5e97adaef60f0438af96b30d4caa08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooltag: LeftPow
 --- !u!114 &114179251375112642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5336,32 +5318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b090788762e5d41b0c46cfa92ae076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offset: {x: 0, y: 0, z: 0}
-  effTag: 3
---- !u!114 &114183337713349656
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1708656252632628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5e97adaef60f0438af96b30d4caa08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   pooltag: RightPow
---- !u!114 &114211515041808850
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1517355662913396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5e97adaef60f0438af96b30d4caa08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooltag: RClaw
 --- !u!114 &114225724410446642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5423,42 +5380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3410fac73f973cd40aa141b9ca78c896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114538540588884634
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1244060568525490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5e97adaef60f0438af96b30d4caa08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooltag: LClaw
---- !u!114 &114619579326797800
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1363312522109224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5e97adaef60f0438af96b30d4caa08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooltag: Dust
---- !u!114 &114633969945839650
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1491424607180212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5e97adaef60f0438af96b30d4caa08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooltag: Howling
 --- !u!114 &114696583506396826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5492,8 +5413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b090788762e5d41b0c46cfa92ae076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offset: {x: 0, y: 0, z: 0}
-  effTag: 1
+  pooltag: Dust
 --- !u!114 &114768518625011100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5505,8 +5425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b090788762e5d41b0c46cfa92ae076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offset: {x: 0, y: 0, z: 12}
-  effTag: 0
+  pooltag: Howling
 --- !u!114 &114853389275379342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5518,8 +5437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b090788762e5d41b0c46cfa92ae076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offset: {x: 0, y: 0, z: 0}
-  effTag: 4
+  pooltag: LClaw
 --- !u!114 &114939481788327262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5531,8 +5449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b090788762e5d41b0c46cfa92ae076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offset: {x: 0, y: 0, z: 0}
-  effTag: 5
+  pooltag: RClaw
 --- !u!114 &114995107643349146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5544,8 +5461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b090788762e5d41b0c46cfa92ae076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offset: {x: 0, y: 0, z: 0}
-  effTag: 2
+  pooltag: LeftPow
 --- !u!135 &135027384928227130
 SphereCollider:
   m_ObjectHideFlags: 1

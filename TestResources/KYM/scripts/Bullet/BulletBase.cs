@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletBase : Bullet {
 
+    PoolObject destroyParticle;
     // Use this for initialization
     public override void Init()
     {

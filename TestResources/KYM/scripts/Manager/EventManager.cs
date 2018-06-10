@@ -2,36 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// 
-/// 작성일 : 2018 - 06 - 09
-/// 작성자 : 전민수
-/// 작업내용 : 이펙트관리(내부적으로 가지고 있는 이펙트와 오브젝트 풀링으로 사용하는 이펙트 관리)
-/// 
-/// 이펙트를 추가할 시 EFFECTTAGS라는 enum에 이펙트태크 추가
-/// InnerEffect로 시작하는 함수들은 이펙트가 오브젝트 내부적으로 가지고 처리하는 이펙트
-/// PoolEffect로 시작하는 함수들은 오브젝트 풀링으로 처리하는 이펙트
-/// 
-/// 나도 이제 모르게다아아아아아아아아 ~~~@~!@~@~!@~@~!@!~@!~@
-/// </summary>
-
-[System.Serializable]
+/*
 //이펙트 오브젝트 데이터
+//[System.Serializable]
 public struct EffectObjectData
 {
     public GameObject UseObject;                    //이펙트를 사용할 오브젝트
-    public List<EffectObject> EF_Object;              //이펙트 오브젝트
+    public List<PoolObject> EF_Object;              //이펙트 오브젝트
 
-    public EffectObjectData(GameObject useObject, List<EffectObject> ef_Object)
+    public EffectObjectData(GameObject useObject, List<PoolObject> ef_Object)
     {
         this.UseObject = useObject;
         this.EF_Object = ef_Object;
     }
 
 }
+*/
 
 public class EventManager : Singleton<EventManager>
 {
+    /*
     //내부적으로 가지고 있는 이펙트들의 데이터
     [SerializeField]
     private List<EffectObjectData> EF_Objects = new List<EffectObjectData>();
@@ -40,7 +30,7 @@ public class EventManager : Singleton<EventManager>
     private Dictionary<string, Dictionary<EFFECTTAGS, EffectObject>> Effects = new Dictionary<string, Dictionary<EFFECTTAGS, EffectObject>>();
 
     //오브젝트 풀링으로 처리해야 되는 이펙트들
-    private Dictionary<EFFECTTAGS, EffectObject> PoolEffects = new Dictionary<EFFECTTAGS, EffectObject>();
+    //private Dictionary<EFFECTTAGS, EffectObject> PoolEffects = new Dictionary<EFFECTTAGS, EffectObject>();
 
     private void Awake()
     {
@@ -160,8 +150,6 @@ public class EventManager : Singleton<EventManager>
         effect = null;
         return;
 
-
-        /*
         string useKey = useObj.tag;
 
         Dictionary<EFFECTTAGS, EffectObject> effs = GetEffectObejct(useKey);
@@ -196,7 +184,6 @@ public class EventManager : Singleton<EventManager>
         effObj = null;
 
         return;
-        */
     }
 
     /// <summary>
@@ -264,7 +251,6 @@ public class EventManager : Singleton<EventManager>
             }
         }
         effObj = null;
-        */
     }
 
     /// <summary>
@@ -331,8 +317,6 @@ public class EventManager : Singleton<EventManager>
             effect.SetActive(false);
         }
     }
-
-    /*
     public void DragonHowlingEffectOn(Transform useObj, Vector3 pos, Vector3 dir)
     {
 

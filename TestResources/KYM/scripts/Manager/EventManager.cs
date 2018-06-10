@@ -20,9 +20,9 @@ using UnityEngine;
 public struct EffectObjectData
 {
     public GameObject UseObject;                    //이펙트를 사용할 오브젝트
-    public List<PoolObject> EF_Object;              //이펙트 오브젝트
+    public List<EffectObject> EF_Object;              //이펙트 오브젝트
 
-    public EffectObjectData(GameObject useObject, List<PoolObject> ef_Object)
+    public EffectObjectData(GameObject useObject, List<EffectObject> ef_Object)
     {
         this.UseObject = useObject;
         this.EF_Object = ef_Object;
@@ -40,7 +40,7 @@ public class EventManager : Singleton<EventManager>
     private Dictionary<string, Dictionary<EFFECTTAGS, EffectObject>> Effects = new Dictionary<string, Dictionary<EFFECTTAGS, EffectObject>>();
 
     //오브젝트 풀링으로 처리해야 되는 이펙트들
-    //private Dictionary<EFFECTTAGS, EffectObject> PoolEffects = new Dictionary<EFFECTTAGS, EffectObject>();
+    private Dictionary<EFFECTTAGS, EffectObject> PoolEffects = new Dictionary<EFFECTTAGS, EffectObject>();
 
     private void Awake()
     {

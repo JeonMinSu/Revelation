@@ -30,8 +30,6 @@ public class Boss_LeftPow_Attack : ActionTask
         float curTime = 0.0f;
         float runTime = BlackBoard.Instance.GetGroundTime().SecondAttackRunTime;
 
-        DragonManager.Instance.LeftPowEffect.SetActive(true);
-        DragonManager.Instance.LeftClaw.SetActive(true);
 
         //선딜
         DragonAniManager.SwicthAnimation("LeftPow_Atk_Pre");
@@ -49,10 +47,6 @@ public class Boss_LeftPow_Attack : ActionTask
         //후딜
         DragonAniManager.SwicthAnimation("LeftPow_Atk_After");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(afterTime));
-
-
-        DragonManager.Instance.LeftPowEffect.SetActive(false);
-        DragonManager.Instance.LeftClaw.SetActive(false);
 
         BlackBoard.Instance.IsLeftPowAttacking = false;
         BlackBoard.Instance.IsSecondAttack = false;

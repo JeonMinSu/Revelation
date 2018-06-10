@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour {
 
     public virtual void Init() { }
     //초기화
-    public  virtual void Init(Vector3 _moveDir){ moveDir = _moveDir; }
+    public virtual void Init(Vector3 _moveDir){ moveDir = _moveDir; }
 
     //이동
     protected virtual void Move(){ }

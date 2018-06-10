@@ -54,36 +54,29 @@ public class Boss_Howling_Attack : ActionTask
         }
 
         //선딜
-        DragonManager.Instance.HowlingEffect.SetActive(true);
+        GameObject DragonHowling;
+        EventManager.Instance.InnerEffectObjectOn(Dragon, EFFECTTAGS.Howling, out DragonHowling);
+
         DragonAniManager.SwicthAnimation("Howling_Atk_Pre");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(preTime));
 
         //런 타임
         DragonAniManager.SwicthAnimation("Howling_Atk_Run");
-
-        BulletManager.Instance.CreateDragonHomingBullet(mouth.position, (mouth.forward + Vector3.up * 3).normalized);
-        BulletManager.Instance.CreateDragonHomingBullet(mouth.position, (mouth.forward + mouth.right * 10.0f + Vector3.up * 3).normalized);
-        BulletManager.Instance.CreateDragonHomingBullet(mouth.position, (mouth.forward + mouth.right * 5.0f + Vector3.up * 4).normalized);
-
-        BulletManager.Instance.CreateDragonHomingBullet(mouth.position, (mouth.forward - mouth.right * 10.0f + Vector3.up * 3).normalized);
-        BulletManager.Instance.CreateDragonHomingBullet(mouth.position, (mouth.forward - mouth.right * 5.0f + Vector3.up * 4).normalized);
-
-
-
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(runTime));
 
         //후딜 
         DragonAniManager.SwicthAnimation("Howling_Atk_After");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(afterTime));
-        DragonManager.Instance.HowlingEffect.SetActive(false);
+        EventManager.Instance.InnerEffectObjectOff(Dragon, DragonHowling);
 
         BlackBoard.Instance.IsRoarAttacking = false;
         BlackBoard.Instance.IsGroundAttacking = false;
 
-        float WalkDistance = BlackBoard.Instance.RushDistance;
+        float RushDistance = BlackBoard.Instance.RushDistance;
+
         BlackBoard.Instance.GetGroundTime().CurWalkTime = 0.0f;
         BlackBoard.Instance.IsWalk = 
-            !UtilityManager.DistanceCalc(Dragon, Player, WalkDistance);
+            !UtilityManager.DistanceCalc(Dragon, Player, RushDistance);
 
     }
 }

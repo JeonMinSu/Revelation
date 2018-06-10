@@ -14,27 +14,6 @@ namespace DragonController
         private BehaviorTree _dragonBehaviroTree;
         public BehaviorTree DragonBehaviroTree { get { return _dragonBehaviroTree; } }
 
-        [SerializeField]
-        private GameObject _howlingEffect;
-        public GameObject HowlingEffect { get{ return _howlingEffect; } }
-
-        [SerializeField]
-        private GameObject _rightPowEffect;
-        public GameObject RightPowEffect { get { return _rightPowEffect; } }
-
-        [SerializeField]
-        private GameObject _rightClaw;
-        public GameObject RightClaw { get { return _rightClaw; } }
-
-        [SerializeField]
-        private GameObject _leftPowEffect;
-        public GameObject LeftPowEffect { get { return _leftPowEffect; } }
-
-        [SerializeField]
-        private GameObject _leftClaw;
-        public GameObject LeftClaw { get { return _leftClaw; } }
-
-
         private static ObjectMovement _dragonMovement;
         public static ObjectMovement DragonMovement { get { return _dragonMovement; } }
 
@@ -55,6 +34,7 @@ namespace DragonController
             _dragonRigidBody = GetComponent<Rigidbody>();
 
             _dragonAiCor = StartDragonAI();
+
         }
 
         // Use this for initialization

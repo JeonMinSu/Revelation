@@ -13,6 +13,7 @@ public class BulletManager : Singleton<BulletManager>
         Quaternion rot = Quaternion.LookRotation(_dir, Vector3.up);
         GameObject bullet;
         PoolManager.Instance.PopObject(bulletBaseDragon.pooltag, out bullet);
+
         if(bullet != null)
         {
             bullet.transform.position = _position;
@@ -26,6 +27,7 @@ public class BulletManager : Singleton<BulletManager>
     {
         GameObject bullet;
         PoolManager.Instance.PopObject(bulletBaseDragon.pooltag, out bullet);
+
         if (bullet != null)
         {
             bullet.transform.position = _firePos.position;

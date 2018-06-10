@@ -30,7 +30,6 @@ public class AnimStateEventCollection : BaseAnimStateEventsCollection
 
         r.AddForce(Dragon.forward * RushMoveSpeed, ForceMode.Impulse);
 
-        Debug.Log("Start_Jump");
     }
 
     private void Dragon_Rush_AttackRun_Jamping_Evn(EvnData evnData)
@@ -43,7 +42,6 @@ public class AnimStateEventCollection : BaseAnimStateEventsCollection
         float RushMoveSpeed = evnData.FloatParam;
         r.AddForce(MoveDir * RushMoveSpeed, ForceMode.Impulse);
 
-        Debug.Log("Run_Jamp");
     }
 
     private void Dragon_Rush_AttackRun_Jamp_Evn(EvnData evnData)

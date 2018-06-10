@@ -28,9 +28,6 @@ public class Boss_RightPow_Attack : ActionTask
         float curTime = 0.0f;
         float runTime = BlackBoard.Instance.GetGroundTime().SecondAttackRunTime;
 
-        DragonManager.Instance.RightPowEffect.SetActive(true);
-        DragonManager.Instance.RightClaw.SetActive(true);
-
         //선딜 애니메이션
         DragonAniManager.SwicthAnimation("RightPow_Atk_Pre");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(preTime));
@@ -48,9 +45,6 @@ public class Boss_RightPow_Attack : ActionTask
         //후딜 애니메이션
         DragonAniManager.SwicthAnimation("RightRow_Atk_After");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(afterTime));
-
-        DragonManager.Instance.RightPowEffect.SetActive(false);
-        DragonManager.Instance.RightClaw.SetActive(false);
 
         BlackBoard.Instance.IsRightPowAttacking = false;
         BlackBoard.Instance.IsSecondAttack = false;

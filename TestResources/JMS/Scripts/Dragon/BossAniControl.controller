@@ -299,6 +299,13 @@ MonoBehaviour:
     ObjectParam: {fileID: 0}
     RunTime: 0.125
     IsLoop: 0
+  - StateFuncName: Dragon_RightPow_AttackRun_Evn
+    IntParam: 0
+    FloatParam: 150
+    StringParam: 
+    ObjectParam: {fileID: 0}
+    RunTime: 0.125
+    IsLoop: 0
 --- !u!114 &114602548182054202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -900,10 +907,10 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 1
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0.011276302
+  m_ExitTime: 0.99999976
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -2187,9 +2194,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.006982391
-  m_TransitionOffset: 0
-  m_ExitTime: 0.993085
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0.003220082
+  m_ExitTime: 0.9998915
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -2997,7 +3004,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Dragon_RightRow_After
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101071274369822956}
@@ -3026,7 +3033,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Dragon_RightRow_Pre
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101900566150000830}

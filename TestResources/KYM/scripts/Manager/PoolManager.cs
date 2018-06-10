@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [System.Serializable]
-struct PoolObjectData
+public struct PoolObjectData
 {
     [SerializeField] public GameObject poolObject;
     [SerializeField] public int initialCount;
@@ -14,9 +14,11 @@ public class PoolManager : Singleton<PoolManager>
 {
     [SerializeField]
     private PoolObjectData[] poolObjects;
+    public PoolObjectData[] PoolObjects { get { return poolObjects; } }
+
     Dictionary<string, List<GameObject>> poolLists;
 
-    private void Start()
+    private void Awake()
     {
         poolLists = new Dictionary<string, List<GameObject>>();
 
@@ -26,9 +28,10 @@ public class PoolManager : Singleton<PoolManager>
         }
     }
 
-    void ListCreate(GameObject _gameObject,int count)
+    void ListCreate(GameObject _gameObject, int count)
     {
         List<GameObject> list = new List<GameObject>();
+
         if(_gameObject.GetComponent<PoolObject>() != null)
         {
             poolLists.Add(_gameObject.GetComponent<PoolObject>().pooltag, list);
@@ -52,7 +55,9 @@ public class PoolManager : Singleton<PoolManager>
 
             if (poolLists[_poolTag] != null)
             {
-                _gameObject.GetComponent<PoolObject>().Reset();
+                if (_gameObject.GetComponent<PoolObject>().Reset != null)
+                    _gameObject.GetComponent<PoolObject>().Reset();
+
                 _gameObject.SetActive(false);
                 poolLists[_poolTag].Add(_gameObject);
             }
@@ -92,6 +97,8 @@ public class PoolManager : Singleton<PoolManager>
             Debug.LogWarning("Not Found" + poolTag + " tag");
         }
     }
+
+
 }
 
 

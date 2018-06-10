@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooltag: Dust
+  _endTime: 5
 --- !u!198 &198035851891352150
 ParticleSystem:
   m_ObjectHideFlags: 1

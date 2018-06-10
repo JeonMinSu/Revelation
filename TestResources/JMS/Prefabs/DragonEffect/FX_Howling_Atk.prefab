@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooltag: Howling
+  _endTime: 5
 --- !u!198 &198110845915582896
 ParticleSystem:
   m_ObjectHideFlags: 1

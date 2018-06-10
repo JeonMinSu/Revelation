@@ -53,7 +53,7 @@ public class Boss_Howling_Attack : ActionTask
             yield return CoroutineManager.FiexdUpdate;
         }
 
-        //선딜
+
         DragonAniManager.SwicthAnimation("Howling_Atk_Pre");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(preTime));
 

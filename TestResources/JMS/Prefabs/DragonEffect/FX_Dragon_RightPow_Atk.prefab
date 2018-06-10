@@ -983,6 +983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooltag: RightPow
+  _endTime: 5
 --- !u!198 &198010071445973146
 ParticleSystem:
   m_ObjectHideFlags: 1

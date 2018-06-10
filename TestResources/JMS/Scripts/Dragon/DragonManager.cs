@@ -32,7 +32,6 @@ namespace DragonController
             _stat = GetComponent<DragonStat>();
             _dragonMovement = GetComponent<ObjectMovement>();
             _dragonRigidBody = GetComponent<Rigidbody>();
-
             _dragonAiCor = StartDragonAI();
 
         }
@@ -84,8 +83,6 @@ namespace DragonController
             {
                 yield return CoroutineManager.FiexdUpdate;
             }
-            Debug.Log("end");
         }
     }
-
 }

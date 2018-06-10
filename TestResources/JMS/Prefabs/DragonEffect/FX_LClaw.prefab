@@ -191,6 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooltag: LClaw
+  _endTime: 5
 --- !u!198 &198033442592267696
 ParticleSystem:
   m_ObjectHideFlags: 1

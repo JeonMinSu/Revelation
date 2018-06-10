@@ -948,7 +948,7 @@ GameObject:
   - component: {fileID: 4215631143872306}
   - component: {fileID: 114731929628085292}
   m_Layer: 0
-  m_Name: FX_dust
+  m_Name: FX_Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1700,7 +1700,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4720033832227766}
-  - component: {fileID: 135130932136643664}
+  - component: {fileID: 136135232199218010}
   m_Layer: 9
   m_Name: Bip001 Head
   m_TagString: Untagged
@@ -5319,6 +5319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooltag: RightPow
+  _endTime: 5
 --- !u!114 &114225724410446642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5414,6 +5415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooltag: Dust
+  _endTime: 5
 --- !u!114 &114768518625011100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5426,6 +5428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooltag: Howling
+  _endTime: 5
 --- !u!114 &114853389275379342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5438,6 +5441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooltag: LClaw
+  _endTime: 5
 --- !u!114 &114939481788327262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5450,6 +5454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooltag: RClaw
+  _endTime: 5
 --- !u!114 &114995107643349146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5462,6 +5467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooltag: LeftPow
+  _endTime: 5
 --- !u!135 &135027384928227130
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -5522,18 +5528,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.2
   m_Center: {x: 0.42, y: 0, z: 0}
---- !u!135 &135130932136643664
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1723699165426968}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 3.95
-  m_Center: {x: -0.83, y: 0, z: 0}
 --- !u!135 &135161706132701376
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -5872,6 +5866,19 @@ CapsuleCollider:
   m_Height: 8.5
   m_Direction: 0
   m_Center: {x: -5.2, y: 0, z: 0}
+--- !u!136 &136135232199218010
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1723699165426968}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.43
+  m_Height: 7.3
+  m_Direction: 1
+  m_Center: {x: -0.19, y: 0, z: 0}
 --- !u!136 &136140673230399538
 CapsuleCollider:
   m_ObjectHideFlags: 1

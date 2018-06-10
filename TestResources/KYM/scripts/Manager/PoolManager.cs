@@ -14,7 +14,6 @@ public class PoolManager : Singleton<PoolManager>
 {
     [SerializeField]
     private PoolObjectData[] poolObjects;
-    public PoolObjectData[] PoolObjects { get { return poolObjects; } }
 
     Dictionary<string, List<GameObject>> poolLists;
 

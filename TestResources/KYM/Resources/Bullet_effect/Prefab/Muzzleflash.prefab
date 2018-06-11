@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4377986328219680}
   - component: {fileID: 198586968913821450}
+  - component: {fileID: 114723403064806456}
   - component: {fileID: 199776747128998548}
   m_Layer: 0
   m_Name: Muzzleflash
@@ -43,7 +44,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1329010917853332
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,9 +81,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1187798113854730}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.494, y: 0.086, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -1.3503, y: -0.31424832, z: -1.9674308}
+  m_LocalScale: {x: 0.5, y: 0.5000008, z: 0.5000008}
   m_Children:
   - {fileID: 4921054612101212}
   - {fileID: 4342988985291294}
@@ -96,8 +97,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329010917853332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.193, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4377986328219680}
   m_RootOrder: 0
@@ -111,7 +112,7 @@ Light:
   m_Enabled: 0
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 0.2
   m_SpotAngle: 30
@@ -138,6 +139,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114723403064806456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1187798113854730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270d3dc14312b9d4aa9d6bdeae436a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198586968913821450
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -145,7 +157,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1187798113854730}
   serializedVersion: 5
-  lengthInSec: 0.2
+  lengthInSec: 0.25
   simulationSpeed: 1
   stopAction: 1
   looping: 0
@@ -198,7 +210,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 765807737
+  randomSeed: 795219290
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3559,7 +3571,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 0.25
   simulationSpeed: 1
-  stopAction: 1
+  stopAction: 0
   looping: 0
   prewarm: 0
   playOnAwake: 1
@@ -3610,7 +3622,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -2046192190
+  randomSeed: -1278433112
   InitialModule:
     serializedVersion: 3
     enabled: 1

@@ -236,6 +236,8 @@ MonoBehaviour:
   hitLayer:
     serializedVersion: 2
     m_Bits: 592128
+  collisionParticle: {fileID: 114668893591151330, guid: 89e9aa2d60fd0e54b9cba799a9f86ff3,
+    type: 2}
 --- !u!136 &136064534917911140
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -64,7 +64,7 @@ public class GunAnimation : MonoBehaviour {
         float moveAngle = 360.0f / (float)maxBulletCount;
         Vector3 currentAngle = magazine.transform.localEulerAngles;
 
-        for(float t = 0.0f; t<playTime; t += Time.deltaTime)
+        for(float t = 0.0f; t<playTime; t += Time.unscaledDeltaTime)
         {
             magazine.transform.localEulerAngles = currentAngle + new Vector3(0.0f, 0.0f, moveAngle * t / playTime);
             yield return new WaitForEndOfFrame();
@@ -84,13 +84,17 @@ public class GunAnimation : MonoBehaviour {
         float upTime = playTime * 0.3f;
         float downTime = playTime * 0.4f;
 
-        yield return new WaitForSeconds(waitTime);
+        //yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSecondsRealtime(waitTime);
+        //for (float t = 0.0f; t < waitTime; t += Time.unscaledDeltaTime)
+        //{
+        //    yield return new WaitForEndOfFrame();
+        //}
 
-        
         Quaternion changeRot = baseRot * Quaternion.Euler(-upRot, 0, 0);
         Vector3 changePos = basePos - gun.transform.localRotation * new Vector3(0,0,backZ);
         //changePos = gun.transform.worldToLocalMatrix * changePos;
-        for (float t = 0.0f; t < upTime; t += Time.deltaTime)
+        for (float t = 0.0f; t < upTime; t += Time.unscaledDeltaTime)
         {
 
             gun.transform.localRotation = Quaternion.Lerp(baseRot, changeRot, t / upTime);
@@ -98,7 +102,7 @@ public class GunAnimation : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
 
-        for(float t = 0.0f; t < downTime; t += Time.deltaTime)
+        for(float t = 0.0f; t < downTime; t += Time.unscaledDeltaTime)
         {
             gun.transform.localRotation = Quaternion.Lerp(changeRot,baseRot, t / downTime);
             gun.transform.localPosition = Vector3.Lerp(changePos, basePos, t / downTime);

@@ -33,6 +33,33 @@ public class PlayerVRController : MonoBehaviour
     private Vector3 lastClickAngle = Vector3.zero;
     private bool isClicking = false;
     public float HapticClickAngleStep = 10;
+    [SerializeField]
+    public float teleportMovingTime = 0.2f;
+
+    private bool isSlow = false;
+    private float slowTime = 0.0f;
+
+    [SerializeField]
+    private float maxSlowTime = 5.0f;
+
+    [SerializeField]
+    private TextMesh timeText;
+
+    [SerializeField]
+    private float freeMovingSpeed = 7.0f;
+
+    private int prevArrow;
+    [SerializeField]
+    private float dashCooltime;
+    [SerializeField]
+    private float dashCheckTime;
+
+    [SerializeField]
+    private float dashDistance;
+
+    private float calcDashCoolTime;
+    private float calcDashCheckTime;
+
 
     SteamVR_Controller.Device LeftHand
     {
@@ -49,6 +76,13 @@ public class PlayerVRController : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        prevArrow = -1;
+        calcDashCoolTime = 0.0f;
+        calcDashCheckTime = dashCheckTime;
+    }
+
     private void Start()
     {
         playerState = PlayerVRState.TeleportNone;
@@ -56,8 +90,14 @@ public class PlayerVRController : MonoBehaviour
 
     private void Update()
     {
-        Teleport();
-        GunFire();
+        //Teleport();
+        //GunFire();
+        //Slow();
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
     }
 
     void Teleport()
@@ -152,34 +192,124 @@ public class PlayerVRController : MonoBehaviour
         }
     }
 
+    void Slow()
+    {
+        if (LeftHand.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+        {
+            isSlow = !isSlow;
+        }
+        if(isSlow)
+        {
+            if (slowTime >= maxSlowTime)
+                isSlow = false;
+            else
+            {
+                Time.timeScale = 0.2f; 
+                slowTime += Time.unscaledDeltaTime;
+                if (slowTime > maxSlowTime) slowTime = maxSlowTime;
+            }
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+            if (slowTime > 0)
+                slowTime -= Time.unscaledDeltaTime / 6;
+            else
+                slowTime = 0;
+        }
+        timeText.text = slowTime.ToString();
+    }
 
+    private void Move()
+    {
+        if(RightHand.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+        {
+            //Debug.Log(prevArrow.ToString() + ArrowValue(8,RightHand.GetAxis()).ToString());
+            int currentArrow = ArrowValue(8, RightHand.GetAxis());
+            if (prevArrow == currentArrow &&
+                calcDashCheckTime < dashCheckTime &&
+                calcDashCoolTime <= 0)
+            {
+                Dash(8,prevArrow);
+                calcDashCoolTime = dashCooltime;
+                Debug.Log("Dash!");
+            }
+        }
+        else if (RightHand.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
+        {
+            Vector2 _axis = RightHand.GetAxis();
+            int _curretArrow = ArrowValue(8, _axis);
+            prevArrow = _curretArrow;
+
+            Vector3 forwardDir = headTransform.forward;
+            Vector3 rightDir = headTransform.right;
+            forwardDir.y = 0;
+            rightDir.y = 0;
+            Vector3 moveDir = forwardDir * _axis.y + rightDir * _axis.x;
+            moveDir.Normalize();
+            originTransform.transform.position += moveDir * freeMovingSpeed * Time.deltaTime;            
+        }
+        else if(RightHand.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
+        {
+            calcDashCheckTime = 0.0f;
+        }
+        else
+        {
+            if (calcDashCheckTime < dashCheckTime)
+                calcDashCheckTime += Time.fixedUnscaledDeltaTime;
+
+            if (calcDashCoolTime >= 0)
+                calcDashCoolTime -= Time.fixedUnscaledDeltaTime;
+        }
+    }
+
+    int ArrowValue(int divCount, Vector2 axis)
+    {
+        Vector2 baseAxis = new Vector2(0, 1.0f);
+        float angle = Vector2.SignedAngle(axis,baseAxis);
+        if (angle < 0)
+            angle = 360.0f + angle;
+
+ 
+        float d = 360.0f / divCount;
+        angle += (d / 2);
+
+        int retType = (int)(angle / d);
+
+        if (retType >= divCount)
+            retType = 0;
+
+        return retType;
+    }
+
+    private void Dash(int divCount, int value)
+    {
+        Vector3 dir = headTransform.forward;
+        dir.y = 0;
+
+        dir = Quaternion.AngleAxis(360.0f / divCount * value,Vector3.up) * dir.normalized;
+        
+        Vector3 dashPosition = originTransform.position + dir * dashDistance;
+
+ 
+        StartCoroutine(CorTeleport(dashPosition));
+    }
 
     IEnumerator CorTeleport(Vector3 teleportPosition)
     {
         Vector3 difference = originTransform.position - headTransform.position;
-        float t = 0.02f;
         Vector3 startPos = originTransform.position;
         difference.y = 0;
         teleportPosition += difference;
 
-        for (int i = 0; i < 10; i++)
+        for(float t = 0; t< teleportMovingTime;t += Time.unscaledDeltaTime)
         {
-            originTransform.position = Vector3.Lerp(startPos, teleportPosition, (float)i / 10);
-            yield return new WaitForSeconds(t);
+            originTransform.position = Vector3.Lerp(startPos, teleportPosition, t / teleportMovingTime);
+            yield return new WaitForEndOfFrame();
         }
         originTransform.position = teleportPosition;
         playerState = PlayerVRState.TeleportNone;
         yield return null;
     }
 
-    //public static bool MoveRight() { return Input.GetKey(KeyCode.D); }
-    //public static bool MoveLeft() { return Input.GetKey(KeyCode.A); }
-    //public static bool MoveForward() { return Input.GetKey(KeyCode.W); }
-    //public static bool MoveBackward() { return Input.GetKey(KeyCode.S); }
-    //public static bool Jump() { return Input.GetKeyDown(KeyCode.Space); }
-    //public static bool Attack() { return Input.GetMouseButton(0); }
-    //public static bool Flash() { return Input.GetKeyDown(KeyCode.LeftShift); }
-    //public static bool Slow() { return Input.GetKey(KeyCode.CapsLock); }
-    //public static float TurnX() { return Input.GetAxis("Mouse Y"); }
-    //public static float TurnY() { return Input.GetAxis("Mouse X"); }
 }

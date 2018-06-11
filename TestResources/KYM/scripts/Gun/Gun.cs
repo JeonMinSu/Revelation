@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(GunAnimation))]
+//[RequireComponent(typeof(GunAnimation))]
 public class Gun : MonoBehaviour {
 
     [SerializeField] private int maxBullet;
@@ -29,7 +29,7 @@ public class Gun : MonoBehaviour {
 	void Update ()
     {
 	    if(fireCoolTime > 0.0f)
-            fireCoolTime -= Time.deltaTime;
+            fireCoolTime -= Time.unscaledDeltaTime;
 
 	}
 
@@ -53,9 +53,13 @@ public class Gun : MonoBehaviour {
         fireCoolTime = fireDelay;
         currentBullet -= 1;
         bulletUI.text = currentBullet.ToString();
-        gunAni.MagazieTurn(0.1f,maxBullet);
-        gunAni.ShakeGun(0.2f, 30.0f, 0.05f);
-        gunAni.FireParticle(firePos.position + firePos.forward * 0.1f);
+        if(gunAni != null)
+        {
+            gunAni.MagazieTurn(0.1f, maxBullet);
+            gunAni.ShakeGun(fireDelay * 0.9f, 10.0f, 0.05f);
+            gunAni.FireParticle(firePos.position + firePos.forward * 0.1f);
+        }
+
     }
 
     public void Reload()

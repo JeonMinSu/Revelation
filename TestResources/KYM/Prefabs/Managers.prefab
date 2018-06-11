@@ -106,6 +106,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1951904506110838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4649036421356336}
+  - component: {fileID: 114916426133447440}
+  m_Layer: 0
+  m_Name: FModSoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4004658147496450
 Transform:
   m_ObjectHideFlags: 1
@@ -145,6 +161,19 @@ Transform:
   m_Father: {fileID: 4923399622263496}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4649036421356336
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1951904506110838}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4923399622263496}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4923399622263496
 Transform:
   m_ObjectHideFlags: 1
@@ -160,6 +189,7 @@ Transform:
   - {fileID: 4264976733494238}
   - {fileID: 4963622730063450}
   - {fileID: 4494962933767080}
+  - {fileID: 4649036421356336}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -223,6 +253,7 @@ MonoBehaviour:
   - poolObject: {fileID: 1165292288135156, guid: 89e9aa2d60fd0e54b9cba799a9f86ff3,
       type: 2}
     initialCount: 40
+  InitializePos: {x: 0, y: -3000, z: 0}
 --- !u!114 &114382599526017528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,6 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   Dragon: {fileID: 0}
+  Shake: {fileID: 0}
 --- !u!114 &114721763270991792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,3 +299,20 @@ MonoBehaviour:
   bulletBaseDragon: {fileID: 0}
   bulletHomingDragon: {fileID: 114945803161500104, guid: be3a19df4baa88a40902abdbb1af6f3a,
     type: 2}
+--- !u!114 &114916426133447440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1951904506110838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d003777d1c20c5f45a1b31eac32aac2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunFireSound: event:/SFX/PC/Weapon_RHand
+  GunReloadSound: event:/SFX/PC/Reload
+  TeleportSound: event:/SFX/PC/PC_Move
+  BossHowling: event:/SFX/Boss/Boss_Voice/B_Howling
+  Background: event:/SFX/BGM/Background
+  AmbientWind: event:/SFX/Ambient/New Event

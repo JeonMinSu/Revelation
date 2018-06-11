@@ -23,6 +23,8 @@ public class UtilityManager :  Singleton<UtilityManager>
     public Transform PlayerTransform() { return Player.transform; }
     public Transform DragonTransform() { return Dragon.transform; }
 
+    
+
     public void ShakePlayer()
     {
         Shake.PlayerShake();
@@ -31,7 +33,6 @@ public class UtilityManager :  Singleton<UtilityManager>
     {
         Shake.PlayerShake(_playTime, _radius, _waitTime);
     }
-
     public void ShakePlayerDistance()
     {
         //70
@@ -46,7 +47,6 @@ public class UtilityManager :  Singleton<UtilityManager>
             Shake.PlayerShake(0.3f, _radius + 0.1f, 0.02f);
         }
     }
-
     public void ShakePlayerHowling()
     {
         Vector3 dir = PlayerPosition() - DragonPosition();
@@ -60,7 +60,6 @@ public class UtilityManager :  Singleton<UtilityManager>
             Shake.PlayerShake(0.5f, _radius + 0.1f, 0.02f);
         }
     }
-
     public static bool DistanceCalc(Transform This, Transform Target, float Range)
     {
         if (Vector3.Distance(This.position, Target.position) <= Range)

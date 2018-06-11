@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BulletBase : Bullet {
 
-    // Use this for initialization
+    [SerializeField]
+    PoolObject collisionParticle;
+
     public override void Init()
     {
         moveDir = this.transform.forward;
@@ -13,7 +15,7 @@ public class BulletBase : Bullet {
 
     protected override void Move()
     {
-        this.transform.position += moveDir * Time.fixedDeltaTime * moveSpeed;
+        this.transform.position += moveDir * Time.fixedUnscaledDeltaTime * moveSpeed;
     }
 
     protected override void OnCollisionEvent()
@@ -29,7 +31,7 @@ public class BulletBase : Bullet {
             }
         }
         if(hitInfo.Length > 0)
-        EventManager.Instance.EventBulletExplosion(hitInfo[0].point);
+        EventManager.Instance.EventBulletExplosion(collisionParticle,hitInfo[0].point);
 
         PoolManager.Instance.PushObject(this.gameObject);
     }

@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class EventManager : Singleton<EventManager>
 {
-    [SerializeField] private PoolObject bulletExplosionParticle;
-    //[SerializeField] private PoolObject IceBlock;
-    public void EventBulletExplosion(Vector3 pos)
+
+    public void EventBulletExplosion(PoolObject poolObj, Vector3 pos)
     {
         GameObject obj;
-        PoolManager.Instance.PopObject(bulletExplosionParticle.pooltag, out obj);
+        PoolManager.Instance.PopObject(poolObj.pooltag, out obj);
         if(obj != null)
         {
             obj.transform.position = pos;

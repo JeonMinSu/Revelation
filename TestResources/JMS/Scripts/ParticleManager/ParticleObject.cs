@@ -28,6 +28,7 @@ public class ParticleObject : PoolObject
 
     private void Initialization()
     {
+        Debug.Log("Initialization");
     }
 
     public virtual void DestoryObject()

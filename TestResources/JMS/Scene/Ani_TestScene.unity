@@ -401,9 +401,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1325922995347680, guid: 62a6f0acf1e8c7b4a8f817f29302de66, type: 2}
+    - target: {fileID: 1786660347555668, guid: 62a6f0acf1e8c7b4a8f817f29302de66, type: 2}
       propertyPath: m_Name
-      value: Boss_DamageAmount_Failer
+      value: Boss_DamageAmount_Action
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62a6f0acf1e8c7b4a8f817f29302de66, type: 2}
@@ -447,46 +447,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114020845881792406, guid: a6b45d9ec08b6554582b1609ebd2357b,
-        type: 2}
-      propertyPath: _particlesDatas.Array.data[0]
-      value: 
-      objectReference: {fileID: 1673135936}
-    - target: {fileID: 114020845881792406, guid: a6b45d9ec08b6554582b1609ebd2357b,
-        type: 2}
-      propertyPath: _particlesDatas.Array.data[1]
-      value: 
-      objectReference: {fileID: 1668677319}
-    - target: {fileID: 114020845881792406, guid: a6b45d9ec08b6554582b1609ebd2357b,
-        type: 2}
-      propertyPath: _particlesDatas.Array.data[2]
-      value: 
-      objectReference: {fileID: 229901186}
-    - target: {fileID: 114020845881792406, guid: a6b45d9ec08b6554582b1609ebd2357b,
-        type: 2}
-      propertyPath: _particlesDatas.Array.data[3]
-      value: 
-      objectReference: {fileID: 1970042471}
-    - target: {fileID: 114020845881792406, guid: a6b45d9ec08b6554582b1609ebd2357b,
-        type: 2}
-      propertyPath: _particlesDatas.Array.data[4]
-      value: 
-      objectReference: {fileID: 878858161}
-    - target: {fileID: 114020845881792406, guid: a6b45d9ec08b6554582b1609ebd2357b,
-        type: 2}
-      propertyPath: _particlesDatas.Array.data[5]
-      value: 
-      objectReference: {fileID: 1309448713}
-    - target: {fileID: 114382599526017528, guid: a6b45d9ec08b6554582b1609ebd2357b,
-        type: 2}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 861997008}
-    - target: {fileID: 114382599526017528, guid: a6b45d9ec08b6554582b1609ebd2357b,
-        type: 2}
-      propertyPath: Dragon
-      value: 
-      objectReference: {fileID: 743891666}
     - target: {fileID: 114319139953902972, guid: a6b45d9ec08b6554582b1609ebd2357b,
         type: 2}
       propertyPath: poolObjects.Array.data[2].poolObject
@@ -517,6 +477,51 @@ Prefab:
       propertyPath: poolObjects.Array.data[7].poolObject
       value: 
       objectReference: {fileID: 1058228638}
+    - target: {fileID: 114382599526017528, guid: a6b45d9ec08b6554582b1609ebd2357b,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 861997008}
+    - target: {fileID: 114382599526017528, guid: a6b45d9ec08b6554582b1609ebd2357b,
+        type: 2}
+      propertyPath: Dragon
+      value: 
+      objectReference: {fileID: 743891666}
+    - target: {fileID: 114020845881792406, guid: a6b45d9ec08b6554582b1609ebd2357b,
+        type: 2}
+      propertyPath: _particlesDatas.Array.data[0]
+      value: 
+      objectReference: {fileID: 1673135936}
+    - target: {fileID: 114020845881792406, guid: a6b45d9ec08b6554582b1609ebd2357b,
+        type: 2}
+      propertyPath: _particlesDatas.Array.data[1]
+      value: 
+      objectReference: {fileID: 1668677319}
+    - target: {fileID: 114020845881792406, guid: a6b45d9ec08b6554582b1609ebd2357b,
+        type: 2}
+      propertyPath: _particlesDatas.Array.data[2]
+      value: 
+      objectReference: {fileID: 229901186}
+    - target: {fileID: 114020845881792406, guid: a6b45d9ec08b6554582b1609ebd2357b,
+        type: 2}
+      propertyPath: _particlesDatas.Array.data[3]
+      value: 
+      objectReference: {fileID: 1970042471}
+    - target: {fileID: 114020845881792406, guid: a6b45d9ec08b6554582b1609ebd2357b,
+        type: 2}
+      propertyPath: _particlesDatas.Array.data[4]
+      value: 
+      objectReference: {fileID: 878858161}
+    - target: {fileID: 114020845881792406, guid: a6b45d9ec08b6554582b1609ebd2357b,
+        type: 2}
+      propertyPath: _particlesDatas.Array.data[5]
+      value: 
+      objectReference: {fileID: 1309448713}
+    - target: {fileID: 114319139953902972, guid: a6b45d9ec08b6554582b1609ebd2357b,
+        type: 2}
+      propertyPath: poolObjects.Array.data[2].initialCount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6b45d9ec08b6554582b1609ebd2357b, type: 2}
   m_IsPrefabParent: 0

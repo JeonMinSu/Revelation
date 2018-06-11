@@ -53,6 +53,9 @@ public class Boss_Howling_Attack : ActionTask
             yield return CoroutineManager.FiexdUpdate;
         }
 
+        //ParticleManager.Instance.PoolPacticleEffectOn(Howling);
+
+        ParticleManager.Instance.PoolParticleEffectOn("Howling");
 
         DragonAniManager.SwicthAnimation("Howling_Atk_Pre");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(preTime));
@@ -64,6 +67,8 @@ public class Boss_Howling_Attack : ActionTask
         //후딜 
         DragonAniManager.SwicthAnimation("Howling_Atk_After");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(afterTime));
+
+        ParticleManager.Instance.PoolParticleEffectOff("Howling");
 
         BlackBoard.Instance.IsRoarAttacking = false;
         BlackBoard.Instance.IsGroundAttacking = false;

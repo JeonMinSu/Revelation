@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 4163075139781228}
   - component: {fileID: 114932027454134894}
   m_Layer: 0
-  m_Name: Boss_Sight_Failer
+  m_Name: Boss_Failer_DamageAmount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

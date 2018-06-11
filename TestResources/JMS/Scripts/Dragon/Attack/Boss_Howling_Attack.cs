@@ -53,8 +53,6 @@ public class Boss_Howling_Attack : ActionTask
             yield return CoroutineManager.FiexdUpdate;
         }
 
-        //ParticleManager.Instance.PoolPacticleEffectOn(Howling);
-
         ParticleManager.Instance.PoolParticleEffectOn("Howling");
 
         DragonAniManager.SwicthAnimation("Howling_Atk_Pre");

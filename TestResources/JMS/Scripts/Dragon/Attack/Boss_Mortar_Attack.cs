@@ -47,10 +47,10 @@ public class Boss_Mortar_Attack : ActionTask
         Transform Dragon = UtilityManager.Instance.DragonTransform();
         Transform Player = UtilityManager.Instance.PlayerTransform();
 
-        float BulletBreathDistance = BlackBoard.Instance.BulletBreathDistance;
+        float OverLapDistance = BlackBoard.Instance.RushDistance;
 
         BlackBoard.Instance.IsOverLapAttack = 
-            (!UtilityManager.DistanceCalc(Dragon, Player, BulletBreathDistance)) ? true : false;
+            (UtilityManager.DistanceCalc(Dragon, Player, OverLapDistance)) ? false : true;
 
         BlackBoard.Instance.IsMortarAttacking = false;
         BlackBoard.Instance.IsGroundAttacking = false;

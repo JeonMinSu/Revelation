@@ -19,69 +19,33 @@ public class BlackBoard : Singleton<BlackBoard>
     public Transform DragonMouth { get { return _dragonMouth; } }
 
     [SerializeField]
-    private Transform _dragonHead;
-    public Transform DragonHead { get { return _dragonHead; } }
+    private Transform _dragonPowAttacksPivot;
+    public Transform DragonPowAttacksPivot { get { return _dragonPowAttacksPivot; } }
 
     [SerializeField]
-    private Transform _dragonHeadIK;
-    public Transform DragonHeadIK { get{ return _dragonHeadIK; } }
-
+    private Transform _dragonTailAttacksPivot;
+    public Transform DragonTailAttacksPivot { get { return _dragonTailAttacksPivot; } }
 
     private Clock _clocks;
 
-    /* 보스몹 HP 상태 관련 변수 */
-    //[SerializeField]
-    //private float _maxHpTakeOffPercent;
-    //public float MaxHpTakeOffPercent { get { return _maxHpTakeOffPercent; } }
-
-    //[SerializeField]
-    //private float _hpTakeOff;
-    //public float HpTakeOff { set { _hpTakeOff = value; } get { return _hpTakeOff; } }
-
-    //[SerializeField]
-    //private float _maxHpLandPercent;
-    //public float MaxHpLandPercent { get { return _maxHpLandPercent; } }
-
-    //[SerializeField]
-    //private float _hpLand;
-    //public float HpLand { set { _hpLand = value; } get { return _hpLand; } }
-
-    //[SerializeField]
-    //private float _changedHP;
-    //public float ChangedHP { set { _changedHP = value; } get { return _changedHP; } }
-
-    /* 보스몹 페이즈 관련 변수 */
-    //[SerializeField]
-    //private float _hpPhaseSecond;
-    //public float HpPhaseSecond { set { _hpPhaseSecond = value; } get { return _hpPhaseSecond; } }
-
-    //[SerializeField]
-    //private float _hpPhaseThird;
-    //public float HpPhaseThird { set { _hpPhaseThird = value; } get { return _hpPhaseThird; } }
-
     [Space]
     [Header("Boss Action Check Distance")]
-
-    /* 보스몹 액션 거리 변수 */
-    [SerializeField]
-    private float _takeOffDistance;     //이륙거리(보스몹과 플레이어의 거리를 측정하여 이륙)
-    public float TakeOffDistance { get { return _takeOffDistance; } }
 
     [SerializeField]
     private float _rushDistance;
     public float RushDistance { get { return _rushDistance; } }
 
     [SerializeField]
-    private float _howlingDistance;
-    public float HowlingDistance { get { return _howlingDistance; } }
+    private float _fanShapeBreathDistance;
+    public float FanShapeBreathDistance { get { return _fanShapeBreathDistance; } }
 
     [SerializeField]
-    private float _bulletBreathDistance;
-    public float BulletBreathDistance { get { return _bulletBreathDistance; } }
+    private float _nearBreathDistance;
+    public float NearBreathDistance { get { return _nearBreathDistance; } }
 
-    [SerializeField]
-    private float _mortarDistance;
-    public float MortarDistance { get { return _mortarDistance; } }
+    //[SerializeField]
+    //private float _mortarDistance;
+    //public float MortarDistance { get { return _mortarDistance; } }
 
     /* 보스몹 덮치기 */
     [Space]
@@ -134,16 +98,13 @@ public class BlackBoard : Singleton<BlackBoard>
 
     [SerializeField]
     private bool _isHovering;   //호버링 상태
-    public bool IsHovering{ set { _isHovering = value; } get { return _isHovering; } }
+    public bool IsHovering { set { _isHovering = value; } get { return _isHovering; } }
 
     private bool _isFlying;     //플라잉 상태
     public bool IsFlying { set { _isFlying = value; } get { return _isFlying; } }
 
-    private bool _isWeakPoint;  //약점 상태
-    public bool IsWeakPoint { set { _isWeakPoint = value; } get { return _isWeakPoint; } }
-
-    private bool _isAttack;     //공격 상태
-    public bool IsAttack { set { _isAttack = value; } get { return _isAttack; } }
+    //private bool _isAttack;     //공격 상태
+    //public bool IsAttack { set { _isAttack = value; } get { return _isAttack; } }
 
 
     [Space]
@@ -153,24 +114,24 @@ public class BlackBoard : Singleton<BlackBoard>
     private bool _isGroundAttacking;   //땅에서 패턴을 사용하고 있는지
     public bool IsGroundAttacking { set { _isGroundAttacking = value; } get { return _isGroundAttacking; } }
 
-    [SerializeField]
-    private bool _isLandingAct;         //착륙 액션을 하고 있는지
-    public bool IsLandingAct { set { _isLandingAct = value; } get { return _isLandingAct; } }
+    //[SerializeField]
+    //private bool _isLandingAct;         //착륙 액션을 하고 있는지
+    //public bool IsLandingAct { set { _isLandingAct = value; } get { return _isLandingAct; } }
 
-    [SerializeField]
-    private bool _isTakeOffAct;         //이륙 액션을 하고 있는지
-    public bool IsTakeOffAct { set { _isTakeOffAct = value; } get { return _isTakeOffAct; } }
+    //[SerializeField]
+    //private bool _isTakeOffAct;         //이륙 액션을 하고 있는지
+    //public bool IsTakeOffAct { set { _isTakeOffAct = value; } get { return _isTakeOffAct; } }
 
-    [SerializeField]
-    private bool _isHoveringPatternAct;  //호버링 패턴을 사용하고 있는지
-    public bool IsHoveringPatternAct { set { _isHoveringPatternAct = value; } get { return _isHoveringPatternAct; } }
+    //[SerializeField]
+    //private bool _isHoveringPatternAct;  //호버링 패턴을 사용하고 있는지
+    //public bool IsHoveringPatternAct { set { _isHoveringPatternAct = value; } get { return _isHoveringPatternAct; } }
 
-    [SerializeField]
-    private bool _isFlyingPatternAct;    //플라잉 패턴을 하고 있는지
-    public bool IsFlyingPatternAct { set { _isFlyingPatternAct = value; } get { return _isFlyingPatternAct; } }
+    //[SerializeField]
+    //private bool _isFlyingPatternAct;    //플라잉 패턴을 하고 있는지
+    //public bool IsFlyingPatternAct { set { _isFlyingPatternAct = value; } get { return _isFlyingPatternAct; } }
 
-    private bool _isTakeOffEnd;         //이륙 액션을 하고 있는지
-    public bool IsTakeOffEnd { set { _isTakeOffEnd = value; } get { return _isTakeOffEnd; } }
+    //private bool _isTakeOffEnd;         //이륙 액션을 하고 있는지
+    //public bool IsTakeOffEnd { set { _isTakeOffEnd = value; } get { return _isTakeOffEnd; } }
 
     //[Space]
     //[Header("Boss Pattern Attack On")]
@@ -179,20 +140,23 @@ public class BlackBoard : Singleton<BlackBoard>
     private bool _isRushAttacking;
     public bool IsRushAttacking { set { _isRushAttacking = value; } get { return _isRushAttacking; } }
 
+    private bool _isNearHowlingAttacking;
+    public bool IsNearHowlingAttacking { set { _isNearHowlingAttacking = value; } get { return _isNearHowlingAttacking; } }
+
     private bool _isOverLapAttacking;
     public bool IsOverLapAttacking { set { _isOverLapAttacking = value; } get { return _isOverLapAttacking; } }
 
-    private bool _isBulletBreathAttacking;
-    public bool IsBulletBreathAttacking { set { _isBulletBreathAttacking = value; } get { return _isBulletBreathAttacking; } }
+    private bool _isFanShapeBreathAttacking;
+    public bool IsFanShapeBreathAttacking { set { _isFanShapeBreathAttacking = value; } get { return _isFanShapeBreathAttacking; } }
 
-    private bool _isRoarAttacking;
-    public bool IsRoarAttacking { set { _isRoarAttacking = value; } get { return _isRoarAttacking; } }
+    private bool _isNearBreathAttacking;
+    public bool IsNearBreathAttacking { set { _isNearBreathAttacking = value; } get { return _isNearBreathAttacking; } }
+
+    private bool _isHowlingAttacking;
+    public bool IsHowlingAttacking { set { _isHowlingAttacking = value; } get { return _isHowlingAttacking; } }
 
     private bool _isMortarAttacking;
     public bool IsMortarAttacking { set { _isMortarAttacking = value; } get { return _isMortarAttacking; } }
-
-    //private bool _isIceBringUpAttack;
-    //public bool IsIceBringUpAttack { set { _isIceBringUpAttack = value; }  get { return _isIceBringUpAttack; } }
 
 
     [Space]
@@ -251,6 +215,9 @@ public class BlackBoard : Singleton<BlackBoard>
     private int _maxWeakPointCount;
     public int MaxWeakPointCount { set { _maxWeakPointCount = value; } get { return _maxWeakPointCount; } }
 
+    private bool _isWeakPointAttack;
+    public bool IsWeakPointAttack { get { return _isWeakPointAttack; } }
+    
 
     [Header("PlayerHP Dummy")]
     /* 나중에 지워야 됨!!! */
@@ -365,31 +332,4 @@ public class BlackBoard : Singleton<BlackBoard>
     {
         DragonManager.DragonMovement.Movement(Type);
     }
-
-    /*
-    public void HoveringPatternChk()
-    {
-        if (CurPlayerHP >= PlayerMaxHP * 0.5f &&
-            CurIceCrystalNum < MissileCrystalNum)
-        {
-            IsFlying = false;
-            FlyingAct = false;
-            IsHovering = true;
-            GetFlyingTime().CurHoveringTime = 0.0f;
-            return;
-        }
-
-        if (CurPlayerHP < PlayerMaxHP * 0.5 &&
-            CurIceCrystalNum < BreathCrystalNum)
-        {
-            IsFlying = false;
-            FlyingAct = false;
-            IsHovering = true;
-            GetFlyingTime().CurHoveringTime = 0.0f;
-            return;
-        }
-
-    }
-    */
-
 }

@@ -1,29 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DragonController;
 
 public class Boss_HowlingAttack_Decorator : DecoratorTask
 {
 
     public override bool Run()
     {
+        float Hp = DragonManager.Stat.HP;
+        float MaxHp = DragonManager.Stat.MaxHP;
 
-        Transform Boss = UtilityManager.Instance.DragonTransform();
-        Transform Player = UtilityManager.Instance.PlayerTransform();
+        float DamageReceiveHpPercent = DragonManager.Stat.DamageReceiveHpPercent;
+        float SaveTakeDamage = DragonManager.Stat.SaveTakeDamage;
 
-        float HowlingDistanceLimit = BlackBoard.Instance.HowlingDistance;
+        bool IsHowling = (MaxHp * DamageReceiveHpPercent <= SaveTakeDamage);
 
-        bool IsHowling = UtilityManager.DistanceCalc(Boss, Player, HowlingDistanceLimit);
-
-        bool IsHowlingAttacking = BlackBoard.Instance.IsRoarAttacking;
+        bool IsHowlingAttacking = BlackBoard.Instance.IsHowlingAttacking;
         bool IsGroundAttacking = BlackBoard.Instance.IsGroundAttacking;
-        bool IsHowlingAttack = BlackBoard.Instance.IsRoarAttacking;
 
         if ((IsHowling && !IsGroundAttacking) || IsHowlingAttacking)
         {
             return ChildNode.Run();
         }
-
         return true;
     }
 

@@ -7,12 +7,12 @@ public class Boss_Howling_Attack : ActionTask
 {
     public override bool Run()
     {
-        bool IsRoarAttacking = BlackBoard.Instance.IsRoarAttacking;
+        bool IsRoarAttacking = BlackBoard.Instance.IsHowlingAttacking;
 
         if (!IsRoarAttacking)
         {
-            float preTime = BlackBoard.Instance.GetGroundTime().PreRoarTime;
-            float afterTime = BlackBoard.Instance.GetGroundTime().AfterRoarTime;
+            float preTime = BlackBoard.Instance.GetGroundTime().PreHowlingTime;
+            float afterTime = BlackBoard.Instance.GetGroundTime().AfterHowlingTime;
 
             CoroutineManager.DoCoroutine(HowlingAttackCor(preTime, afterTime));
 
@@ -24,7 +24,6 @@ public class Boss_Howling_Attack : ActionTask
     IEnumerator HowlingAttackCor(float preTime, float afterTime)
     {
         Transform Dragon = UtilityManager.Instance.DragonTransform();
-        Transform Player = UtilityManager.Instance.PlayerTransform();
 
         Vector3 DragonPos = UtilityManager.Instance.DragonPosition();
         Vector3 PlayerPos = UtilityManager.Instance.PlayerPosition();
@@ -33,10 +32,9 @@ public class Boss_Howling_Attack : ActionTask
         PlayerPos.y = 0.0f;
 
         BlackBoard.Instance.IsGroundAttacking = true;
-        BlackBoard.Instance.IsRoarAttacking = true;
+        BlackBoard.Instance.IsHowlingAttacking = true;
 
-        float runTime = BlackBoard.Instance.GetGroundTime().RunRoarTime;
-
+        float runTime = BlackBoard.Instance.GetGroundTime().RunHowlingTime;
         Transform mouth = BlackBoard.Instance.DragonMouth;
 
         Vector3 forward = (PlayerPos - DragonPos).normalized;
@@ -68,14 +66,9 @@ public class Boss_Howling_Attack : ActionTask
 
         ParticleManager.Instance.PoolParticleEffectOff("Howling");
 
-        BlackBoard.Instance.IsRoarAttacking = false;
+        DragonManager.Stat.SaveTakeDamage = 0.0f;
+        BlackBoard.Instance.IsHowlingAttacking = false;
         BlackBoard.Instance.IsGroundAttacking = false;
-
-        float RushDistance = BlackBoard.Instance.RushDistance;
-
-        BlackBoard.Instance.GetGroundTime().CurWalkTime = 0.0f;
-        BlackBoard.Instance.IsWalk = 
-            !UtilityManager.DistanceCalc(Dragon, Player, RushDistance);
 
     }
 }

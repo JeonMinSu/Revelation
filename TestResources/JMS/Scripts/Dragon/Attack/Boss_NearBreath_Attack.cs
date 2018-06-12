@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss_BulletBreath_Attack : ActionTask
+public class Boss_NearBreath_Attack : ActionTask
 {
     public override bool Run()
     {
-        bool IsBulletBreathAttacking = BlackBoard.Instance.IsBulletBreathAttacking;
+        bool IsBulletBreathAttacking = BlackBoard.Instance.IsNearBreathAttacking;
 
         if (!IsBulletBreathAttacking)
         {
@@ -23,7 +23,7 @@ public class Boss_BulletBreath_Attack : ActionTask
     IEnumerator BulletBreathCor(float preTime, float afterTime)
     {
         BlackBoard.Instance.IsGroundAttacking = true;
-        BlackBoard.Instance.IsBulletBreathAttacking = true;
+        BlackBoard.Instance.IsNearBreathAttacking = true;
 
         float curTime = 0.0f;
         float runTime = BlackBoard.Instance.GetGroundTime().RunBulletBreathTime;
@@ -44,13 +44,13 @@ public class Boss_BulletBreath_Attack : ActionTask
         Transform Dragon = UtilityManager.Instance.DragonTransform();
         Transform Player = UtilityManager.Instance.PlayerTransform();
 
-        float RoarDistanceLimit = BlackBoard.Instance.HowlingDistance;
+        float OverLapDistance = BlackBoard.Instance.RushDistance;
 
         BlackBoard.Instance.IsOverLapAttack =
-            (UtilityManager.DistanceCalc(Dragon, Player, RoarDistanceLimit)) ? true : false;
+            (UtilityManager.DistanceCalc(Dragon, Player, OverLapDistance)) ? false : true;
 
         BlackBoard.Instance.IsGroundAttacking = false;
-        BlackBoard.Instance.IsBulletBreathAttacking = false;
+        BlackBoard.Instance.IsNearBreathAttacking = false;
     }
 
 }

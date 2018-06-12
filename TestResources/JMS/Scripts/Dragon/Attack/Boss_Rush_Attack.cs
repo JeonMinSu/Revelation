@@ -32,6 +32,8 @@ public class Boss_Rush_Attack : ActionTask
         Transform Dragon = UtilityManager.Instance.DragonTransform();
         Transform Player = UtilityManager.Instance.PlayerTransform();
 
+        Transform DragonPowAttacksPivot = BlackBoard.Instance.DragonPowAttacksPivot;
+
         Vector3 DragonPos = UtilityManager.Instance.DragonPosition();
         Vector3 PlayerPos = UtilityManager.Instance.PlayerPosition();
 
@@ -64,14 +66,13 @@ public class Boss_Rush_Attack : ActionTask
         DragonAniManager.SwicthAnimation("Rush_Atk_Run");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(runTime));
 
-
         //후딜 애니메이션
         DragonAniManager.SwicthAnimation("Rush_Atk_After");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(afterTime));
 
         float SecondAttackDistance = BlackBoard.Instance.SecondAttackDistance;
 
-        BlackBoard.Instance.IsSecondAttack = UtilityManager.DistanceCalc(Dragon, Player, SecondAttackDistance);
+        BlackBoard.Instance.IsSecondAttack = UtilityManager.DistanceCalc(DragonPowAttacksPivot, Player, SecondAttackDistance);
         BlackBoard.Instance.IsGroundAttacking = (BlackBoard.Instance.IsSecondAttack) ? true : false;
         BlackBoard.Instance.IsRushAttacking = false;
 

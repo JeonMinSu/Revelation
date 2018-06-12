@@ -9,7 +9,7 @@ using UnityEngine;
 /// 
 /// 수정일 : 2018-06-11
 /// 수정자 : 전민수
-/// 수정내용 : 내부적으로 가지고 있는 파티클 및 외부적으로 가지고 있는 파티클까지 관리 가능
+/// 수정내용 : 내부적으로 가지고 있는 파티클 및 외부적으로 있는 파티클까지 관리 가능해짐
 /// </summary>
 
 public class ParticleManager : Singleton<ParticleManager>
@@ -44,73 +44,10 @@ public class ParticleManager : Singleton<ParticleManager>
                 _particles.Add(obj.pooltag, obj);
             else
                 _particles[obj.pooltag] = obj;
-
             PoolManager.Instance.PushObject(obj.gameObject);
         }
     }
-
-    ///// <summary>
-    ///// 내부적으로 가지고 있는 파티클들을 켜주는 함수
-    ///// </summary>
-    ///// <param name="useTag">파티클을 사용할 오브젝트 태그</param>
-    ///// <param name="obj">파티클 오브젝트</param>
-    ///// <param name="thisPos">현재 트랜스폼</param>
-    //public void InnerPacticleEffectOn(PoolObject obj)
-    //{
-    //    foreach (KeyValuePair<string, PoolObject> particle in _particles)
-    //    {
-    //        if (particle.Value.pooltag == obj.pooltag)
-    //        {
-    //            obj.gameObject.SetActive(true);
-    //            Debug.LogWarning("Found the particle in the object.");
-    //            return;
-    //        }
-    //    }
-    //    Debug.LogWarning("Not found any particles in the object.");
-    //    return;
-    //}
-
-    ///// <summary>
-    ///// 내부적으로 가지고 있는 파티클들을 켜주는 함수
-    ///// </summary>
-    ///// <param name="useTag">파티클을 사용할 오브젝트 태그</param>
-    ///// <param name="obj">파티클 오브젝트</param>
-    ///// <param name="Pos">사용할 위치</param>
-    //public void InnerPacticleEffectOn(PoolObject obj, Vector3 pos)
-    //{
-    //    foreach (KeyValuePair<string, PoolObject>particle in _particles)
-    //    {
-    //        if (particle.Key == obj.pooltag)
-    //        {
-    //            obj.transform.position = pos;
-    //            obj.gameObject.SetActive(true);
-    //            Debug.LogWarning("Found the particle in the object.");
-    //            return;
-    //        }
-
-    //    }
-    //    Debug.LogWarning("Not found any particles in the object");
-    //    return;
-    //}
-
-    ///// <summary>
-    ///// 내부적으로 가지고 있는 파티클들을 껴주는 함수
-    ///// </summary>
-    ///// <param name="obj">파티클 오브젝트</param>
-    //public void InnerPacticleEffectOff(PoolObject obj)
-    //{
-    //    foreach (KeyValuePair<string, PoolObject> particle in _particles)
-    //    {
-    //        if (obj.pooltag == particle.Value.pooltag)
-    //        {
-    //            Debug.LogWarning("Found the particle in the object.");
-    //            obj.gameObject.SetActive(false);
-    //            return;
-    //        }
-    //    }
-    //    Debug.LogWarning("Not found any particles in the object");
-    //}
-
+    
     /// <summary>
     /// 오브젝트 풀링으로 관리해주는 파티클을 켜주는 함수
     /// </summary>
@@ -125,27 +62,29 @@ public class ParticleManager : Singleton<ParticleManager>
             PoolParticleEffectOn(Particle);
             return;
         }
-        Debug.LogWarning("Not Found any Particles in the object.");
+        Debug.LogWarning("Not Found any particles in the object.");
     }
 
     /// <summary>
     /// 오브젝트 풀링으로 관리해주는 파티클을 켜주는 함수
     /// </summary>
     /// <param name="ParticleTag">파티클 태그</param>
-    /// <param name="createPos">생성될 파티클의 트랜스폼 포지션</param>
-    public void PoolParticleEffectOn(string ParticleTag, Transform createPos)
+    /// <param name="createPos">생성될 파티클의 부모 트랜스폼</param>
+    public void PoolParticleEffectOn(string ParticleTag, Transform parent)
     {
-        PoolObject particle;
-        _particles.TryGetValue(ParticleTag, out particle);
+        PoolObject Particle;
+        _particles.TryGetValue(ParticleTag, out Particle);
 
-        if (particle != null)
+        if (Particle != null)
         {
-            particle.transform.position = createPos.position;
-            particle.transform.rotation = createPos.rotation;
-            PoolParticleEffectOn(particle);
+            Particle.transform.rotation = parent.rotation;
+            Particle.transform.parent = parent;
+            Particle.transform.localPosition = parent.position;
+
+            PoolParticleEffectOn(Particle);
             return;
         }
-        Debug.LogWarning("Not Found any Particles in the object.");
+        Debug.LogWarning("Not Found any particles in the object.");
     }
 
     /// <summary>
@@ -156,18 +95,18 @@ public class ParticleManager : Singleton<ParticleManager>
     /// <param name="createDir">생성될 파티클 방향</param>
     public void PoolParticleEffectOn(string ParticleTag, Vector3 createPos, Vector3 createDir)
     {
-        PoolObject particle;
-        _particles.TryGetValue(ParticleTag, out particle);
+        PoolObject Particle;
+        _particles.TryGetValue(ParticleTag, out Particle);
 
-        if (particle != null)
+        if (Particle != null)
         {
             Quaternion rot = Quaternion.LookRotation(createDir, Vector3.up);
-            particle.transform.position = createPos;
-            particle.transform.rotation = rot;
-            PoolParticleEffectOn(particle);
+            Particle.transform.position = createPos;
+            Particle.transform.rotation = rot;
+            PoolParticleEffectOn(Particle);
             return;
         }
-        Debug.LogWarning("Not Found any Particles in the object.");
+        Debug.LogWarning("Not Found any particles in the object.");
     }
 
     /// <summary>
@@ -176,16 +115,16 @@ public class ParticleManager : Singleton<ParticleManager>
     /// <param name="ParticleTag">파티클 태그</param>
     public void PoolParticleEffectOff(string ParticleTag)
     {
-        PoolObject particle;
-        _particles.TryGetValue(ParticleTag, out particle);
+        PoolObject Particle;
+        _particles.TryGetValue(ParticleTag, out Particle);
 
-        if (particle != null)
+        if (Particle != null)
         {
-            PoolManager.Instance.PushObject(particle.gameObject);
+            PoolManager.Instance.PushObject(Particle.gameObject);
             Debug.LogWarning("Found the particle in the object.");
             return;
         }
-        Debug.LogWarning("Not Found any Particles in the object.");
+        Debug.LogWarning("Not Found any particles in the object.");
 
     }
 
@@ -207,15 +146,15 @@ public class ParticleManager : Singleton<ParticleManager>
                 return;
             }
         }
-        Debug.LogWarning("Not Found any Particles in the object.");
+        Debug.LogWarning("Not Found any particles in the object.");
     }
 
     /// <summary>
     /// 오브젝트 풀링으로 관리해주는 파티클들을 켜주는 함수
     /// </summary>
     /// <param name="obj">파티클 오브젝트</param>
-    /// <param name="createPos">생성될 파티클의 트랜스폼 포지션</param>
-    public void PoolParticleEffectOn(PoolObject obj, Transform createPos)
+    /// <param name="createPos">생성될 파티클의 부모 트랜스폼</param>
+    public void PoolParticleEffectOn(PoolObject obj, Transform parent)
     {
         if (_particles.ContainsKey(obj.pooltag))
         {
@@ -224,15 +163,16 @@ public class ParticleManager : Singleton<ParticleManager>
 
             if (Particle != null)
             {
-                Particle.transform.position = createPos.position;
-                Particle.transform.rotation = createPos.rotation;
+                Particle.transform.rotation = parent.rotation;
+                Particle.transform.parent = parent;
+                Particle.transform.localPosition = parent.position;
+
                 Particle.GetComponent<PoolObject>().Init();
                 Debug.Log("Found the particle in the object.");
                 return;
             }
         }
-        Debug.LogWarning("Not Found any Particles in the object.");
-
+        Debug.LogWarning("Not Found any particles in the object.");
     }
 
     /// <summary>
@@ -258,7 +198,7 @@ public class ParticleManager : Singleton<ParticleManager>
                 return;
             }
         }
-        Debug.LogWarning("Not Found any Particles in the object.");
+        Debug.LogWarning("Not Found any particles in the object.");
     }
 
     /// <summary>
@@ -273,6 +213,114 @@ public class ParticleManager : Singleton<ParticleManager>
             Debug.LogWarning("Found the particle in the object.");
             return;
         }
-        Debug.LogWarning("Not Found any Particles in the object.");
+        Debug.LogWarning("Not Found any particles in the object.");
     }
+
+    /// <summary>
+    /// 오브젝트 풀링으로 관리해주는 파티클들을 켜주는 함수
+    /// </summary>
+    /// <param name="obj">파티클 오브젝트</param>
+    public void PoolParticleEffectOn(GameObject obj)
+    {
+        PoolObject poolObj = obj.GetComponent<PoolObject>();
+
+        Debug.Log(poolObj);
+
+        if (poolObj != null)
+        {
+            if (_particles.ContainsKey(poolObj.pooltag))
+            {
+                GameObject Particle;
+                PoolManager.Instance.PopObject(poolObj.pooltag, out Particle);
+
+                if (Particle != null)
+                {
+                    Particle.GetComponent<PoolObject>().Init();
+                    Debug.LogWarning("Found the particle in the object.");
+                    return;
+                }
+            }
+        }
+        Debug.LogWarning("Not Found any particles in the object.");
+    }
+
+    /// <summary>
+    /// 오브젝트 풀링으로 관리해주는 파티클들을 켜주는 함수
+    /// </summary>
+    /// <param name="obj">파티클 오브젝트</param>
+    /// <param name="parent">부모 트랜스폼</param>
+    public void PoolParticleEffectOn(GameObject obj, Transform parent)
+    {
+        PoolObject poolObj = obj.GetComponent<PoolObject>();
+        if (poolObj != null)
+        {
+            if (_particles.ContainsKey(poolObj.pooltag))
+            {
+                GameObject Particle;
+                PoolManager.Instance.PopObject(poolObj.pooltag, out Particle);
+
+                if (Particle != null)
+                {
+                    Particle.transform.rotation = parent.rotation;
+                    Particle.transform.parent = parent;
+                    Particle.transform.localPosition = parent.position;
+                    Particle.GetComponent<PoolObject>().Init();
+                    Debug.LogWarning("Found the particle in the object.");
+                }
+            }
+        }
+        Debug.LogWarning("Not Found any particles in the object.");
+    }
+
+    /// <summary>
+    /// 오브젝트 풀링으로 관리해주는 파티클들을 켜주는 함수
+    /// </summary>
+    /// <param name="obj">파티클 오브젝트</param>
+    /// <param name="createPos">생성될 파티클 포지션</param>
+    /// <param name="createDir">생성도리 파티클 방향</param>
+    public void PoolParticleEffectOn(GameObject obj, Vector3 createPos, Vector3 createDir)
+    {
+        PoolObject poolObj = obj.GetComponent<PoolObject>();
+
+        if (poolObj != null)
+        {
+            if (_particles.ContainsKey(poolObj.pooltag))
+            {
+                GameObject Particle;
+                PoolManager.Instance.PopObject(poolObj.pooltag, out Particle);
+
+                if (Particle != null)
+                {
+                    Particle.transform.position = createPos;
+                    Particle.transform.rotation = Quaternion.LookRotation(createDir, Vector3.up);
+                    Particle.GetComponent<PoolObject>().Init();
+                    Debug.LogWarning("Found the particle in the object.");
+                    return;
+                }
+            }
+        }
+        Debug.LogWarning("Not Found any particles in the object.");
+    }
+    
+    /// <summary>
+    /// 오브젝트 풀링으로 관리해주는 파티클들을 껴주는 함수
+    /// </summary>
+    /// <param name="obj">파티클 오브젝트</param>
+    public void PoolParticleEffectOff(GameObject obj)
+    {
+        PoolObject poolObj = obj.GetComponent<PoolObject>();
+
+        if (poolObj != null)
+        {
+            if (_particles.ContainsKey(poolObj.pooltag))
+            {
+                PoolManager.Instance.PushObject(obj);
+                Debug.LogWarning("Found the particle in the object.");
+                return;
+            }
+        }
+        Debug.LogWarning("Not Found any particles in the object.");
+
+    }
+
 }

@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss_BulletBreathAttack_Decorator : DecoratorTask
+public class Boss_FanShapeBreath_Decorator : DecoratorTask
 {
-
     public override bool Run()
     {
+
         Transform Dragon = UtilityManager.Instance.DragonTransform();
         Transform Player = UtilityManager.Instance.PlayerTransform();
 
-        float BulletBreathDistanceLimit = BlackBoard.Instance.BulletBreathDistance;
+        float FanShapeBreathDistance = BlackBoard.Instance.FanShapeBreathDistance;
 
-        bool IsBulletBreath = UtilityManager.DistanceCalc(Dragon, Player, BulletBreathDistanceLimit);
+        bool IsFanShapeBreath = UtilityManager.DistanceCalc(Dragon, Player, FanShapeBreathDistance);
 
-        bool IsBulletBreathAttacking = BlackBoard.Instance.IsBulletBreathAttacking;
         bool IsGroundAttacking = BlackBoard.Instance.IsGroundAttacking;
+        bool IsFanShapeBreathAttacking = BlackBoard.Instance.IsFanShapeBreathAttacking;
 
-        if ((IsBulletBreath && !IsGroundAttacking) || IsBulletBreathAttacking)
+        if ((IsFanShapeBreath && !IsGroundAttacking) || IsFanShapeBreathAttacking)
         {
             return ChildNode.Run();
         }

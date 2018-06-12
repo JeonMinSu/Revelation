@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletManager : Singleton<BulletManager>
 {
+
     [SerializeField] private PoolObject bulletBasePlayer;
     [SerializeField] private PoolObject bulletBaseDragon;
     [SerializeField] private PoolObject bulletHomingDragon;

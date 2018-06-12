@@ -19,20 +19,19 @@ public class ParticleObject : PoolObject
     private void Update()
     {
         if (_currentTime >= EndTime)
-        {
-            _currentTime = 0.0f;
-            this.gameObject.SetActive(false);
-        }
+            DestoryObject();
+
         _currentTime += Time.deltaTime;
     }
 
-    private void Initialization()
+    public void Initialization()
     {
-        Debug.Log("Initialization");
+        _currentTime = 0.0f;
     }
 
-    public virtual void DestoryObject()
+    public void DestoryObject()
     {
+        Initialization();
         PoolManager.Instance.PushObject(this.gameObject);
     }
 	

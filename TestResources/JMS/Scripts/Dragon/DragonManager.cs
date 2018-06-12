@@ -73,8 +73,9 @@ namespace DragonController
 
         public void Hit(float Damege)
         {
+            Stat.SaveTakeDamage += Damege;
             Stat.HP -= Damege;
-            Debug.Log("OnHit");
+            Debug.Log("Dragon Hit");
         }
         
         IEnumerator StartDragonAI()

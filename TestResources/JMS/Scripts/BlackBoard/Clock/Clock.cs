@@ -12,24 +12,31 @@ public class Clock : MonoBehaviour
         [Header("Idle Time")]
 
         [SerializeField]
-        private float _curIdleTime;
-        public float CurIdleTime { set { _curIdleTime = value; } get { return _curIdleTime; } }
-
-        [SerializeField]
         private float _maxIdleTime;
         public float MaxIdleTime { get { return _maxIdleTime; } }
+
+        private float _curIdleTime;
+        public float CurIdleTime { set { _curIdleTime = value; } get { return _curIdleTime; } }
 
         [Space]
         [Header("Walk Time")]
 
         [SerializeField]
+        private float _maxWalkTime;
+        public float MaxWalkTime { get { return _maxWalkTime; } }
+
         private float _curWalkTime;
         public float CurWalkTime { set { _curWalkTime = value; } get { return _curWalkTime; } }
 
+        [Space]
+        [Header("DamageAmount Time")]
 
         [SerializeField]
-        private float _maxWalkTime;
-        public float MaxWalkTime { get { return _maxWalkTime; } }
+        private float _maxDamageAmountTime;
+        public float MaxDamageAmountTime { get { return _maxDamageAmountTime; } }
+
+        private float _curDamageAmountTime;
+        public float CurDamageAmountTime { set { _curDamageAmountTime = value; } get { return _curDamageAmountTime; } }
 
         [Space]
         [Header("Rush Attack Time")]
@@ -47,19 +54,19 @@ public class Clock : MonoBehaviour
         public float AfterRushTime { get { return _afterRushTime; } }
 
         [Space]
-        [Header("Roar Attack Time")]
+        [Header("Howling Attack Time")]
 
         [SerializeField]
-        private float _preRoarTime;
-        public float PreRoarTime { get { return _preRoarTime; } }
+        private float _preHowlingTime;
+        public float PreHowlingTime { get { return _preHowlingTime; } }
 
         [SerializeField]
-        private float _runRoarTime;
-        public float RunRoarTime { get { return _runRoarTime; } }
+        private float _runHowlingTime;
+        public float RunHowlingTime { get { return _runHowlingTime; } }
 
         [SerializeField]
-        private float _afterRoarTime;
-        public float AfterRoarTime { get { return _afterRoarTime; } }
+        private float _afterHowlingTime;
+        public float AfterHowlingTime { get { return _afterHowlingTime; } }
 
         [Space]
         [Header("OverLap Attack Time")]
@@ -83,6 +90,21 @@ public class Clock : MonoBehaviour
         [SerializeField]
         private float _maxOverLapCheckTime;
         public float MaxOverLapCheckTime { get { return _maxOverLapCheckTime; } }
+
+        [Space]
+        [Header("FanShapeBreath Attack Time")]
+
+        [SerializeField]
+        private float _preFanShapeBreathTime;
+        public float PreFanShapeBreathTime { get { return _preFanShapeBreathTime; } }
+
+        [SerializeField]
+        private float _runFanShapeBreathTime;
+        public float RunFanShapeBreathTime { get { return _runBulletBreathTime; } }
+
+        [SerializeField]
+        private float _afterFanShapeBreathTime;
+        public float AfterFanShapeBreathTime { get { return _afterFanShapeBreathTime; } }
 
         [Space]
         [Header("BulletBreath Attack Time")]

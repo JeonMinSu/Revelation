@@ -7,9 +7,6 @@ public class Boss_OverLap_Decorator : DecoratorTask
 
     public override bool Run()
     {
-        Transform Dragon = UtilityManager.Instance.DragonTransform();
-        Transform Player = UtilityManager.Instance.PlayerTransform();
-
         bool IsOverLap = BlackBoard.Instance.IsOverLapAttack;
 
         bool IsGroundAttacking = BlackBoard.Instance.IsGroundAttacking;

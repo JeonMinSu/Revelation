@@ -24,10 +24,12 @@ public abstract class TreeNode : MonoBehaviour {
 
     public virtual void OnStart()
     {
+        NodeState = TASKSTATE.RUNNING;
     }
     public abstract bool Run();
     public virtual void OnEnd()
     {
+        NodeState = TASKSTATE.FAULURE;
     }
 
 }

@@ -6,6 +6,12 @@ using DragonController;
 public class Boss_LeftPow_Attack : ActionTask
 {
 
+    public override void OnStart()
+    {
+        Debug.Log(this.gameObject.name + " : OnStart");
+        base.OnStart();
+    }
+
     public override bool Run()
     {
         bool IsSecondAttacking = BlackBoard.Instance.IsSecondAttacking;
@@ -22,11 +28,16 @@ public class Boss_LeftPow_Attack : ActionTask
         return false;
     }
 
+    public override void OnEnd()
+    {
+        Debug.Log(this.gameObject.name + " : OnEnd");
+        base.OnEnd();
+    }
+
     IEnumerator LefrPowAttackCor(float preTime, float afterTime)
     {
         BlackBoard.Instance.IsSecondAttacking = true;
         BlackBoard.Instance.IsLeftPowAttacking = true;
-
         float curTime = 0.0f;
         float runTime = BlackBoard.Instance.GetGroundTime().SecondAttackRunTime;
 
@@ -48,11 +59,12 @@ public class Boss_LeftPow_Attack : ActionTask
         //후딜
         DragonAniManager.SwicthAnimation("LeftPow_Atk_After");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(afterTime));
+        ParticleManager.Instance.PoolParticleEffectOff("LeftPow");
 
         BlackBoard.Instance.IsLeftPowAttacking = false;
-        BlackBoard.Instance.IsSecondAttack = false;
         BlackBoard.Instance.IsSecondAttacking = false;
-        BlackBoard.Instance.IsGroundAttacking = false;
+        //BlackBoard.Instance.IsSecondAttack = false;
+        //BlackBoard.Instance.IsGroundAttacking = false;
 
         WeakPointManager.Instance.CurrentPatternCount++;
 

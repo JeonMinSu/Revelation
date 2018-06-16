@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Boss_Rush_Decorator : DecoratorTask
 {
+    public override void OnStart()
+    {
+        Debug.Log(this.gameObject.name + "OnStart");
+        base.OnStart();
+    }
+
     public override bool Run()
     {
         Transform Dragon = UtilityManager.Instance.DragonTransform();
@@ -20,12 +26,27 @@ public class Boss_Rush_Decorator : DecoratorTask
         bool IsOverLapAttacking = BlackBoard.Instance.IsOverLapAttacking;
         bool IsSecondAttack = BlackBoard.Instance.IsSecondAttack;
 
-        if((IsRush && !IsGroundAttacking) || 
+        if ((IsRush && !IsGroundAttacking) || 
             ((IsSecondAttack && !IsOverLapAttacking) || IsRushAttacking))
         {
+            if (NodeState != TASKSTATE.RUNNING)
+            {
+                OnStart();
+            }
+
             return ChildNode.Run();
         }
 
+        if (NodeState != TASKSTATE.FAULURE)
+            OnEnd();
+
         return true;
     }
+
+    public override void OnEnd()
+    {
+        Debug.Log(this.gameObject.name + "OnEnd");
+        base.OnEnd();
+    }
+
 }

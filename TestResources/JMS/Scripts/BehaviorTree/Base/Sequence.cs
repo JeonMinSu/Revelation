@@ -17,17 +17,13 @@ public class Sequence : CompositeTask
         {
             if (!child.Run())
             {
-                if (NodeState != TASKSTATE.RUNNING)
-                {
-                    OnStart();
-                }
+                //if (NodeState != TASKSTATE.RUNNING)
+                //    OnStart();
                 return false;
             }
         }
-
-        if (NodeState != TASKSTATE.FAULURE)
-            OnEnd();
-
+        //if (NodeState != TASKSTATE.FAULURE)
+        //    OnEnd();
         return true;
     }
 

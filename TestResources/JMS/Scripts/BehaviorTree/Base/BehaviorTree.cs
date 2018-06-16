@@ -59,13 +59,23 @@ public class BehaviorTree : ScriptableObject
         }
     }
 
-
-    public void OnDisable()
+    public void Initialize(TreeNode node)
     {
-        if (_isInit)
+        TreeNode[] ChildNodes = node.GetComponentsInChildren<TreeNode>();
+
+        for (int i = 1; i< ChildNodes.Length; i++)
         {
-            //SerializeNodes(_root);
+            int n = i;
+            i += ChildNodes[i].GetComponentsInChildren<TreeNode>().Length - 1;
+            ChildNodes[n].NodeState = TASKSTATE.FAULURE;
+            Initialize(ChildNodes[n]);
         }
+
+    }
+
+    public void OnEnable()
+    {
+        Initialize(_root);
     }
 
 #if UNITY_EDITOR

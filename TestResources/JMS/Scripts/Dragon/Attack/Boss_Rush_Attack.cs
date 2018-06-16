@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class Boss_Rush_Attack : ActionTask
 {
+    public override void OnStart()
+    {
+        Debug.Log(this.gameObject.name + " : OnStart");
+        base.OnStart();
+    }
+
 
     public override bool Run()
     {
@@ -19,6 +25,12 @@ public class Boss_Rush_Attack : ActionTask
         }
 
         return false;
+    }
+
+    public override void OnEnd()
+    {
+        Debug.Log(this.gameObject.name + " : OnEnd");
+        base.OnEnd();
     }
 
     IEnumerator RushAttackCor(float preTime, float afterTime)

@@ -16,13 +16,22 @@ public abstract class DecoratorTask : TreeNode
 
     public override void OnStart()
     {
-        NodeState = TASKSTATE.RUNNING;
+        if (ChildNode.GetComponent<ActionTask>())
+        {
+
+            ChildNode.NodeState = TASKSTATE.RUNNING;
+            ChildNode.OnStart();
+        }
         base.OnStart();
     }
 
     public override void OnEnd()
     {
-        NodeState = TASKSTATE.FAULURE;
+        if (ChildNode.GetComponent<ActionTask>())
+        {
+            ChildNode.NodeState = TASKSTATE.FAULURE;
+            ChildNode.OnEnd();
+        }
         base.OnEnd();
     }
 

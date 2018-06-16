@@ -5,6 +5,12 @@ using UnityEngine;
 public class Boss_LeftPow_Attack_Decorator : DecoratorTask
 {
 
+    public override void OnStart()
+    {
+        Debug.Log(this.gameObject.name + " : OnStart");
+        base.OnStart();
+    }
+
     public override bool Run()
     {
         Transform Boss = UtilityManager.Instance.DragonTransform();
@@ -17,13 +23,16 @@ public class Boss_LeftPow_Attack_Decorator : DecoratorTask
         bool IsLeftPowAttacking = BlackBoard.Instance.IsLeftPowAttacking;
         bool IsSecondAttacking = BlackBoard.Instance.IsSecondAttacking;
         
-        if (IsLeftPowAttacking)
-        {
-            Debug.Log("LeftPowAttack");
-            return ChildNode.Run();
-        }
+        //if (IsLeftPowAttacking)
+        //{
+        //    if (NodeState != TASKSTATE.RUNNING)
+        //        OnStart();
+        //    return ChildNode.Run();
+        //}
 
-        if (!IsSecondAttacking)
+
+
+        if (!IsSecondAttacking || IsLeftPowAttacking)
         { 
             if (Dot >= Mathf.Cos(Mathf.Deg2Rad * 180.0f * 0.5f))
             {
@@ -31,13 +40,25 @@ public class Boss_LeftPow_Attack_Decorator : DecoratorTask
 
                 float Result = Vector3.Dot(Cross, Vector3.up);
 
-                if (Result < 0.0f)
+                if (Result < 0.0f || IsLeftPowAttacking)
                 {
-                    Debug.Log("Left_Attack_Decorator");
+                    if (NodeState != TASKSTATE.RUNNING)
+                        OnStart();
                     return ChildNode.Run();
                 }
             }
         }
+
+        if (NodeState != TASKSTATE.RUNNING)
+            OnEnd();
+
         return true;
     }
+
+    public override void OnEnd()
+    {
+        Debug.Log(this.gameObject.name + ": OnEnd");
+        base.OnEnd();
+    }
+
 }

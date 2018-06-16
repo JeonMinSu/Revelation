@@ -33,7 +33,6 @@ public class Boss_Tail_Attack : ActionTask
 
         while (curTime < runTime)
         {
-            Debug.Log("TailAttack");
             yield return CoroutineManager.FiexdUpdate;
             curTime += Time.fixedDeltaTime;
 

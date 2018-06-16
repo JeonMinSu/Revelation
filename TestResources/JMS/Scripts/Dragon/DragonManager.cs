@@ -88,5 +88,6 @@ namespace DragonController
                 yield return CoroutineManager.FiexdUpdate;
             }
         }
+
     }
 }

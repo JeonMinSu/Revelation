@@ -44,12 +44,13 @@ public class Boss_LeftPow_Attack_Decorator : DecoratorTask
                 {
                     if (NodeState != TASKSTATE.RUNNING)
                         OnStart();
+
                     return ChildNode.Run();
                 }
             }
         }
 
-        if (NodeState != TASKSTATE.RUNNING)
+        if (NodeState != TASKSTATE.FAULURE)
             OnEnd();
 
         return true;

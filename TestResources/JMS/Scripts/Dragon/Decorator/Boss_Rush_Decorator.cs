@@ -6,7 +6,7 @@ public class Boss_Rush_Decorator : DecoratorTask
 {
     public override void OnStart()
     {
-        Debug.Log(this.gameObject.name + "OnStart");
+        Debug.Log(this.gameObject.name + " : OnStart");
         base.OnStart();
     }
 
@@ -22,7 +22,6 @@ public class Boss_Rush_Decorator : DecoratorTask
         bool IsRushAttacking = BlackBoard.Instance.IsRushAttacking;
         bool IsGroundAttacking = BlackBoard.Instance.IsGroundAttacking;
 
-
         bool IsOverLapAttacking = BlackBoard.Instance.IsOverLapAttacking;
         bool IsSecondAttack = BlackBoard.Instance.IsSecondAttack;
 
@@ -30,9 +29,7 @@ public class Boss_Rush_Decorator : DecoratorTask
             ((IsSecondAttack && !IsOverLapAttacking) || IsRushAttacking))
         {
             if (NodeState != TASKSTATE.RUNNING)
-            {
                 OnStart();
-            }
 
             return ChildNode.Run();
         }

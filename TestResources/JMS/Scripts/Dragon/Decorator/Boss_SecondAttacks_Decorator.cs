@@ -6,7 +6,7 @@ public class Boss_SecondAttacks_Decorator : DecoratorTask
 {
     public override void OnStart()
     {
-        Debug.Log(this.gameObject.name + "OnStart");
+        Debug.Log(this.gameObject.name + " : OnStart");
         base.OnStart();
     }
 
@@ -21,10 +21,9 @@ public class Boss_SecondAttacks_Decorator : DecoratorTask
                 OnStart();
             return ChildNode.Run();
         }
+
         if (NodeState != TASKSTATE.FAULURE)
-        {
             OnEnd();
-        }
 
         return true;
     }

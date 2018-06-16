@@ -7,6 +7,7 @@ public abstract class CompositeTask : TreeNode
 
     public override void OnStart()
     {
+        NodeState = TASKSTATE.RUNNING;
         base.OnStart();
     }
 
@@ -17,6 +18,7 @@ public abstract class CompositeTask : TreeNode
 
     public override void OnEnd()
     {
+        NodeState = TASKSTATE.FAULURE;
         base.OnEnd();
     }
 

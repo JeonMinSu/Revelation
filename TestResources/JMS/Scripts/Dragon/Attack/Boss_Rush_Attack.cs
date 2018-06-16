@@ -8,39 +8,46 @@ public class Boss_Rush_Attack : ActionTask
     public override void OnStart()
     {
         Debug.Log(this.gameObject.name + " : OnStart");
+
+        float preTime = BlackBoard.Instance.GetGroundTime().PreRushTime;
+        float runTime = BlackBoard.Instance.GetGroundTime().RunRushTime;
+        float afterTime = BlackBoard.Instance.GetGroundTime().AfterRushTime;
+
+        BlackBoard.Instance.IsGroundAttacking = true;
+        BlackBoard.Instance.IsRushAttacking = true;
+
+        CoroutineManager.DoCoroutine(RushAttackCor(preTime, runTime, afterTime));
+
         base.OnStart();
     }
 
 
     public override bool Run()
     {
-        bool IsRushAttacking = BlackBoard.Instance.IsRushAttacking;
-
-        if (!IsRushAttacking)
-        {
-            float preTime = BlackBoard.Instance.GetGroundTime().PreRushTime;
-            float afterTime = BlackBoard.Instance.GetGroundTime().AfterRushTime;
-
-            CoroutineManager.DoCoroutine(RushAttackCor(preTime, afterTime));
-        }
-
         return false;
     }
 
     public override void OnEnd()
     {
         Debug.Log(this.gameObject.name + " : OnEnd");
+
+        float SecondAttackDistance = BlackBoard.Instance.SecondAttackDistance;
+
+        Transform Dragon = UtilityManager.Instance.DragonTransform();
+        Transform Player = UtilityManager.Instance.PlayerTransform();
+
+        BlackBoard.Instance.IsSecondAttack = 
+            UtilityManager.DistanceCalc(Dragon, Player, SecondAttackDistance);
+        BlackBoard.Instance.IsGroundAttacking = (BlackBoard.Instance.IsSecondAttack) ? true : false;
+        BlackBoard.Instance.IsRushAttacking = false;
+
+        WeakPointManager.Instance.CurrentPatternCount++;
+
         base.OnEnd();
     }
 
-    IEnumerator RushAttackCor(float preTime, float afterTime)
+    IEnumerator RushAttackCor(float preTime, float runTime ,float afterTime)
     {
-        
-        BlackBoard.Instance.IsGroundAttacking = true;
-        BlackBoard.Instance.IsRushAttacking = true;
-
-        float runTime = BlackBoard.Instance.GetGroundTime().RunRushTime;
-
         Transform Dragon = UtilityManager.Instance.DragonTransform();
         Transform Player = UtilityManager.Instance.PlayerTransform();
 
@@ -72,13 +79,6 @@ public class Boss_Rush_Attack : ActionTask
         DragonAniManager.SwicthAnimation("Rush_Atk_After");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(afterTime));
 
-        float SecondAttackDistance = BlackBoard.Instance.SecondAttackDistance;
-
-        BlackBoard.Instance.IsSecondAttack = UtilityManager.DistanceCalc(Dragon, Player, SecondAttackDistance);
-        BlackBoard.Instance.IsGroundAttacking = (BlackBoard.Instance.IsSecondAttack) ? true : false;
-        BlackBoard.Instance.IsRushAttacking = false;
-        
-        WeakPointManager.Instance.CurrentPatternCount++;
 
     }
 

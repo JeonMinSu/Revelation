@@ -97,7 +97,6 @@ public class PoolManager : Singleton<PoolManager>
         }
     }
 
-    //public bool 
 
 }
 

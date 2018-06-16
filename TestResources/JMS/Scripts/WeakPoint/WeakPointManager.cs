@@ -87,7 +87,6 @@ public class WeakPointManager : Singleton<WeakPointManager>
             if (Data.isThisPosWeakPoint)
             {
                 Collider WeakCol = Data.parentTransform.GetComponent<Collider>();
-
                 if (col == WeakCol)
                 {
                     if (!_weakPoint.IsHit)

@@ -54,6 +54,20 @@ public class Clock : MonoBehaviour
         public float AfterRushTime { get { return _afterRushTime; } }
 
         [Space]
+        [Header("NearHowling Attack Time")]
+        [SerializeField]
+        private float _preNearHowlingTime;
+        public float PreNearHowlingTime { get { return _preNearHowlingTime; } }
+
+        [SerializeField]
+        private float _runNearHowlingTime;
+        public float RunNearHowlingTime { get { return _runNearHowlingTime; } }
+
+        [SerializeField]
+        private float _afterNearHowlingTime;
+        public float AfterNearHowlingTime { get { return _afterNearHowlingTime; } }
+
+        [Space]
         [Header("Howling Attack Time")]
 
         [SerializeField]
@@ -100,7 +114,7 @@ public class Clock : MonoBehaviour
 
         [SerializeField]
         private float _runFanShapeBreathTime;
-        public float RunFanShapeBreathTime { get { return _runBulletBreathTime; } }
+        public float RunFanShapeBreathTime { get { return _runFanShapeBreathTime; } }
 
         [SerializeField]
         private float _afterFanShapeBreathTime;

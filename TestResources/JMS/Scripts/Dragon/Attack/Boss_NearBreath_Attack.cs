@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss_NearBreath_Attack : ActionTask
 {
+
     public override bool Run()
     {
         bool IsBulletBreathAttacking = BlackBoard.Instance.IsNearBreathAttacking;
@@ -13,14 +14,14 @@ public class Boss_NearBreath_Attack : ActionTask
             float preTime = BlackBoard.Instance.GetGroundTime().PreBulletBreathTime;
             float afterTime = BlackBoard.Instance.GetGroundTime().AfterBulletBreathTime;
 
-            CoroutineManager.DoCoroutine(BulletBreathCor(preTime, afterTime));
+            CoroutineManager.DoCoroutine(NearBreathCor(preTime, afterTime));
 
         }
 
         return false;
     }
 
-    IEnumerator BulletBreathCor(float preTime, float afterTime)
+    IEnumerator NearBreathCor(float preTime, float afterTime)
     {
         BlackBoard.Instance.IsGroundAttacking = true;
         BlackBoard.Instance.IsNearBreathAttacking = true;
@@ -33,7 +34,7 @@ public class Boss_NearBreath_Attack : ActionTask
 
         while (curTime < runTime)
         {
-            Debug.Log("BulletBreath");
+            Debug.Log("NearBreath");
             curTime += Time.fixedDeltaTime;
             yield return CoroutineManager.FiexdUpdate;
         }
@@ -51,6 +52,8 @@ public class Boss_NearBreath_Attack : ActionTask
 
         BlackBoard.Instance.IsGroundAttacking = false;
         BlackBoard.Instance.IsNearBreathAttacking = false;
+        
+        WeakPointManager.Instance.CurrentPatternCount++;
     }
 
 }

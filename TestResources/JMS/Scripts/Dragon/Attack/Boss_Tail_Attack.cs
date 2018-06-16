@@ -45,6 +45,8 @@ public class Boss_Tail_Attack : ActionTask
         BlackBoard.Instance.IsSecondAttack = false;
         BlackBoard.Instance.IsSecondAttacking = false;
         BlackBoard.Instance.IsGroundAttacking = false;
+
+        WeakPointManager.Instance.CurrentPatternCount++;
     }
 
 }

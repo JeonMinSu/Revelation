@@ -70,5 +70,7 @@ public class Boss_Howling_Attack : ActionTask
         BlackBoard.Instance.IsHowlingAttacking = false;
         BlackBoard.Instance.IsGroundAttacking = false;
 
+        WeakPointManager.Instance.CurrentPatternCount++;
+
     }
 }

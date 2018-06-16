@@ -11,7 +11,7 @@ public enum TASKSTATE
 
 public abstract class TreeNode : MonoBehaviour {
 
-    private TASKSTATE _nodeState;
+    protected TASKSTATE _nodeState;
     public TASKSTATE NodeState { set { _nodeState = value; } get { return _nodeState; } }
 
     private List<TreeNode> _childNodes = new List<TreeNode>();
@@ -22,6 +22,12 @@ public abstract class TreeNode : MonoBehaviour {
         ChildNodes.Add(Node);
     }
 
+    public virtual void OnStart()
+    {
+    }
     public abstract bool Run();
+    public virtual void OnEnd()
+    {
+    }
 
 }

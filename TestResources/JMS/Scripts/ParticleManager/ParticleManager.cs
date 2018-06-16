@@ -44,6 +44,7 @@ public class ParticleManager : Singleton<ParticleManager>
                 _particles.Add(obj.pooltag, obj);
             else
                 _particles[obj.pooltag] = obj;
+
             PoolManager.Instance.PushObject(obj.gameObject);
         }
     }
@@ -79,7 +80,7 @@ public class ParticleManager : Singleton<ParticleManager>
         {
             Particle.transform.rotation = parent.rotation;
             Particle.transform.parent = parent;
-            Particle.transform.localPosition = parent.position;
+            Particle.transform.localPosition = Vector3.zero;
 
             PoolParticleEffectOn(Particle);
             return;
@@ -121,7 +122,6 @@ public class ParticleManager : Singleton<ParticleManager>
         if (Particle != null)
         {
             PoolManager.Instance.PushObject(Particle.gameObject);
-            Debug.LogWarning("Found the particle in the object.");
             return;
         }
         Debug.LogWarning("Not Found any particles in the object.");
@@ -142,7 +142,6 @@ public class ParticleManager : Singleton<ParticleManager>
             if (Particle != null)
             {
                 Particle.GetComponent<PoolObject>().Init();
-                Debug.LogWarning("Found the particle in the object.");
                 return;
             }
         }
@@ -165,10 +164,9 @@ public class ParticleManager : Singleton<ParticleManager>
             {
                 Particle.transform.rotation = parent.rotation;
                 Particle.transform.parent = parent;
-                Particle.transform.localPosition = parent.position;
+                Particle.transform.localPosition = Vector3.zero;
 
                 Particle.GetComponent<PoolObject>().Init();
-                Debug.Log("Found the particle in the object.");
                 return;
             }
         }
@@ -194,7 +192,6 @@ public class ParticleManager : Singleton<ParticleManager>
                 Particle.transform.position = createPos;
                 Particle.transform.rotation = Quaternion.LookRotation(createDir, Vector3.up);
                 Particle.GetComponent<PoolObject>().Init();
-                Debug.Log("Found the particle in the object.");
                 return;
             }
         }
@@ -210,7 +207,6 @@ public class ParticleManager : Singleton<ParticleManager>
         if (_particles.ContainsKey(obj.pooltag))
         {
             PoolManager.Instance.PushObject(_particles[obj.pooltag].gameObject);
-            Debug.LogWarning("Found the particle in the object.");
             return;
         }
         Debug.LogWarning("Not Found any particles in the object.");
@@ -223,9 +219,7 @@ public class ParticleManager : Singleton<ParticleManager>
     public void PoolParticleEffectOn(GameObject obj)
     {
         PoolObject poolObj = obj.GetComponent<PoolObject>();
-
-        Debug.Log(poolObj);
-
+        
         if (poolObj != null)
         {
             if (_particles.ContainsKey(poolObj.pooltag))
@@ -236,7 +230,6 @@ public class ParticleManager : Singleton<ParticleManager>
                 if (Particle != null)
                 {
                     Particle.GetComponent<PoolObject>().Init();
-                    Debug.LogWarning("Found the particle in the object.");
                     return;
                 }
             }
@@ -252,6 +245,7 @@ public class ParticleManager : Singleton<ParticleManager>
     public void PoolParticleEffectOn(GameObject obj, Transform parent)
     {
         PoolObject poolObj = obj.GetComponent<PoolObject>();
+
         if (poolObj != null)
         {
             if (_particles.ContainsKey(poolObj.pooltag))
@@ -263,9 +257,10 @@ public class ParticleManager : Singleton<ParticleManager>
                 {
                     Particle.transform.rotation = parent.rotation;
                     Particle.transform.parent = parent;
-                    Particle.transform.localPosition = parent.position;
+                    Particle.transform.localPosition = Vector3.zero;
+
                     Particle.GetComponent<PoolObject>().Init();
-                    Debug.LogWarning("Found the particle in the object.");
+                    return;
                 }
             }
         }
@@ -294,7 +289,6 @@ public class ParticleManager : Singleton<ParticleManager>
                     Particle.transform.position = createPos;
                     Particle.transform.rotation = Quaternion.LookRotation(createDir, Vector3.up);
                     Particle.GetComponent<PoolObject>().Init();
-                    Debug.LogWarning("Found the particle in the object.");
                     return;
                 }
             }
@@ -315,7 +309,6 @@ public class ParticleManager : Singleton<ParticleManager>
             if (_particles.ContainsKey(poolObj.pooltag))
             {
                 PoolManager.Instance.PushObject(obj);
-                Debug.LogWarning("Found the particle in the object.");
                 return;
             }
         }

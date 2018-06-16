@@ -96,9 +96,9 @@ MonoBehaviour:
     _afterOverLapTime: 0.3
     _curOverLapCheckTime: 0
     _maxOverLapCheckTime: 5
-    _preFanShapeBreathTime: 0
-    _runFanShapeBreathTime: 0
-    _afterFanShapeBreathTime: 0
+    _preFanShapeBreathTime: 0.1
+    _runFanShapeBreathTime: 2
+    _afterFanShapeBreathTime: 0.1
     _preBulletBreathTime: 0.4
     _runBulletBreathTime: 0.2
     _afterBulletBreathTime: 0.2
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc004bfe75cf6384e813726a43877e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Test: {fileID: 0}
   _dragonMouth: {fileID: 0}
   _dragonPowAttacksPivot: {fileID: 0}
   _dragonTailAttacksPivot: {fileID: 0}
@@ -145,10 +146,6 @@ MonoBehaviour:
   _isWalk: 0
   _isHovering: 0
   _isGroundAttacking: 0
-  _isLandingAct: 0
-  _isTakeOffAct: 0
-  _isHoveringPatternAct: 0
-  _isFlyingPatternAct: 0
   _isSecondAttack: 0
   _curIceCrystalNum: 40
   _maxIceBulletCrystalNum: 70

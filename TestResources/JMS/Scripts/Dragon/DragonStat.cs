@@ -57,16 +57,9 @@ namespace DragonController {
         [SerializeField] private float _damageReceiveHpPercent;
         public float DamageReceiveHpPercent { get { return _damageReceiveHpPercent; } }
 
-        [Range(0.0f, 1.0f)]
-        [SerializeField] private float _weakPointDamagePercent;
-        public float WeakPointDamagePercent { get { return _weakPointDamagePercent; } }
-
-        private float _weakPointDamage;
-        public float WeakPointDamage { get { return _weakPointDamage; } }
 
         public void Awake()
         {
-            _weakPointDamage = _maxHP * _weakPointDamagePercent;
         }
 
     }

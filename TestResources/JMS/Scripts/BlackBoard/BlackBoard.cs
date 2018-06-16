@@ -14,6 +14,8 @@ public class BlackBoard : Singleton<BlackBoard>
     [Space]
     [Header("Boss Body Transform")]
 
+    public Collider Test;
+
     [SerializeField]
     private Transform _dragonMouth;
     public Transform DragonMouth { get { return _dragonMouth; } }

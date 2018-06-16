@@ -21,7 +21,7 @@ public class Boss_Rush_Decorator : DecoratorTask
         bool IsSecondAttack = BlackBoard.Instance.IsSecondAttack;
 
         if((IsRush && !IsGroundAttacking) || 
-            ((IsRushAttacking && !IsOverLapAttacking) || IsSecondAttack))
+            ((IsSecondAttack && !IsOverLapAttacking) || IsRushAttacking))
         {
             return ChildNode.Run();
         }

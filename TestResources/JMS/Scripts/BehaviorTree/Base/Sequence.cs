@@ -6,6 +6,11 @@ using UnityEngine;
 public class Sequence : CompositeTask
 {
 
+    public override void OnStart()
+    {
+        base.OnStart();
+    }
+
     public override bool Run()
     {
         foreach (TreeNode child in ChildNodes)
@@ -13,14 +18,21 @@ public class Sequence : CompositeTask
             if (!child.Run())
             {
                 if (NodeState != TASKSTATE.RUNNING)
-                    NodeState = TASKSTATE.RUNNING;
+                {
+                    OnStart();
+                }
                 return false;
             }
         }
+
         if (NodeState != TASKSTATE.FAULURE)
-            NodeState = TASKSTATE.FAULURE;
+            OnEnd();
+
         return true;
     }
 
-
+    public override void OnEnd()
+    {
+        base.OnEnd();
+    }
 }

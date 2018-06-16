@@ -7,7 +7,6 @@ public class Boss_FanShapeBreath_Attack : ActionTask
 
     public override bool Run()
     {
-
         bool isFanShapeBreathAttacking = BlackBoard.Instance.IsFanShapeBreathAttacking;
 
         if (!isFanShapeBreathAttacking)
@@ -50,6 +49,8 @@ public class Boss_FanShapeBreath_Attack : ActionTask
 
         BlackBoard.Instance.IsGroundAttacking = false;
         BlackBoard.Instance.IsFanShapeBreathAttacking = false;
+
+        WeakPointManager.Instance.CurrentPatternCount++;
 
     }
 

@@ -55,6 +55,8 @@ public class Boss_Mortar_Attack : ActionTask
         BlackBoard.Instance.IsMortarAttacking = false;
         BlackBoard.Instance.IsGroundAttacking = false;
 
+        WeakPointManager.Instance.CurrentPatternCount++;
+
     }
 
 

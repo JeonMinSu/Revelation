@@ -15,7 +15,7 @@ public class Boss_OverLap_Decorator : DecoratorTask
         bool IsRushAttacking = BlackBoard.Instance.IsRushAttacking;
         bool IsSecondAttack = BlackBoard.Instance.IsSecondAttack;
 
-        if ((IsOverLap && !IsGroundAttacking) && 
+        if ((IsOverLap && !IsGroundAttacking && !IsRushAttacking) || 
             ((IsSecondAttack && !IsRushAttacking) || IsOverLapAttacking))
         {
             Debug.Log("OverLap_Attack_Decorator");

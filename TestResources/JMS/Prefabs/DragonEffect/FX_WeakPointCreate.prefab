@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4559643179274956}
   - component: {fileID: 198104368776371302}
   - component: {fileID: 199364955595147882}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4162133995654930}
   - component: {fileID: 198481183791419468}
   - component: {fileID: 199176101886318326}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Particle System (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4436384192876916}
   - component: {fileID: 198926146531583696}
   - component: {fileID: 199760914674967844}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4236596567643612}
   - component: {fileID: 198384313793966276}
   - component: {fileID: 199668598351604376}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4300823858765798}
   - component: {fileID: 198402350498312350}
   - component: {fileID: 199613238148403536}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: background_circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4909072429806806}
   - component: {fileID: 198768010847114526}
   - component: {fileID: 199351838352181224}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: background_circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4716827028826876}
   - component: {fileID: 198954607437443198}
   - component: {fileID: 199035250807950378}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4577918726231144}
   - component: {fileID: 198030284797087766}
   - component: {fileID: 199605892965870130}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: soyongdori
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 4976577429486496}
   - component: {fileID: 198713836798084136}
   - component: {fileID: 199099960856972302}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,9 +173,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4189178484674596}
   - component: {fileID: 114246064504215850}
-  - component: {fileID: 114602624760367700}
-  m_Layer: 0
-  m_Name: FX_WeakPoint
+  m_Layer: 12
+  m_Name: FX_WeakPointCreate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,7 +199,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1912587602027580}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -333,17 +332,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooltag: WeakPoint
   _endTime: 4
---- !u!114 &114602624760367700
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1912587602027580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cefae32e2592d904f9d1069cb5293ebf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &198030284797087766
 ParticleSystem:
   m_ObjectHideFlags: 1

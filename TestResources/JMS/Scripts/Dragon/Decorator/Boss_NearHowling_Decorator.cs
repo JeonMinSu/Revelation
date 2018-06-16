@@ -8,14 +8,12 @@ public class Boss_NearHowling_Decorator : DecoratorTask
     {
         bool IsNearHowlingAttacking = BlackBoard.Instance.IsNearHowlingAttacking;
 
-        bool IsNearHowlingAttack = true;
-
-        if (IsNearHowlingAttacking)
+        if (false)
         {
             return ChildNode.Run();
         }
 
-        return false;
+        return true;
     }
 
 }

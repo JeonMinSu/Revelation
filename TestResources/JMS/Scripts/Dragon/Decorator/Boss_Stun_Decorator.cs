@@ -4,7 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss_Stun_Decorator : DecoratorTask
+
 {
+    public override void OnStart()
+    {
+        base.OnStart();
+    }
+
     public override bool Run()
     {
         int CurWeakPointCount = BlackBoard.Instance.CurWeakPointCount;
@@ -15,6 +21,11 @@ public class Boss_Stun_Decorator : DecoratorTask
             return ChildNode.Run();
         }
         return true;
+    }
+
+    public override void OnEnd()
+    {
+        base.OnEnd();
     }
 
 }

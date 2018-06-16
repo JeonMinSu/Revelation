@@ -21,7 +21,6 @@ public class UtilityManager :  Singleton<UtilityManager>
     public Transform PlayerTransform() { return Player.transform; }
     public Transform DragonTransform() { return Dragon.transform; }
 
-
     public static bool DistanceCalc(Transform This, Transform Target, float Range)
     {
         if (Vector3.Distance(This.position, Target.position) <= Range)

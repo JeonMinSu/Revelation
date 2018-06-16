@@ -819,7 +819,7 @@ GameObject:
   - component: {fileID: 136983783003066704}
   m_Layer: 10
   m_Name: Bip001 R Thigh
-  m_TagString: Untagged
+  m_TagString: WeakPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1116,7 +1116,7 @@ GameObject:
   - component: {fileID: 136399599013354092}
   m_Layer: 10
   m_Name: Bip001 L Thigh
-  m_TagString: Untagged
+  m_TagString: WeakPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5347,7 +5347,7 @@ MonoBehaviour:
   _secondPhaseHpPercent: 0.49
   _thirdPhaseHpPercent: 0.14
   _groggyHpPercent: 0.05
-  _damageReceiveHpPercent: 0.2
+  _damageReceiveHpPercent: 1
   _weakPointDamagePercent: 0.1
 --- !u!114 &114290895731666902
 MonoBehaviour:

@@ -32,6 +32,7 @@ public class Boss_LeftPow_Attack : ActionTask
 
 
         //선딜
+        ParticleManager.Instance.PoolParticleEffectOn("LeftPow");
         DragonAniManager.SwicthAnimation("LeftPow_Atk_Pre");
         yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(preTime));
 
@@ -52,6 +53,8 @@ public class Boss_LeftPow_Attack : ActionTask
         BlackBoard.Instance.IsSecondAttack = false;
         BlackBoard.Instance.IsSecondAttacking = false;
         BlackBoard.Instance.IsGroundAttacking = false;
+
+        WeakPointManager.Instance.CurrentPatternCount++;
 
     }
 

@@ -44,9 +44,12 @@ namespace DragonController
             {
                 CoroutineManager.DoCoroutine(_dragonAiCor);
                 _isInit = true;
+
             }
 		
 	    }
+
+
 
         public bool IsFindNode(MOVEMENTTYPE Type)
         {
@@ -75,7 +78,7 @@ namespace DragonController
         {
             Stat.SaveTakeDamage += Damege;
             Stat.HP -= Damege;
-            Debug.Log("Dragon Hit");
+            Debug.Log("Dragon Hit : " + Damege);
         }
         
         IEnumerator StartDragonAI()

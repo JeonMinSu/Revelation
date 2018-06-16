@@ -51,6 +51,8 @@ public class Boss_RightPow_Attack : ActionTask
         BlackBoard.Instance.IsSecondAttacking = false;
         BlackBoard.Instance.IsGroundAttacking = false;
 
+        WeakPointManager.Instance.CurrentPatternCount++;
+
     }
 
 }

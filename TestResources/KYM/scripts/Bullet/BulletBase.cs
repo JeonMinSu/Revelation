@@ -31,7 +31,7 @@ public class BulletBase : Bullet {
             }
         }
         if(hitInfo.Length > 0)
-        EventManager.Instance.EventBulletExplosion(collisionParticle,hitInfo[0].point);
+        EventManager.Instance.EventBulletExplosion(collisionParticle,hitInfo[0].point,hitInfo[0].normal);
 
         PoolManager.Instance.PushObject(this.gameObject);
     }

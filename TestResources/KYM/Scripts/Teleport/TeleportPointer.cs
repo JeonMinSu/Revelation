@@ -11,7 +11,8 @@ public class TeleportPointer : MonoBehaviour
     public float pointSpacing = 0.5f;
     public float graphicThickness = 0.2f;
     public Material graphicMaterial;
- 
+    public Material graphicNoneMaterial;
+
     public LayerMask teleportLayer = ~0;
     public LayerMask parabolHitLayer = ~0;
 
@@ -105,7 +106,10 @@ public class TeleportPointer : MonoBehaviour
 
         // Draw parabola (BEFORE the outside faces of the selection pad, to avoid depth issues)
         GenerateMesh(ref parabolaMesh, parabolaPoints, velocity, Time.time % 1);
-        Graphics.DrawMesh(parabolaMesh, Matrix4x4.identity, graphicMaterial, gameObject.layer);
+        if(CanTeleport)
+            Graphics.DrawMesh(parabolaMesh, Matrix4x4.identity, graphicMaterial, gameObject.layer);
+        else
+            Graphics.DrawMesh(parabolaMesh, Matrix4x4.identity, graphicNoneMaterial, gameObject.layer);
     }
 
     private void GenerateMesh(ref Mesh m, List<Vector3> points, Vector3 fwd, float uvoffset)

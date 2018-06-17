@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //[RequireComponent(typeof(GunAnimation))]
 public class Gun : MonoBehaviour {
@@ -9,8 +10,11 @@ public class Gun : MonoBehaviour {
     [SerializeField] private float fireDelay;
     [SerializeField] private string fireSound;
     [SerializeField] private Transform firePos;
-    [SerializeField] TextMesh bulletUI;
-
+    [SerializeField] bool isRight;
+    [SerializeField] Slider gunBulletCountSlider;
+    [SerializeField] Text gunBulletCountText;
+    [SerializeField] Color noBulletUIColor;
+    Color yesBulletUIColor;
     private int currentBullet;
     private float fireCoolTime;
 
@@ -20,7 +24,9 @@ public class Gun : MonoBehaviour {
     void Start ()
     {
         currentBullet = maxBullet;
-        bulletUI.text = currentBullet.ToString();
+        gunBulletCountSlider.value = currentBullet / maxBullet;
+        gunBulletCountText.text = currentBullet.ToString();
+        yesBulletUIColor = gunBulletCountText.color;
         fireCoolTime = 0.0f;
         gunAni = GetComponent<GunAnimation>();
 	}
@@ -30,8 +36,7 @@ public class Gun : MonoBehaviour {
     {
 	    if(fireCoolTime > 0.0f)
             fireCoolTime -= Time.unscaledDeltaTime;
-
-	}
+    }
 
     public void Fire()
     {
@@ -45,19 +50,29 @@ public class Gun : MonoBehaviour {
             return;
         }
         if (currentBullet <= 0)
-        {
+        {    
             return;
         }
 
         BulletManager.Instance.CreatePlayerBaseBullet(firePos);
         fireCoolTime = fireDelay;
         currentBullet -= 1;
-        bulletUI.text = currentBullet.ToString();
-        if(gunAni != null)
+        gunBulletCountSlider.value = (float)currentBullet / maxBullet;
+        gunBulletCountText.text = currentBullet.ToString();
+        if(currentBullet <= 0)
+        {
+            gunBulletCountText.color = noBulletUIColor;
+        }
+        if (gunAni != null)
         {
             gunAni.MagazieTurn(0.1f, maxBullet);
             gunAni.ShakeGun(fireDelay * 0.9f, 10.0f, 0.05f);
             gunAni.FireParticle(firePos.position + firePos.forward * 0.1f);
+
+            if (isRight)
+                gunAni.Cartridge(transform.rotation * Quaternion.Euler(0, 40, 0));
+            else
+                gunAni.Cartridge(transform.rotation * Quaternion.Euler(0, -40, 0));
         }
 
     }
@@ -65,6 +80,8 @@ public class Gun : MonoBehaviour {
     public void Reload()
     {
         currentBullet = maxBullet;
-        bulletUI.text = currentBullet.ToString();
+        gunBulletCountText.text = currentBullet.ToString();
+        gunBulletCountSlider.value = (float)currentBullet / maxBullet;
+        gunBulletCountText.color = yesBulletUIColor;
     }
 }

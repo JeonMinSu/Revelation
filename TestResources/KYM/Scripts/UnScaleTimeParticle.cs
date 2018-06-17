@@ -10,7 +10,6 @@ using UnityEngine;
 public class UnScaleTimeParticle : MonoBehaviour {
 
     ParticleSystem particle;
-    float lastTime;
     private void Awake()
     {
         particle = GetComponent<ParticleSystem>();
@@ -18,17 +17,41 @@ public class UnScaleTimeParticle : MonoBehaviour {
 
     private void Start()
     {
-        lastTime = Time.realtimeSinceStartup;
     }
 
 
     // Update is called once per frame
     void Update ()
     {
-        float deltaTime = Time.realtimeSinceStartup - lastTime;
-        particle.Simulate(deltaTime, true, true);
-        lastTime = Time.realtimeSinceStartup;
+        particle.Simulate(Time.unscaledDeltaTime, true, false);
+        //if(Time.timeScale < 0.5f)
+        //{
+        //    ParticleSystem[] ps= this.GetComponentsInChildren<ParticleSystem>();
+        //    for(int i = 0; i<ps.Length; i++)
+        //    {
+        //        var main = ps[i].main;
+        //        main.simulationSpeed = 1.0f;
+        //    }
 
+        //}
+        //particle.main.simulationSpeed = 1;
+        //particle.main.simulationSpeed = 1.0f;
+
+
+
+        //particle
+        //Debug.Log("time" + GetComponent<ParticleSystem>().time);
+        //GetComponent<ParticleSystem>().
+
+        //float deltaTime = Time.realtimeSinceStartup - lastTime;
+
+        //lastTime = Time.realtimeSinceStartup;
         //particle.Simulate(Time.unscaledDeltaTime, true);
-	}
+    }
+    private void OnEnable()
+    {
+        particle.time = 0;
+  
+    }
+
 }

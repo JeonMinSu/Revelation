@@ -13,13 +13,18 @@ public class GunAnimation : MonoBehaviour {
     }
 
     [SerializeField]
-    private GameObject triggerObject;
+    //controller
+    private Animator handAnimator;
+    //private GameObject triggerObject;
 
     [SerializeField]
     private GameObject magazine;
 
     [SerializeField]
     private GameObject fireParticle;
+
+    [SerializeField]
+    private PoolObject cartridge;
 
     private GameObject gun;
     bool corTurn;
@@ -42,6 +47,11 @@ public class GunAnimation : MonoBehaviour {
         StartCoroutine(CorTriggerAxisUpdate());
     }
 
+    private void OnEnable()
+    {
+        //StartCoroutine(CorTriggerAxisUpdate());
+    }
+
     public void MagazieTurn(float time, int maxBullet)
     {
         if (corTurn) return;
@@ -58,6 +68,15 @@ public class GunAnimation : MonoBehaviour {
         fireParticle.SetActive(true);
     }
 
+    public void Cartridge()
+    {
+        EventManager.Instance.EventCartridge(cartridge, magazine.transform.position);
+    }
+
+    public void Cartridge(Quaternion rot)
+    {
+        EventManager.Instance.EventCartridge(cartridge, magazine.transform.position,rot);
+    }
     IEnumerator CorTurnMagazine(float playTime, int maxBulletCount)
     {
         corTurn = true;
@@ -117,10 +136,23 @@ public class GunAnimation : MonoBehaviour {
     IEnumerator CorTriggerAxisUpdate()
     {
         float axis;
-        for(; ;)
+
+
+
+        for (; ;)
         {
             axis = Controller.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger).x;
-            triggerObject.transform.localRotation = Quaternion.Euler(axis * 40.0f, 0.0f, 0.0f);
+            if (handAnimator != null)
+            {
+                handAnimator.SetFloat("HandValue", axis);
+            }
+ 
+            //AnimatorStateInfo animatorStateInfo =  handAnimator.GetCurrentAnimatorStateInfo(0);
+            //animatorStateInfo.
+            //handAnimator.time = handAnimaton.length * axis;
+            //handAnimator.StartPlayback();
+            //handAnimator.playbackTime = axis;
+            //triggerObject.transform.localRotation = Quaternion.Euler(axis * 40.0f, 0.0f, 0.0f);
             yield return null;
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public enum PlayerVRState
 {
@@ -34,16 +34,21 @@ public class PlayerVRController : MonoBehaviour
     private bool isClicking = false;
     public float HapticClickAngleStep = 10;
     [SerializeField]
-    public float teleportMovingTime = 0.2f;
+    public float teleportMovingTime = 0.4f;
 
     private bool isSlow = false;
     private float slowTime = 0.0f;
 
     [SerializeField]
     private float maxSlowTime = 5.0f;
+    [SerializeField]
+    [Range(0, 1)]
+    private float slowValue = 0.2f;
 
     [SerializeField]
-    private TextMesh timeText;
+    private Slider slowSliderUI;
+    [SerializeField]
+    private Image slowGearUI;
 
     [SerializeField]
     private float freeMovingSpeed = 7.0f;
@@ -90,23 +95,23 @@ public class PlayerVRController : MonoBehaviour
 
     private void Update()
     {
-        //Teleport();
-        //GunFire();
-        //Slow();
+        Teleport();
+        GunFire();
+        Slow();
     }
 
     private void FixedUpdate()
     {
-        Move();
+        //Move();
     }
 
     void Teleport()
     {
-        if (playerState == PlayerVRState.TeleportNone && trackedObjectRight.isActiveAndEnabled)
+        if (playerState == PlayerVRState.TeleportNone && trackedObjectLeft.isActiveAndEnabled)
         {
-            if (RightHand.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+            if (LeftHand.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
             {
-                pointer.transform.parent = trackedObjectRight.transform;
+                pointer.transform.parent = trackedObjectLeft.transform;
                 pointer.transform.localPosition = Vector3.zero;
                 pointer.transform.localRotation = Quaternion.identity;
                 pointer.transform.localScale = Vector3.one;
@@ -122,7 +127,7 @@ public class PlayerVRController : MonoBehaviour
         }
         else if (playerState == PlayerVRState.TeleportSelect)
         {
-            if (RightHand.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
+            if (LeftHand.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
             {
                 if (pointer.CanTeleport)
                 {
@@ -194,17 +199,19 @@ public class PlayerVRController : MonoBehaviour
 
     void Slow()
     {
-        if (LeftHand.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+        if (RightHand.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
         {
-            isSlow = !isSlow;
+            if(slowTime <= 0)
+                isSlow = true;
         }
+
         if(isSlow)
         {
             if (slowTime >= maxSlowTime)
                 isSlow = false;
             else
             {
-                Time.timeScale = 0.2f; 
+                Time.timeScale = slowValue; 
                 slowTime += Time.unscaledDeltaTime;
                 if (slowTime > maxSlowTime) slowTime = maxSlowTime;
             }
@@ -217,12 +224,16 @@ public class PlayerVRController : MonoBehaviour
             else
                 slowTime = 0;
         }
-        timeText.text = slowTime.ToString();
+        float value = 1 - slowTime / maxSlowTime;
+
+        slowSliderUI.value = value;
+        slowGearUI.transform.localRotation = Quaternion.Euler(0, 0, value * -1440);
+
     }
 
     private void Move()
     {
-        if(RightHand.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+        if(LeftHand.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
         {
             //Debug.Log(prevArrow.ToString() + ArrowValue(8,RightHand.GetAxis()).ToString());
             int currentArrow = ArrowValue(8, RightHand.GetAxis());
@@ -235,7 +246,7 @@ public class PlayerVRController : MonoBehaviour
                 Debug.Log("Dash!");
             }
         }
-        else if (RightHand.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
+        else if (LeftHand.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
         {
             Vector2 _axis = RightHand.GetAxis();
             int _curretArrow = ArrowValue(8, _axis);
@@ -249,7 +260,7 @@ public class PlayerVRController : MonoBehaviour
             moveDir.Normalize();
             originTransform.transform.position += moveDir * freeMovingSpeed * Time.deltaTime;            
         }
-        else if(RightHand.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
+        else if(LeftHand.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
         {
             calcDashCheckTime = 0.0f;
         }
@@ -294,6 +305,7 @@ public class PlayerVRController : MonoBehaviour
  
         StartCoroutine(CorTeleport(dashPosition));
     }
+
 
     IEnumerator CorTeleport(Vector3 teleportPosition)
     {

@@ -230,8 +230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9635339319f8041a6525f9cb5ed7ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletExplosionParticle: {fileID: 114668893591151330, guid: 89e9aa2d60fd0e54b9cba799a9f86ff3,
-    type: 2}
 --- !u!114 &114319139953902972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,10 +247,10 @@ MonoBehaviour:
     initialCount: 10
   - poolObject: {fileID: 1077627483473738, guid: 3a00062c9996ba14b8d0b2cf22974550,
       type: 2}
-    initialCount: 50
-  - poolObject: {fileID: 1165292288135156, guid: 89e9aa2d60fd0e54b9cba799a9f86ff3,
+    initialCount: 20
+  - poolObject: {fileID: 1588994133352752, guid: b81f36309c3c9c44589f33a3c5e1edec,
       type: 2}
-    initialCount: 40
+    initialCount: 20
   InitializePos: {x: 0, y: -3000, z: 0}
 --- !u!114 &114382599526017528
 MonoBehaviour:

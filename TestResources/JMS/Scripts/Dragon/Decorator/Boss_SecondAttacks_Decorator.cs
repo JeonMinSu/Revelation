@@ -17,8 +17,17 @@ public class Boss_SecondAttacks_Decorator : DecoratorTask
 
         if (IsSecondAttack)
         {
-            if (NodeState != TASKSTATE.RUNNING)
+            ActionTask childAction = ChildNode.GetComponent<ActionTask>();
+
+            if (childAction)
+            {
+                if (NodeState != TASKSTATE.RUNNING || childAction.IsEnd)
+                    OnStart();
+            }
+
+            else if (NodeState != TASKSTATE.RUNNING)
                 OnStart();
+
             return ChildNode.Run();
         }
 

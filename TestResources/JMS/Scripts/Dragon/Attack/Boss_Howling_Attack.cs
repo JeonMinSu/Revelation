@@ -5,23 +5,38 @@ using DragonController;
 
 public class Boss_Howling_Attack : ActionTask
 {
+    public override void OnStart()
+    {
+        Debug.Log(this.gameObject.name + ": OnStart");
+
+        float preTime = BlackBoard.Instance.GetGroundTime().PreHowlingTime;
+        float runTime = BlackBoard.Instance.GetGroundTime().RunHowlingTime;
+        float afterTime = BlackBoard.Instance.GetGroundTime().AfterHowlingTime;
+
+        ActionCor = HowlingAttackCor(preTime,runTime, afterTime);
+
+        base.OnStart();
+    }
+
     public override bool Run()
     {
-        bool IsRoarAttacking = BlackBoard.Instance.IsHowlingAttacking;
-
-        if (!IsRoarAttacking)
-        {
-            float preTime = BlackBoard.Instance.GetGroundTime().PreHowlingTime;
-            float afterTime = BlackBoard.Instance.GetGroundTime().AfterHowlingTime;
-
-            CoroutineManager.DoCoroutine(HowlingAttackCor(preTime, afterTime));
-
-        }
-
         return false;
     }
 
-    IEnumerator HowlingAttackCor(float preTime, float afterTime)
+    public override void OnEnd()
+    {
+        Debug.Log(this.gameObject.name + ": OnEnd");
+
+        DragonManager.Stat.SaveTakeDamage = 0.0f;
+        BlackBoard.Instance.IsHowlingAttacking = false;
+        BlackBoard.Instance.IsGroundAttacking = false;
+
+        WeakPointManager.Instance.CurrentPatternCount++;
+
+        base.OnEnd();
+    }
+
+    IEnumerator HowlingAttackCor(float preTime, float runTime ,float afterTime)
     {
         Transform Dragon = UtilityManager.Instance.DragonTransform();
 
@@ -33,8 +48,6 @@ public class Boss_Howling_Attack : ActionTask
 
         BlackBoard.Instance.IsGroundAttacking = true;
         BlackBoard.Instance.IsHowlingAttacking = true;
-
-        float runTime = BlackBoard.Instance.GetGroundTime().RunHowlingTime;
         Transform mouth = BlackBoard.Instance.DragonMouth;
 
         Vector3 forward = (PlayerPos - DragonPos).normalized;
@@ -51,26 +64,18 @@ public class Boss_Howling_Attack : ActionTask
             yield return CoroutineManager.FiexdUpdate;
         }
 
-        ParticleManager.Instance.PoolParticleEffectOn("Howling");
-
         DragonAniManager.SwicthAnimation("Howling_Atk_Pre");
-        yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(preTime));
+        yield return CoroutineManager.GetWaitForSeconds(preTime);
 
         //런 타임
         DragonAniManager.SwicthAnimation("Howling_Atk_Run");
-        yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(runTime));
+        yield return CoroutineManager.GetWaitForSeconds(runTime);
 
         //후딜 
         DragonAniManager.SwicthAnimation("Howling_Atk_After");
-        yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(afterTime));
+        yield return CoroutineManager.GetWaitForSeconds(afterTime);
 
-        ParticleManager.Instance.PoolParticleEffectOff("Howling");
-
-        DragonManager.Stat.SaveTakeDamage = 0.0f;
-        BlackBoard.Instance.IsHowlingAttacking = false;
-        BlackBoard.Instance.IsGroundAttacking = false;
-
-        WeakPointManager.Instance.CurrentPatternCount++;
+        _isEnd = true;
 
     }
 }

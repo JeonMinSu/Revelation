@@ -17,33 +17,35 @@ public class Sequence : CompositeTask
         {
             if (!child.Run())
             {
-                if (child.NodeState != TASKSTATE.RUNNING)
+                if (child.GetComponent<ActionTask>())
                 {
-                    if (child.GetComponent<ActionTask>())
+                    ActionTask childAction = child.GetComponent<ActionTask>();
+
+                    if (child.NodeState != TASKSTATE.RUNNING || childAction.IsEnd)
                     {
+                        if (DragonManager.Instance.PreserveActionTask)
+                        { 
+                            if (DragonManager.Instance.PreserveActionTask != childAction)
+                                DragonManager.Instance.PreserveActionTask.OnEnd();
+                        }
+                        DragonManager.Instance.PreserveActionTask = childAction;
+
                         child.NodeState = TASKSTATE.RUNNING;
                         child.OnStart();
                     }
                 }
+
                 if (NodeState != TASKSTATE.RUNNING)
                     OnStart();
 
                 return false;
             }
-            if (child.NodeState != TASKSTATE.FAULURE)
-            {
-                Debug.Log(child);
-                if (child.GetComponent <ActionTask>())
-                {
-                    child.NodeState = TASKSTATE.FAULURE;
-                    child.OnEnd();
-                }
-            }
+
         }
+
         if (NodeState != TASKSTATE.FAULURE)
-        {
             OnEnd();
-        }
+
         return true;
     }
 

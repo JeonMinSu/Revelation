@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss_Stun_Decorator : DecoratorTask
-
 {
     public override void OnStart()
     {
@@ -13,13 +12,25 @@ public class Boss_Stun_Decorator : DecoratorTask
 
     public override bool Run()
     {
-        int CurWeakPointCount = BlackBoard.Instance.CurWeakPointCount;
-        int MaxWeakPointCount = BlackBoard.Instance.MaxWeakPointCount;
+        bool IsWeakPointAttack = BlackBoard.Instance.IsWeakPointAttack;
 
-        if (CurWeakPointCount >= MaxWeakPointCount)
+        if (IsWeakPointAttack)
         {
+            ActionTask childAction = ChildNode.GetComponent<ActionTask>();
+
+            if (childAction)
+                if (NodeState != TASKSTATE.RUNNING || childAction.IsEnd)
+                    OnStart();
+
+                else if (NodeState != TASKSTATE.RUNNING)
+                    OnStart();
+
             return ChildNode.Run();
         }
+
+        if (NodeState != TASKSTATE.FAULURE)
+            OnEnd();
+
         return true;
     }
 

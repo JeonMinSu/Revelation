@@ -10,9 +10,22 @@ public class Boss_Dead_Decorator : DecoratorTask
         float CurHP = DragonManager.Stat.HP;
 
         if (CurHP <= 0.0f)
-        {   
+        {
+            ActionTask childAction = ChildNode.GetComponent<ActionTask>();
+
+            if (childAction)
+                if (NodeState != TASKSTATE.RUNNING || childAction.IsEnd)
+                    OnStart();
+
+                else if (NodeState != TASKSTATE.RUNNING)
+                    OnStart();
+
             return ChildNode.Run();
         }
+
+        if (NodeState != TASKSTATE.FAULURE)
+            OnEnd();
+
         return true;
     }
 

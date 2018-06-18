@@ -5,6 +5,10 @@ using DragonController;
 
 public class Boss_Walk_Action : ActionTask
 {
+    public override void OnStart()
+    {
+        base.OnStart();
+    }
 
     public override bool Run()
     {
@@ -49,5 +53,9 @@ public class Boss_Walk_Action : ActionTask
         return true;
     }
 
+    public override void OnEnd()
+    {
+        base.OnEnd();
+    }
 
 }

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Boss_NearBreathAttack_Decorator : DecoratorTask
 {
+    public override void OnStart()
+    {
+        base.OnStart();
+    }
+
 
     public override bool Run()
     {
@@ -14,15 +19,34 @@ public class Boss_NearBreathAttack_Decorator : DecoratorTask
 
         bool IsBulletBreath = UtilityManager.DistanceCalc(Dragon, Player, NearBreathDistance);
 
-        bool IsBulletBreathAttacking = BlackBoard.Instance.IsNearBreathAttacking;
+        bool IsNearBreathAttacking = BlackBoard.Instance.IsNearBreathAttacking;
         bool IsGroundAttacking = BlackBoard.Instance.IsGroundAttacking;
 
-        if ((IsBulletBreath && !IsGroundAttacking) || IsBulletBreathAttacking)
+        if ((IsBulletBreath && !IsGroundAttacking) || IsNearBreathAttacking)
         {
+            ActionTask childAction = ChildNode.GetComponent<ActionTask>();
+
+            if (childAction)
+            {
+                if (NodeState != TASKSTATE.RUNNING || childAction.IsEnd)
+                {
+                    OnStart();
+                }
+            }
+            else if (NodeState != TASKSTATE.RUNNING)
+                OnStart();
+
             return ChildNode.Run();
         }
+        if (NodeState != TASKSTATE.FAULURE)
+            OnEnd();
 
         return true;
+    }
+
+    public override void OnEnd()
+    {
+        base.OnEnd();
     }
 
 

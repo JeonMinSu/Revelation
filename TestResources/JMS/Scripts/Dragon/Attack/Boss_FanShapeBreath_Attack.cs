@@ -1,56 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DragonController;
 
 public class Boss_FanShapeBreath_Attack : ActionTask
 {
 
-    public override bool Run()
+    public override void OnStart()
     {
-        bool isFanShapeBreathAttacking = BlackBoard.Instance.IsFanShapeBreathAttacking;
+        float preTime = BlackBoard.Instance.GetGroundTime().PreRushTime;
+        float runTime = BlackBoard.Instance.GetGroundTime().RunRushTime;
+        float afterTime = BlackBoard.Instance.GetGroundTime().AfterRushTime;
 
-        if (!isFanShapeBreathAttacking)
-        {
-            float preTime = BlackBoard.Instance.GetGroundTime().PreFanShapeBreathTime;
-            float afterTime = BlackBoard.Instance.GetGroundTime().AfterFanShapeBreathTime;
-
-            CoroutineManager.DoCoroutine(FanShapeBreathCor(preTime, afterTime));
-        }
-        return false;
-    }
-
-    IEnumerator FanShapeBreathCor(float preTime, float afterTime)
-    {
         BlackBoard.Instance.IsGroundAttacking = true;
         BlackBoard.Instance.IsFanShapeBreathAttacking = true;
 
-        float curTime = 0.0f;
-        float runTime = BlackBoard.Instance.GetGroundTime().RunFanShapeBreathTime;
+        ActionCor = FanShapeBreathCor(preTime, runTime, afterTime);
 
-        //선딜
-        yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(preTime));
+        base.OnStart();
+    }
 
-        while (curTime < runTime)
-        {
-            Debug.Log("FanShapeBreath");
-            curTime += Time.fixedDeltaTime;
-            yield return CoroutineManager.FiexdUpdate;
-        }
+    public override bool Run()
+    {
+        return false;
+    }
 
-        yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(afterTime));
+    public override void OnEnd()
+    {
+        base.OnEnd();
 
         Transform Dragon = UtilityManager.Instance.DragonTransform();
         Transform Player = UtilityManager.Instance.PlayerTransform();
 
         float OverLapDistance = BlackBoard.Instance.RushDistance;
 
+        BlackBoard.Instance.IsFanShapeBreathAttacking = false;
+        BlackBoard.Instance.IsGroundAttacking = false;
+
         BlackBoard.Instance.IsOverLapAttack =
             (UtilityManager.DistanceCalc(Dragon, Player, OverLapDistance)) ? false : true;
 
-        BlackBoard.Instance.IsGroundAttacking = false;
-        BlackBoard.Instance.IsFanShapeBreathAttacking = false;
-
         WeakPointManager.Instance.CurrentPatternCount++;
+
+    }
+
+
+    IEnumerator FanShapeBreathCor(float preTime, float runTime, float afterTime)
+    {
+        Transform DragonMouth = BlackBoard.Instance.DragonMouth;
+
+        DragonAniManager.SwicthAnimation("FanShape_Atk");
+
+        yield return CoroutineManager.GetWaitForSeconds(runTime);
+
+        OnEnd();
 
     }
 

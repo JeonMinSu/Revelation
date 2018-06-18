@@ -5,28 +5,39 @@ using DragonController;
 
 public class Boss_OverLap_Attack : ActionTask
 {
-    public override bool Run()
+
+    public override void OnStart()
     {
-        bool IsOverLapAttacking = BlackBoard.Instance.IsOverLapAttacking;
+        float preTime = BlackBoard.Instance.GetGroundTime().PreOverLapTime;
+        float runTime = BlackBoard.Instance.GetGroundTime().RunOverLapTime;
+        float afterTime = BlackBoard.Instance.GetGroundTime().AfterOverLapTime;
 
-        if (!IsOverLapAttacking)
-        {
-            float preTime = BlackBoard.Instance.GetGroundTime().PreOverLapTime;
-            float afterTIme = BlackBoard.Instance.GetGroundTime().AfterOverLapTime;
-
-            CoroutineManager.DoCoroutine(OverLapAttackCor(preTime, afterTIme)); 
-
-        }
-
-        return false;
-    }
-
-    IEnumerator OverLapAttackCor(float preTime, float afterTime)
-    {
         BlackBoard.Instance.IsGroundAttacking = true;
         BlackBoard.Instance.IsOverLapAttacking = true;
 
-        float runTime = BlackBoard.Instance.GetGroundTime().RunOverLapTime;
+        ActionCor = OverLapAttackCor(preTime, runTime, afterTime);
+
+        base.OnStart();
+    }
+
+    public override bool Run()
+    {
+        return false;
+    }
+
+    public override void OnEnd()
+    {
+        BlackBoard.Instance.IsOverLapAttack = false;
+        BlackBoard.Instance.IsOverLapAttacking = BlackBoard.Instance.IsSecondAttack;
+        BlackBoard.Instance.IsGroundAttacking = BlackBoard.Instance.IsSecondAttack;
+
+        WeakPointManager.Instance.CurrentPatternCount++;
+
+        base.OnEnd();
+    }
+
+    IEnumerator OverLapAttackCor(float preTime, float runTime ,float afterTime)
+    {
 
         Transform Dragon = UtilityManager.Instance.DragonTransform();
         Transform Player = UtilityManager.Instance.PlayerTransform();
@@ -47,24 +58,23 @@ public class Boss_OverLap_Attack : ActionTask
 
         //선딜 애니메이션
         DragonAniManager.SwicthAnimation("Rush_Atk_Pre");
-        yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(preTime));
+        yield return CoroutineManager.GetWaitForSeconds(preTime);
 
         //실행 애니메이션
         DragonAniManager.SwicthAnimation("Rush_Atk_Run");
-        yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(runTime));
+        yield return CoroutineManager.GetWaitForSeconds(runTime);
 
         //후딜 애니메이션
         DragonAniManager.SwicthAnimation("Rush_Atk_After");
-        yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(afterTime));
+        yield return CoroutineManager.GetWaitForSeconds(afterTime);
 
         float SecondAttackDistance = BlackBoard.Instance.SecondAttackDistance;
 
-        BlackBoard.Instance.IsSecondAttack = UtilityManager.DistanceCalc(Dragon, Player, SecondAttackDistance);
-        BlackBoard.Instance.IsOverLapAttack = false;
-        BlackBoard.Instance.IsOverLapAttacking = false;
-        BlackBoard.Instance.IsGroundAttacking = (BlackBoard.Instance.IsSecondAttack) ? true : false;
+        BlackBoard.Instance.IsSecondAttack =
+            UtilityManager.DistanceCalc(Dragon, Player, SecondAttackDistance);
 
-        WeakPointManager.Instance.CurrentPatternCount++;
+        OnEnd();
+
     }
 
 }

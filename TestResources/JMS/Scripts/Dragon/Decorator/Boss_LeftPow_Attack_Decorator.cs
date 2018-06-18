@@ -22,14 +22,6 @@ public class Boss_LeftPow_Attack_Decorator : DecoratorTask
 
         bool IsLeftPowAttacking = BlackBoard.Instance.IsLeftPowAttacking;
         bool IsSecondAttacking = BlackBoard.Instance.IsSecondAttacking;
-        
-        //if (IsLeftPowAttacking)
-        //{
-        //    if (NodeState != TASKSTATE.RUNNING)
-        //        OnStart();
-        //    return ChildNode.Run();
-        //}
-
 
 
         if (!IsSecondAttacking || IsLeftPowAttacking)
@@ -42,7 +34,13 @@ public class Boss_LeftPow_Attack_Decorator : DecoratorTask
 
                 if (Result < 0.0f || IsLeftPowAttacking)
                 {
-                    if (NodeState != TASKSTATE.RUNNING)
+                    ActionTask childAction = ChildNode.GetComponent<ActionTask>();
+
+                    if (childAction)
+                        if (NodeState != TASKSTATE.RUNNING || childAction.IsEnd)
+                            OnStart();
+
+                    else if (NodeState != TASKSTATE.RUNNING)
                         OnStart();
 
                     return ChildNode.Run();
@@ -58,6 +56,7 @@ public class Boss_LeftPow_Attack_Decorator : DecoratorTask
 
     public override void OnEnd()
     {
+        BlackBoard.Instance.IsLeftPowAttacking = false;
         Debug.Log(this.gameObject.name + ": OnEnd");
         base.OnEnd();
     }

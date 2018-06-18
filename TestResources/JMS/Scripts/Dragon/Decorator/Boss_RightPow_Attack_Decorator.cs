@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Boss_RightPow_Attack_Decorator : DecoratorTask
 {
+    public override void OnStart()
+    {
+        Debug.Log(this.gameObject.name + " : Onstart");
+        base.OnStart();
+    }
+
 
     public override bool Run()
     {
@@ -18,13 +24,8 @@ public class Boss_RightPow_Attack_Decorator : DecoratorTask
         bool IsRightPowAttacking = BlackBoard.Instance.IsRightPowAttacking;
         bool IsSecondAttacking = BlackBoard.Instance.IsSecondAttacking;
 
-        if (IsRightPowAttacking)
-        {
-            Debug.Log("RightPowAttack");
-            return ChildNode.Run();
-        }
 
-        if (!IsSecondAttacking)
+        if (!IsSecondAttacking || IsRightPowAttacking)
         {
             if (Dot >= Mathf.Cos(Mathf.Deg2Rad * 180.0f * 0.5f))
             {
@@ -32,13 +33,34 @@ public class Boss_RightPow_Attack_Decorator : DecoratorTask
 
                 float Reulst = Vector3.Dot(Cross, Vector3.up);
 
-                if (Reulst >= 0.0f)
+                if (Reulst >= 0.0f || IsRightPowAttacking)
                 {
+
+                    ActionTask childAction = ChildNode.GetComponent<ActionTask>();
+
+                    if (childAction)
+                        if (NodeState != TASKSTATE.RUNNING || childAction.IsEnd)
+                            OnStart();
+
+                    else if (NodeState != TASKSTATE.RUNNING)
+                        OnStart();
+
                     return ChildNode.Run();
                 }
             }
         }
+
+        if (NodeState != TASKSTATE.FAULURE)
+            OnEnd();
+
         return true;
+    }
+
+    public override void OnEnd()
+    {
+        BlackBoard.Instance.IsRightPowAttacking = false;
+        Debug.Log(this.gameObject.name + "OnEnd");
+        base.OnEnd();
     }
 
 }

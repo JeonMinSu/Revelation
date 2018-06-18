@@ -18,6 +18,8 @@ public class AnimStateEventCollection : BaseAnimStateEventsCollection
         AddAnimTimeEventFunc(_animTimeEventFunc, Dragon_RightPow_AttackRun_Evn, "RightPow_Attack_Run");
         AddAnimTimeEventFunc(_animTimeEventFunc, Dragon_RightPow_AttackRun_Evn, "LeftPow_Attack_Run");
 
+        AddAnimEnterEventFunc(_animEnterEventFunc, Dragon_Painful_Evn, "Dragon_Painful");
+
     }
 
     private void Dragon_Rush_AttackRun_StartJump_Evn(EvnData evnData)
@@ -88,6 +90,16 @@ public class AnimStateEventCollection : BaseAnimStateEventsCollection
 
         r.AddForce(MoveDir * RightPowMoveSpeed, ForceMode.Impulse);
 
+    }
+
+    private void Dragon_Painful_Evn(EvnData evnData)
+    {
+        Rigidbody r = DragonManager.Instance.DragonRigidBody;
+        Transform Dragon = UtilityManager.Instance.DragonTransform();
+
+        Vector3 MoveDir = (Vector3.down).normalized;
+
+        r.AddForce(MoveDir * 500.0f, ForceMode.Impulse);
     }
 
 

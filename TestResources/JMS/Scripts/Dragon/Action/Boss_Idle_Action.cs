@@ -5,12 +5,21 @@ using DragonController;
 
 public class Boss_Idle_Action : ActionTask
 {
+    public override void OnStart()
+    {
+        DragonAniManager.SwicthAnimation("Idle");
+        base.OnStart();
+    }
 
     public override bool Run()
     {
-        DragonAniManager.SwicthAnimation("Idle");
         BlackBoard.Instance.GetGroundTime().CurIdleTime += Time.deltaTime;
         return true;
+    }
+
+    public override void OnEnd()
+    {
+        base.OnEnd();
     }
 
 }

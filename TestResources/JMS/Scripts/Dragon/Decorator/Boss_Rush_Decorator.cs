@@ -6,7 +6,6 @@ public class Boss_Rush_Decorator : DecoratorTask
 {
     public override void OnStart()
     {
-        Debug.Log(this.gameObject.name + " : OnStart");
         base.OnStart();
     }
 
@@ -19,16 +18,23 @@ public class Boss_Rush_Decorator : DecoratorTask
 
         bool IsRush = UtilityManager.DistanceCalc(Dragon, Player, RushDistanceLimit);
 
-        bool IsRushAttacking = BlackBoard.Instance.IsRushAttacking;
         bool IsGroundAttacking = BlackBoard.Instance.IsGroundAttacking;
+        bool IsRushAttacking = BlackBoard.Instance.IsRushAttacking;
 
         bool IsOverLapAttacking = BlackBoard.Instance.IsOverLapAttacking;
         bool IsSecondAttack = BlackBoard.Instance.IsSecondAttack;
 
         if ((IsRush && !IsGroundAttacking) || 
-            ((IsSecondAttack && !IsOverLapAttacking) || IsRushAttacking))
+            ((IsSecondAttack && IsRushAttacking) || IsRushAttacking))
         {
-            if (NodeState != TASKSTATE.RUNNING)
+            ActionTask childAction = ChildNode.GetComponent<ActionTask>();
+
+            if (childAction)
+            {
+                if (NodeState != TASKSTATE.RUNNING || childAction.IsEnd)
+                    OnStart();
+            }
+            else if (NodeState != TASKSTATE.RUNNING)
                 OnStart();
 
             return ChildNode.Run();
@@ -42,7 +48,8 @@ public class Boss_Rush_Decorator : DecoratorTask
 
     public override void OnEnd()
     {
-        Debug.Log(this.gameObject.name + "OnEnd");
+
+        Debug.Log(this.gameObject.name + " : OnEnd");
         base.OnEnd();
     }
 

@@ -269,6 +269,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114319139953902972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -281,6 +282,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjects:
+  - poolObject: {fileID: 0}
+    initialCount: 0
   - poolObject: {fileID: 0}
     initialCount: 0
   - poolObject: {fileID: 0}
@@ -337,8 +340,7 @@ MonoBehaviour:
   bulletBasePlayer: {fileID: 114463585593250748, guid: 3a00062c9996ba14b8d0b2cf22974550,
     type: 2}
   bulletBaseDragon: {fileID: 0}
-  bulletHomingDragon: {fileID: 114945803161500104, guid: be3a19df4baa88a40902abdbb1af6f3a,
-    type: 2}
+  bulletHomingDragon: {fileID: 0}
 --- !u!114 &114813074251167814
 MonoBehaviour:
   m_ObjectHideFlags: 1

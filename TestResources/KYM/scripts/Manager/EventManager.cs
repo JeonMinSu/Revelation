@@ -20,7 +20,7 @@ public class EventManager : Singleton<EventManager>
                 if (IsHit)
                 {
                     damage = WeakPointDamage;
-                    BlackBoard.Instance.IsNearHowlingAttacking = true;
+                    BlackBoard.Instance.IsWeakPointAttack = true;
                 }
             }
         }

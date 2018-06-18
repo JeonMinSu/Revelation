@@ -4,58 +4,56 @@ using UnityEngine;
 
 public class Boss_Mortar_Attack : ActionTask
 {
+    public override void OnStart()
+    {
+        BlackBoard.Instance.IsGroundAttacking = true;
+        BlackBoard.Instance.IsMortarAttacking = true;
+
+        float preTime = BlackBoard.Instance.GetGroundTime().PreMortarTime;
+        float runTime = BlackBoard.Instance.GetGroundTime().RunMortarTime;
+        float afterTime = BlackBoard.Instance.GetGroundTime().AfterMortarTime;
+
+        CoroutineManager.DoCoroutine(MortarAttackCor(preTime, runTime ,afterTime));
+
+        base.OnStart();
+    }
 
     public override bool Run()
     {
 
-        bool IsMortarAttacking = BlackBoard.Instance.IsMortarAttacking;
-
-        if (!IsMortarAttacking)
-        {
-            float preTime = BlackBoard.Instance.GetGroundTime().PreMortarTime;
-            float afterTime = BlackBoard.Instance.GetGroundTime().AfterMortarTime;
-
-            CoroutineManager.DoCoroutine(MortarAttackCor(preTime, afterTime));
-        }
+        Debug.Log(this.gameObject.name + " : Run");
 
         return false;
     }
 
-    IEnumerator MortarAttackCor(float preTime, float atfetTime)
+    public override void OnEnd()
     {
-
-        BlackBoard.Instance.IsGroundAttacking = true;
-        BlackBoard.Instance.IsMortarAttacking = true;
-
-        float curTime = 0.0f;
-        float runTime = BlackBoard.Instance.GetGroundTime().RunMortarTime;
-
-        //선딜
-        yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(preTime));
-
-        //공격
-        while (curTime < runTime)
-        {
-            Debug.Log("MortarAttack");
-            curTime += Time.fixedDeltaTime;
-            yield return CoroutineManager.FiexdUpdate;
-        }
-
-        //후딜
-        yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(atfetTime));
-
         Transform Dragon = UtilityManager.Instance.DragonTransform();
         Transform Player = UtilityManager.Instance.PlayerTransform();
 
         float OverLapDistance = BlackBoard.Instance.RushDistance;
 
-        BlackBoard.Instance.IsOverLapAttack = 
+        BlackBoard.Instance.IsOverLapAttack =
             (UtilityManager.DistanceCalc(Dragon, Player, OverLapDistance)) ? false : true;
 
         BlackBoard.Instance.IsMortarAttacking = false;
         BlackBoard.Instance.IsGroundAttacking = false;
 
         WeakPointManager.Instance.CurrentPatternCount++;
+
+        base.OnEnd();
+    }
+
+
+    IEnumerator MortarAttackCor(float preTime, float runTime ,float atfetTime)
+    {
+        //선딜
+        yield return CoroutineManager.GetWaitForSeconds(preTime);
+        //실행
+        yield return CoroutineManager.GetWaitForSeconds(runTime);
+        //후딜
+        yield return CoroutineManager.GetWaitForSeconds(atfetTime);
+        _isEnd = true;
 
     }
 

@@ -1,44 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DragonController;
 
 public class Boss_Tail_Attack : ActionTask
 {
-    public override bool Run()
+    public override void OnStart()
     {
+        float preTime = BlackBoard.Instance.GetGroundTime().PreNearHowlingTime;
+        float runTime = BlackBoard.Instance.GetGroundTime().RunNearHowlingTime;
+        float afterTime = BlackBoard.Instance.GetGroundTime().AfterNearHowlingTime;
 
-        bool IsSecondAttacking = BlackBoard.Instance.IsSecondAttacking;
-
-        if (!IsSecondAttacking)
-        {
-            float preTime = BlackBoard.Instance.GetGroundTime().SecondAttackPreTime;
-            float afterTime = BlackBoard.Instance.GetGroundTime().SecondAttackAfterTime;
-
-            CoroutineManager.DoCoroutine(TailAttackCor(preTime, afterTime));
-        }
-        return false;
-    }
-
-
-    IEnumerator TailAttackCor(float preTime, float afterTime)
-    {
         BlackBoard.Instance.IsSecondAttacking = true;
         BlackBoard.Instance.IsTailAttacking = true;
 
-        float curTime = 0.0f;
-        float runTime = BlackBoard.Instance.GetGroundTime().SecondAttackRunTime;
+        ActionCor = TailAttackCor(preTime, runTime, afterTime);
 
-        yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(preTime));
+        base.OnStart();
+    }
 
+    public override bool Run()
+    {
+        return false;
+    }
 
-        while (curTime < runTime)
-        {
-            yield return CoroutineManager.FiexdUpdate;
-            curTime += Time.fixedDeltaTime;
-
-        }
-
-        yield return CoroutineManager.GetWaitForSeconds(new WaitForSeconds(afterTime));
+    public override void OnEnd()
+    {
+        ParticleManager.Instance.PoolParticleEffectOff("NearHowling");
 
         BlackBoard.Instance.IsTailAttacking = false;
         BlackBoard.Instance.IsSecondAttack = false;
@@ -46,6 +34,28 @@ public class Boss_Tail_Attack : ActionTask
         BlackBoard.Instance.IsGroundAttacking = false;
 
         WeakPointManager.Instance.CurrentPatternCount++;
+
+        base.OnEnd();
+    }
+
+
+    IEnumerator TailAttackCor(float preTime, float runTime ,float afterTime)
+    {
+
+        ParticleManager.Instance.PoolParticleEffectOn("NearHowling");
+        DragonAniManager.SwicthAnimation("NearHowling_Atk_Pre");
+        yield return CoroutineManager.GetWaitForSeconds(preTime);
+
+        //런
+        DragonAniManager.SwicthAnimation("NearHowling_Atk_Run");
+        yield return CoroutineManager.GetWaitForSeconds(runTime);
+
+        //후딜
+        DragonAniManager.SwicthAnimation("NearHowling_Atk_After");
+        yield return CoroutineManager.GetWaitForSeconds(afterTime);
+
+        OnEnd();
+
     }
 
 }

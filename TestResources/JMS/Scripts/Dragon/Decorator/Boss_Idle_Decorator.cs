@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Boss_Idle_Decorator : DecoratorTask
 {
+    public override void OnStart()
+    {
+        base.OnStart();
+    }
+
     public override bool Run()
     {
         float CurTime = BlackBoard.Instance.GetGroundTime().CurIdleTime;
@@ -13,9 +18,25 @@ public class Boss_Idle_Decorator : DecoratorTask
 
         if (CurTime < MaxTime)
         {
+            ActionTask childAction = ChildNode.GetComponent<ActionTask>();
+
+            if (childAction)
+            {
+                if (NodeState != TASKSTATE.RUNNING || childAction.IsEnd)
+                    OnStart();
+            }
+            else if (NodeState != TASKSTATE.RUNNING)
+                OnStart();
+
             return ChildNode.Run();
         }
+
         return false;
+    }
+
+    public override void OnEnd()
+    {
+        base.OnEnd();
     }
 
 }

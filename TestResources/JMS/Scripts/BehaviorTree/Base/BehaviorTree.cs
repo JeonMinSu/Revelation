@@ -20,8 +20,8 @@ public class BehaviorTree : ScriptableObject
     private CompositeTask _root;
     public CompositeTask Root { get { return _root; } }
 
-    private List<TreeNode> _preserveTasks = new List<TreeNode>();
-    public List<TreeNode> PreserveTasks { get { return _preserveTasks; } }
+    //private List<TreeNode> _preserveTasks = new List<TreeNode>();
+    //public List<TreeNode> PreserveTasks { get { return _preserveTasks; } }
 
     bool _isInit = false;
 
@@ -51,7 +51,7 @@ public class BehaviorTree : ScriptableObject
             if (!_isInit)
             {
                 node.ChildAdd(ChildNodes[n]);
-                PreserveTasks.Add(ChildNodes[n]);
+                //PreserveTasks.Add(ChildNodes[n]);
                 //Debug.Log("ChildInit : " + ChildNodes[n]);
             }
             ChildNodes[n].NodeState = TASKSTATE.FAULURE;

@@ -14,12 +14,8 @@ public abstract class TreeNode : MonoBehaviour {
     protected TASKSTATE _nodeState;
     public TASKSTATE NodeState { set { _nodeState = value; } get { return _nodeState; } }
 
-    private List<TreeNode> _childNodes = new List<TreeNode>();
-    public List<TreeNode> ChildNodes { get { return _childNodes; } }
-
-    public virtual void ChildAdd(TreeNode Node)
+    public virtual void ChildAdd(TreeNode node)
     {
-        ChildNodes.Add(Node);
     }
 
     public virtual void OnStart()

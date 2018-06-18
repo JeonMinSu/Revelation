@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4936754422324098}
   - component: {fileID: 114804417070422236}
   m_Layer: 0
-  m_Name: FX_dust
+  m_Name: FX_Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

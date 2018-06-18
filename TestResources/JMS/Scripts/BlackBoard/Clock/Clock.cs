@@ -124,16 +124,16 @@ public class Clock : MonoBehaviour
         [Header("BulletBreath Attack Time")]
 
         [SerializeField]
-        private float _preBulletBreathTime;
-        public float PreBulletBreathTime { get { return _preBulletBreathTime; } }
+        private float _preNearBreathTime;
+        public float PreNearBreathTime { get { return _preNearBreathTime; } }
 
         [SerializeField]
-        private float _runBulletBreathTime;
-        public float RunBulletBreathTime { get { return _runBulletBreathTime; }  }
+        private float _runNearBreathTime;
+        public float RunNearBreathTime { get { return _runNearBreathTime; }  }
 
         [SerializeField]
-        private float _afterBulletBreathTime;
-        public float AfterBulletBreathTime { get { return _afterBulletBreathTime; } }
+        private float _afterNearBreathTime;
+        public float AfterNearBreathTime { get { return _afterNearBreathTime; } }
 
         [Space]
         [Header("Mortar Attack Time")]

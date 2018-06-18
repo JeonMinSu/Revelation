@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Boss_FanShapeBreath_Decorator : DecoratorTask
 {
+    public override void OnStart()
+    {
+        Debug.Log(this.gameObject.name + " : OnStart");
+        base.OnStart();
+    }
+
     public override bool Run()
     {
 
@@ -19,10 +25,30 @@ public class Boss_FanShapeBreath_Decorator : DecoratorTask
 
         if ((IsFanShapeBreath && !IsGroundAttacking) || IsFanShapeBreathAttacking)
         {
+            ActionTask childAction = ChildNode.GetComponent<ActionTask>();
+
+            if (childAction)
+                if (NodeState != TASKSTATE.RUNNING || childAction.IsEnd)
+                    OnStart();
+
+            else if (NodeState != TASKSTATE.RUNNING)
+                OnStart();
+
             return ChildNode.Run();
+        }
+        if (NodeState != TASKSTATE.FAULURE)
+        {
+            Debug.Log("test");
+            OnEnd();
         }
 
         return true;
+    }
+
+    public override void OnEnd()
+    {
+        Debug.Log(this.gameObject.name + "OnEnd");
+        base.OnEnd();
     }
 
 

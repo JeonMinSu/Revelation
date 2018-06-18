@@ -23,6 +23,9 @@ namespace DragonController
         private Rigidbody _dragonRigidBody;
         public Rigidbody DragonRigidBody { get { return _dragonRigidBody; } }
 
+        private ActionTask _preserveActionTask;
+        public ActionTask PreserveActionTask { set { _preserveActionTask = value; } get { return _preserveActionTask; } }
+
         IEnumerator _dragonAiCor;
         
         bool _isInit;

@@ -14,8 +14,6 @@ public class BlackBoard : Singleton<BlackBoard>
     [Space]
     [Header("Boss Body Transform")]
 
-    public Collider Test;
-
     [SerializeField]
     private Transform _dragonMouth;
     public Transform DragonMouth { get { return _dragonMouth; } }
@@ -109,10 +107,10 @@ public class BlackBoard : Singleton<BlackBoard>
     //public bool IsAttack { set { _isAttack = value; } get { return _isAttack; } }
 
 
-    [Space]
-    [Header("Boss Pattern On")]
-    /* 보스몹 행동 중 관련 변수 */
-    [SerializeField]
+    //[Space]
+    //[Header("Boss Pattern On")]
+    ///* 보스몹 행동 중 관련 변수 */
+    //[SerializeField]
     private bool _isGroundAttacking;   //땅에서 패턴을 사용하고 있는지
     public bool IsGroundAttacking { set { _isGroundAttacking = value; } get { return _isGroundAttacking; } }
 
@@ -159,6 +157,10 @@ public class BlackBoard : Singleton<BlackBoard>
 
     private bool _isMortarAttacking;
     public bool IsMortarAttacking { set { _isMortarAttacking = value; } get { return _isMortarAttacking; } }
+
+    [SerializeField]
+    private bool _isNearHowling;
+    public bool IsNearHowling { set { _isNearHowling = value; } get { return _isNearHowling; } }
 
 
     [Space]
@@ -217,8 +219,9 @@ public class BlackBoard : Singleton<BlackBoard>
     private int _maxWeakPointCount;
     public int MaxWeakPointCount { set { _maxWeakPointCount = value; } get { return _maxWeakPointCount; } }
 
+    [SerializeField]
     private bool _isWeakPointAttack;
-    public bool IsWeakPointAttack { get { return _isWeakPointAttack; } }
+    public bool IsWeakPointAttack { set { _isWeakPointAttack = value; } get { return _isWeakPointAttack; } }
     
 
     [Header("PlayerHP Dummy")]

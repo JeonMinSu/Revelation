@@ -23,40 +23,41 @@ public class CoroutineManager : Singleton<CoroutineManager> {
 
     private static WaitForSeconds _seconds;
 
-    Dictionary<string, IEnumerator> _preserveCoroutine = new Dictionary<string, IEnumerator>();
-
+    private Dictionary<string, IEnumerator> _preserveCoroutines = new Dictionary<string, IEnumerator>();
 
     public void AddPreserveCoroutine(string coroutineName, IEnumerator coroutine)
     {
         IEnumerator Cor = GetPreserveCoroutine(coroutineName, coroutine);
 
         if (Cor == null)
-        {
-            _preserveCoroutine.Add(coroutineName, coroutine);
-        }
-    }
+            _preserveCoroutines.Add(coroutineName, coroutine);
+        else
+            _preserveCoroutines[coroutineName] = coroutine;
 
+    }
+    
     public IEnumerator GetPreserveCoroutine(string coroutineName, IEnumerator coroutine)
     {
         IEnumerator ReturnCoroutine = null;
 
-        if (_preserveCoroutine.ContainsKey(coroutineName))
+        if (_preserveCoroutines.ContainsKey(coroutineName))
         {
-            ReturnCoroutine = _preserveCoroutine[coroutineName];
+            ReturnCoroutine = _preserveCoroutines[coroutineName];
         }
         return ReturnCoroutine;
     }
 
     public void RemovePreserveCoroutine(string coroutineName)
     {
-        if (!_preserveCoroutine.ContainsKey(coroutineName))
-            _preserveCoroutine.Remove(coroutineName);
+        if (!_preserveCoroutines.ContainsKey(coroutineName))
+            _preserveCoroutines.Remove(coroutineName);
+
         Debug.Log("NoKey : " + coroutineName);
     }
 
-    public static WaitForSeconds GetWaitForSeconds(WaitForSeconds _time)
+    public static WaitForSeconds GetWaitForSeconds(float _time)
     {
-        _seconds =_time;
+        _seconds = new WaitForSeconds(_time);
         return _seconds;
     }
          
@@ -72,6 +73,7 @@ public class CoroutineManager : Singleton<CoroutineManager> {
     public static void DoCoroutine(IEnumerator coroutine)
     {
         Instance.StartCoroutine(Instance.Preform(coroutine));
+        Instance.AddPreserveCoroutine(coroutine.ToString(), coroutine);
     }
 
     public static void DontCoroutine(IEnumerator coroutine)

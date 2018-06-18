@@ -139,7 +139,7 @@ MonoBehaviour:
   _dragonTailAttacksPivot: {fileID: 0}
   _rushDistance: 60
   _fanShapeBreathDistance: 80
-  _nearBreathDistance: 300
+  _nearBreathDistance: 50000
   _isOverLapAttack: 0
   _secondAttackDistance: 30
   _overLapMoveDistance: 30
